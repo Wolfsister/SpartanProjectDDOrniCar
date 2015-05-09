@@ -1,0 +1,1 @@
+<strong> Texte Inséré </strong>

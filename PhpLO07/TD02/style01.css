@@ -1,0 +1,26 @@
+h1{
+    color:blue;
+    font-size: xx-large;
+}
+h2{
+    color:orange;
+    font-size: x-large;
+}
+h3{
+    color:red;
+    font-size:large;
+}
+.nom{
+    font-style: italic;
+}
+#adresse{
+    font-size: large;
+}
+#listeModules{
+    list-style: lower-greek;
+    
+}
+ul{
+    list-style-type: square;
+}
+

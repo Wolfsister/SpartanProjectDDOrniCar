@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TD02_exo3 LO07</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h2>Laissez vos coordonnées !</h2>
+        <form method="get">
+            <p/><label>Nom</label>
+            <input type="text" name="nom" />
+            <p/><label>Prénom</label>
+            <input type="text" name="prenom" value="Denis" />
+            <p/><label>Email</label>
+            <input type=email name="email" />
+            <p/><label>Login</label>
+            <input type="text" name="login" />
+            <p/><label>Password</label>
+            <input type="password" name="password" />
+            <p/><label>Date de Naissance</label>
+            <input type=datetime name="datenaissance">
+            <p/><label>Best Band ?</label>
+            <select>
+                <optgroup label="En Activité" >
+                    <option>The Rolling Stones</option>
+                    <option>Arctic Monkeys</option>
+                    <option>The Black Keys</option>
+                    <option>Foo Fighters</option>
+                </optgroup>
+                <optgroup label="Dead...">
+                    <option>Led Zeppelin</option>
+                    <option>Queen</option>
+                    <option>Lynyrd Skynyrd</option>
+                </optgroup>
+            </select> 
+
+            <p/><input type="submit" name="Valider">
+            <input type="reset" name="Reset">
+        </form>
+    </body>
+</html>

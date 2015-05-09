@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TD02_exo4 LO07</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form method="get">
+            <p/><label>Nom</label>
+            <input type="text" name="nom" />
+            <p/><label>Prénom</label>
+            <input type="text" name="prenom" />
+            <p/><label>Sexe</label>
+            <select>
+                <option>Homme</option>
+                <option>Femme</option>
+            </select>    
+            <p/><label>Quel est votre opérateur actuel ou vos opérateurs actuels ?</label>
+            <p/><input type="checkbox" name="operateur" value="bt">Bouygues Telecom
+            <input type="checkbox" name="operateur" value="or">Orange
+            <input type="checkbox" name="operateur" value="sfr">SFR
+            <input type="checkbox" name="operateur" value="free">Free Mobile
+            <input type="checkbox" name="operateur" value="other">Autre
+            
+            <p/><label>Quelles options voulez-vous ? </br></label>
+            <select multiple>
+                <option>Affichage Numéro</option>
+                <option>Appels Illimités en Métropole</option>
+                <option>Appels Illimités à l'International</option>
+                <option>Appels 2H</option>
+                <option>SMS Illimités</option>
+                <option>Internet 100Mo</option>
+                <option>Internet 3Go </option>
+                <option>Internet 20Go</option>
+                <option>Report de Forfait</option>
+                <option>TV Illimitée</option>
+                <option>Deezer Illimité</option>
+            </select> 
+            
+            <p/><label>Quel estimation de prix ? </br></label>
+            <select>
+                <option>0-10</option>
+                <option>10-20</option>
+                <option>20-30</option>
+                <option>30-40</option>
+                <option>40-50</option>
+                <option>50+</option>
+            </select> 
+            
+            <p/><input type="submit" name="Valider">
+            <input type="reset" name="Reset">
+
+            
+        </form>
+    </body>
+</html>
