@@ -1,17 +1,18 @@
 CREATE TABLE user (
-	idUser INTEGER NOT NULL,
+	idUser INTEGER NOT NULL AUTO_INCREMENT,
 	nom Varchar(45) NOT NULL,
 	prenom Varchar(45) NOT NULL,
-	idVoiture INTEGER NOT NULL,
+	pseudo Varchar(45) NOT NULL,
+	idVoiture INTEGER,
 	photo Varchar(100) NOT NULL,
-	note INTEGER NOT NULL,
+	note INTEGER,
 	solde INTEGER NOT NULL,
-	age INTEGER NOT NULL,
+	age INTEGER,
 	PRIMARY KEY(idUser)
 );
 
 CREATE TABLE trajet (
-	idTrajet INTEGER NOT NULL, 
+	idTrajet INTEGER NOT NULL AUTO_INCREMENT, 
 	idConducteur INTEGER NOT NULL,
 	villeDepart Varchar(45) NOT NULL,
 	villeArrivee VarChar(45) NOT NULL,

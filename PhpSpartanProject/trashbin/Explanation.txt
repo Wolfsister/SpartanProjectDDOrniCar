@@ -1,0 +1,1 @@
+Si pour X raison, on supprime des fichiers, on les mets là si jamais on veut les récup' plus tard après réflexion.
