@@ -2,7 +2,12 @@
 $title='';
 include '../pagetype/hautPage.php';
 ?>
-<div><p>Testllololoolol</p></div>
+<div><p>Testllololoolol
+    
+    
+    Est ce que ca committe bien ???</p></div>
+
+
 
 
 <?php
