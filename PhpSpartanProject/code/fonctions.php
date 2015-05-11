@@ -9,7 +9,7 @@ function enregistrerUtilisateurSansVoiture(){
 }
 
 function connexionBdd(){
-    $conn= new mysqli('localhost', 'username', 'password', 'bddname');
+    $conn= new mysqli('localhost', 'root', '', 'testornicar');
     return $conn;
 }
 

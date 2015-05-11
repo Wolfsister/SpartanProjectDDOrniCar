@@ -1,4 +1,5 @@
 <?php
+
 require_once './fonctions.php';
 
 if (!empty($_POST)) {
@@ -31,10 +32,10 @@ if (!empty($_POST)) {
         $erreur = true;
     }
 
-    if (empty($_POST["icone"])) {
-        echo("Veuillez choisir une photo de profil. <br/>");
-        $erreur = true;
-    }
+//    if (empty($_POST["icone"])) {
+//        echo("Veuillez choisir une photo de profil. <br/>");
+//        $erreur = true;
+//    }
 
     if (!isset($_POST['accept'])) {
         echo("Vous devez accepter les Conditions Générales d'Utilisation pour pouvoir profiter d'OrniCar. <br/>");
@@ -52,18 +53,21 @@ if (!empty($_POST)) {
         $icone = $_FILES['icone'];
         $iconeName = $icone['tmp_name'];
         $iconeType = $icone["type"];
-        $emplacementDeplacement = '../ressources/imagesProfiles/'.$_POST['email'].'.'.$iconeType;
+        $emplacementDeplacement = '../ressources/imagesProfiles/' . $_POST['email'] . '.jpg';
         move_uploaded_file($iconeName, $emplacementDeplacement);
 
         // Ajout dans BDD
         $conn = connexionBdd();
-        $insertion = 'INSERT INTO user(idUser, nom, prenom, pseudo, mdp, email, idVoiture, photo, note, solde, age) VALUES(\'\',' . $_POST['nom'] . ',' . $_POST['prenom'] . ',' . $_POST['pseudo'] . ',' . $_POST['mdp'] . ',' . $_POST['email'] . ',\'\',' . $emplacementDeplacement . ',\'\',0,\'\')';
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        echo "Connected successfully";
+        
+        $insertion = 'INSERT INTO user VALUES (\'\',' . $_POST['nom'] . ',' . $_POST['prenom'] . ',' . $_POST['pseudo'] . ',' . $_POST['mdp'] . ',' . $_POST['email'] . ',\'\',' . $emplacementDeplacement . ',\'\',0,\'\')';
         mysqli_query($conn, $insertion);
         mysqli_close($conn);
 
         echo 'Félicitations pour votre inscription !';
     }
 }
-
-
 ?>
