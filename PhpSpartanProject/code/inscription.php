@@ -117,25 +117,27 @@ $loginOK = false;
                             <div class="form-group">
                                 <div class="col-md-12 col-xs-12 col-sm-12">
                                     <div class="input-group">
+                                        <input type="text" name="prenom" class="form-control" id="prenom" placeholder="Prénom">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="form-group">
+                                <div class="col-md-12 col-xs-12 col-sm-12">
+                                    <div class="input-group">
                                         <input type="text" name="nom" class="form-control" id="nom" placeholder="Nom">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <div class="col-md-12 col-xs-12 col-sm-12">
-                                    <div class="input-group">
-                                        <input type="text" name="prenom" class="form-control" id="prenom" placeholder="Prénom">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                    </div>
-                                </div>
-                            </div>
+                            
 
                             <div class="form-group">
                                 <div class="col-md-12 col-xs-12 col-sm-12">
                                     <div class="input-group">
-                                        <input type="text" name="pseudo" class="form-control" id="pseudo" placeholder="pseudo">
+                                        <input type="text" name="pseudo" class="form-control" id="pseudo" placeholder="Pseudo">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
                                     </div>
                                 </div>

@@ -73,7 +73,7 @@ if (!empty($_POST)) {
         
         
 
-        echo 'Félicitations pour votre inscription !';
+        echo 'Félicitations pour votre inscription '.$_POST['prenom'].' '.$_POST['nom'].', ou '.$_POST['pseudo'].' devrais-je dire ! :)';
     }
 }
 ?>
