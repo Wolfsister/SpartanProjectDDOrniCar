@@ -103,7 +103,7 @@ $loginOK = false;
                 <div class="col-md-4 col-sm-3">
                 </div>
                 <div class="col-md-4 col-xs-12 col-sm-6">
-                    <form  method='post' class="form-horizontal" role="form" action='./inscription_action.php'>
+                    <form enctype="multipart/form-data" method='post' class="form-horizontal" role="form" action='./inscription_action.php'>
 
                             <div class="form-group">
                                 <div class="col-md-12 col-xs-12 col-sm-12">
@@ -163,7 +163,7 @@ $loginOK = false;
                                 <div class="col-md-12 col-xs-12 col-sm-12">
                                     <div class="input-group">
                                         <label for="icone">Image de profil (JPG, PNG ou GIF | max. 15 Ko) :</label><br />
-                                        <input type="file" name="icone" id="icone" /><br />
+                                        <input type="file" name="icone" accept="image/*" id="icone" /><br />
                                     </div>
                                 </div>
                             </div>

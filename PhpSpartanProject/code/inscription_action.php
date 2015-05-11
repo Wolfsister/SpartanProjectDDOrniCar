@@ -1,6 +1,9 @@
 <?php
+require_once './fonctions.php';
 
 if (!empty($_POST)) {
+    echo var_dump($_POST);
+    echo var_dump($_FILES);
     $erreur = false;
 
     if (empty($_POST["nom"])) {
@@ -49,7 +52,7 @@ if (!empty($_POST)) {
         $icone = $_FILES['icone'];
         $iconeName = $icone['tmp_name'];
         $iconeType = $icone["type"];
-        $emplacementDeplacement = '../ressources/imagesProfiles/' . $_POST['email'] . '.' . $iconeType;
+        $emplacementDeplacement = '../ressources/imagesProfiles/'.$_POST['email'].'.'.$iconeType;
         move_uploaded_file($iconeName, $emplacementDeplacement);
 
         // Ajout dans BDD
