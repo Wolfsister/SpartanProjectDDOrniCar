@@ -1,13 +1,15 @@
--VÈrifier si pseudo et email n'existent pas dÈj‡ dans la base de donnÈes lorsqu'on procËde ‡ la crÈation du bonhomme.
+-V√©rifier si pseudo et email n'existent pas d√©j√† dans la base de donn√©es lorsqu'on proc√®de √† la cr√©ation du bonhomme.
 
--CrÈer Variable de session: connectÈ
+-Cr√©er Variable de session: connect√©
 Mettre infos en cookies
 
 -A la fin d'inscription : logger
 
--VÈrifier si creation n'est pas deja dans base de donnÈes  (fonction isAlreadyRegistered)
+-V√©rifier si creation n'est pas deja dans base de donn√©es  (fonction isAlreadyRegistered)
 
 -faire headerWhenConnected.php
+
+-ETABLIR CLAIREMENT QU'EST CE QU'ON MET EN VARIABLES SESSION/COOKIES.   POUR QUE JE PUISSE FAIRE LA CONNEXION EST D'AUTRES CHOSES.
 
 
 
