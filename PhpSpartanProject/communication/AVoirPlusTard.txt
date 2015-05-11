@@ -1,1 +1,13 @@
 -Vérifier si pseudo et email n'existent pas déjà dans la base de données lorsqu'on procède à la création du bonhomme.
+
+-Créer Variable de session: connecté
+Mettre infos en cookies
+
+-A la fin d'inscription : logger
+
+-Vérifier si creation n'est pas deja dans base de données  (fonction isAlreadyRegistered)
+
+-faire headerWhenConnected.php
+
+
+

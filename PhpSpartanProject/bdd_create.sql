@@ -3,6 +3,8 @@ CREATE TABLE user (
 	nom Varchar(45) NOT NULL,
 	prenom Varchar(45) NOT NULL,
 	pseudo Varchar(45) NOT NULL,
+        motdepasse Varchar(100) NOT NULL,
+        email Varchar(100) NOT NULL,
 	idVoiture INTEGER,
 	photo Varchar(100) NOT NULL,
 	note INTEGER,
