@@ -3,7 +3,7 @@
 -Créer Variable de session: connecté
 Mettre infos en $_SESSION
 
--A la fin d'inscription : logger
+-A la fin d'inscription : logger automatiquement
 
 -Vérifier si creation n'est pas deja dans base de données  (fonction isAlreadyRegistered)
 
@@ -14,6 +14,8 @@ Mettre infos en $_SESSION
 -Mise à jour du solde (si on le met dans la bannière utilisateur) : faire une mise à jour à chaque actualisation de page, donc faire ça dans le php commun à toutes les pages ?
 
 -Interdire mot de passe : ''    MDP à zéro caractères
+
+-Faire une fonction pour chercher directement si attribut existe dans BDD
 
 
 -Optionnel : trouver une ptite icone pour mettre sur l'onglet à cote du nom
