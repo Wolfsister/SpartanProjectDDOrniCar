@@ -61,6 +61,11 @@ if (isset($_POST)) {
         if($mdpReel==$mdpPropose){
             echo 'Bonne combinaison email/mot de passe, vous êtes désormais loggé !';
             // FAIRE VERITABLE CONNEXION
+            $_SESSION['connected']=1;
+            $_SESSION['pseudo']=$tabResultat['pseudo'];
+            var_dump($_SESSION);
+            echo 'connected ='.$_SESSION['connected'];
+            header('Location: ../code/compte.php');
         }else{
             echo 'Le mot de passe saisi n\'est pas le bon, veuillez réessayer en cliquant <a href="./inscription.php">ici</a>.';
         }

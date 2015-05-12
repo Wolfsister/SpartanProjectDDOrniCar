@@ -1,0 +1,3 @@
+SESSION =>  boolean connected
+            String pseudo
+            
