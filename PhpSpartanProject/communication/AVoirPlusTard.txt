@@ -1,13 +1,21 @@
--VÈrifier si pseudo et email n'existent pas dÈj‡ dans la base de donnÈes lorsqu'on procËde ‡ la crÈation du bonhomme.
+-V√©rifier si pseudo et email n'existent pas d√©j√† dans la base de donn√©es lorsqu'on proc√®de √† la cr√©ation du bonhomme.
 
--CrÈer Variable de session: connectÈ
-Mettre infos en cookies
+-Cr√©er Variable de session: connect√©
+Mettre infos en $_SESSION
 
--A la fin d'inscription : logger
+-A la fin d'inscription : logger automatiquement
 
--VÈrifier si creation n'est pas deja dans base de donnÈes  (fonction isAlreadyRegistered)
+-V√©rifier si creation n'est pas deja dans base de donn√©es  (fonction isAlreadyRegistered)
 
 -faire headerWhenConnected.php
 
+-ETABLIR CLAIREMENT QU'EST CE QU'ON MET EN VARIABLES SESSION/COOKIES.   POUR QUE JE PUISSE FAIRE LA CONNEXION EST D'AUTRES CHOSES.
+
+-Mise √† jour du solde (si on le met dans la banni√®re utilisateur) : faire une mise √† jour √† chaque actualisation de page, donc faire √ßa dans le php commun √† toutes les pages ?
+
+-Interdire mot de passe : ''    MDP √† z√©ro caract√®res
+
+-Faire une fonction pour chercher directement si attribut existe dans BDD
 
 
+-Optionnel : trouver une ptite icone pour mettre sur l'onglet √† cote du nom
