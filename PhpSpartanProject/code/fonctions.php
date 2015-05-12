@@ -35,22 +35,22 @@ function isAlreadyRegistered($email,$pseudo,$nom,$prenom){
     $co = connexionBdd();
     $rechercheMail = "SELECT * FROM user WHERE email='" . $email . "' ";
     $resultatMail = mysqli_query($co, $rechercheMail);
-    $nbLignes = mysqli_num_rows($resultatMail);
-    if($nbLignes=1){
+    $nbLignesMail = mysqli_num_rows($resultatMail);
+    if($nbLignesMail==1){
         echo 'Cette adresse email est déjà utilisée.';
         $registered=true;
     }
     $recherchePseudo = "SELECT * FROM user WHERE pseudo='" . $pseudo . "' ";
     $resultatPseudo = mysqli_query($co, $recherchePseudo);
-    $nbLignes = mysqli_num_rows($resultatPseudo);
-    if($nbLignes=1){
+    $nbLignesPseudo = mysqli_num_rows($resultatPseudo);
+    if($nbLignesPseudo==1){
         echo 'Ce pseudo est déjà utilisé.';
         $registered=true;
     }
     $rechercheNomPrenom = "SELECT * FROM user WHERE nom='" . $nom . "' AND prenom='".$prenom."' ";
     $resultatNomPrenom = mysqli_query($co, $rechercheNomPrenom);
-    $nbLignes = mysqli_num_rows($resultatNomPrenom);
-    if($nbLignes=1){
+    $nbLignesCouple = mysqli_num_rows($resultatNomPrenom);
+    if($nbLignesCouple==1){
         echo 'Votre couple nom/prénom est déjà utilisé.';
         $registered=true;
     }

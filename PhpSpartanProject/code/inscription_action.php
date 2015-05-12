@@ -47,7 +47,12 @@ if (!empty($_POST)) {
         $erreur = true;
     }
 
-    if (($_POST['mdp']) != ($_POST['mdp2'])) {
+    $existeDeja=  isAlreadyRegistered($_POST['email'], $_POST['pseudo'], $_POST['nom'], $_POST['prenom']);
+    if($existeDeja==true){
+        $erreur=true;
+    }
+    
+    if ((($_POST['mdp']) != ($_POST['mdp2'])) && ($existeDeja==false)) {
         echo("La vérification de mot de passe ne correspond pas au mot de passe précédemment saisi. <br/>");
         $erreur = true;
     }

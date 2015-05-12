@@ -41,7 +41,7 @@ include '../pagetype/hautPage.php';
                             <div class="form-group">
                                 <div class="col-md-12 col-xs-12 col-sm-12">
                                     <div class="input-group">
-                                        <input type="text" name="nom" class="form-control" id="nom" placeholder="Nom">
+                                        <input type="text" name="nom" class="form-control" id="nom" placeholder="NOM">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
                                     </div>
                                 </div>

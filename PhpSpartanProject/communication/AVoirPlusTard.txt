@@ -1,11 +1,9 @@
 -Vérifier si pseudo et email n'existent pas déjà dans la base de données lorsqu'on procède à la création du bonhomme.
 
--Créer Variable de session: connecté
-Mettre infos en $_SESSION
 
 -A la fin d'inscription : logger automatiquement
 
--Vérifier si creation n'est pas deja dans base de données  (fonction isAlreadyRegistered)
+-Vérifier si creation n'est pas deja dans base de données  (fonction isAlreadyRegistered)  // A CORRIGER
 
 -ETABLIR CLAIREMENT QU'EST CE QU'ON MET EN VARIABLES SESSION/COOKIES.   POUR QUE JE PUISSE FAIRE LA CONNEXION EST D'AUTRES CHOSES.
 => Mettre infos dans cookies si le gars coche "se souvenir de moi" 

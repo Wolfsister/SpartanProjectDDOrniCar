@@ -60,7 +60,6 @@ if (isset($_POST)) {
         $mdpPropose=$_POST['passe'];
         if($mdpReel==$mdpPropose){
             echo 'Bonne combinaison email/mot de passe, vous êtes désormais loggé !';
-            // FAIRE VERITABLE CONNEXION
             $_SESSION['connected']=1;
             $_SESSION['pseudo']=$tabResultat['pseudo'];
             var_dump($_SESSION);
