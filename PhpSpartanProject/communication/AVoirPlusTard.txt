@@ -11,7 +11,7 @@ Mettre infos en $_SESSION
 
 -ETABLIR CLAIREMENT QU'EST CE QU'ON MET EN VARIABLES SESSION/COOKIES.   POUR QUE JE PUISSE FAIRE LA CONNEXION EST D'AUTRES CHOSES.
 
-
+-Mise à jour du solde (si on le met dans la bannière utilisateur) : faire une mise à jour à chaque actualisation de page, donc faire ça dans le php commun à toutes les pages ?
 
 
 
