@@ -47,7 +47,7 @@ function isAlreadyRegistered($email, $pseudo, $nom, $prenom) {
     return $registered;
 }
 
-function logRightAfterRegister($pseudo, $icone) {
+function logRightAfterRegister($pseudo) {
     $_SESSION['pseudo'] = $pseudo;
     $_SESSION['connected'] = 1;
     //$_SESSION['image']
@@ -72,19 +72,32 @@ function searchInDataBase($tab){
     $co=  connexionBdd();
     $requeteDeb='SELECT * ';
     $requeteFrom='FROM ';
-    $requeteWhere='WHERE ';
-    
+    $requeteWhere=' WHERE ';
+    $requeteWhereMorceau='';
+    $count=0;
     //Création de la Requête
     foreach ($tab as $key1 => $value1) {
         $requeteFrom=$requeteFrom.$key1;
-        foreach ($value1 as $key2 => $value2){
-            $requeteWhereMorceau=" ".$key1.".".$key2."='".$value2."' ";
+        foreach ($value1 as $key2 => $value2){           
+            if($count>0){ 
+                $requeteWhereMorceau=" AND ".$key1.".".$key2."='".$value2."' "; 
+            }else{
+                $requeteWhereMorceau=" ".$key1.".".$key2."='".$value2."' ";
+            }
             $requeteWhere=$requeteWhere.$requeteWhereMorceau;
+            $count++;
         }
     }
     
     $requete=$requeteDeb.$requeteFrom.$requeteWhere;
-    $tabResultat=mysqli_fetch_array(mysqli_query($co, $requete));
+    //echo $requete;
+    $doQuery=mysqli_query($co, $requete);
+//    if (!$doQuery) {
+//            printf("Error: %s\n", mysqli_error($co));
+//            exit();
+//        }
+    echo 'NombreLignes ='.$nbLignes=mysqli_num_rows($doQuery);
+    $tabResultat=mysqli_fetch_array($doQuery);
     
     return $tabResultat;
     // idée : rentrer un array avec [key]=>value avec type de l'info et info

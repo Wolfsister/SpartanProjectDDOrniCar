@@ -1,16 +1,20 @@
 <?php
-$title='Fichier pour tester';
+$title='Test';
 include '../pagetype/hautPage.php';
 ?>
 
 <p>
 <?php
-$deb= "La phrase commence ";
-$fin= "et finit.";
-echo $deb.$fin;
+
+$tab=array("user"=>(array("pseudo"=>"Admin","motdepasse"=>"admin")));
+echo '<pre>';
+print_r($tab);
+echo '</pre>',
+$tabRes=searchInDataBase($tab);
+print_r($tabRes);
 ?>
     
-    
+      
 </p>
 
 
