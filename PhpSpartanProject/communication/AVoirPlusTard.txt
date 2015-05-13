@@ -2,7 +2,6 @@
 
 -DANS INSCRIPTION : GERER LE FAIT DE NE PAS INSERER DE PHOTO
 
-
 -Dans MONCOMPTE =>  Ajouter Voiture, Modifier Photo, Rentrer Age, Voir historique paiements
 
 -Vérifier si creation n'est pas deja dans base de données  (fonction isAlreadyRegistered)  // A VERIFIER mais m'a l'air de bien fonctionner
@@ -16,7 +15,7 @@
 
 -Faire une fonction pour chercher directement (si attribut existe) dans BDD   => automatiser la recherche dans BDD, chaud mais je vais voir ce que je peux faire
 
--DORIAN : Lorsqu'on est dans MonCompte, Accueil est "surligné". Enlever ca.
+-DORIAN : Lorsqu'on est dans MonCompte, Accueil est "surligné". Cool si enlevable.
 
 -Système de messagerie interne
 
@@ -24,4 +23,5 @@
 
 -Propre fonction pour donner id unique à la création d'une voiture
 
--Optionnel : trouver une MEILLEURE icone pour mettre sur l'onglet à cote du nom
+-Optionnel : -trouver une MEILLEURE icone pour mettre sur l'onglet à cote du nom
+             -changer image dans le formulaire pour l'année de naissance

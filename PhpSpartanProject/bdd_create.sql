@@ -5,7 +5,7 @@ CREATE TABLE user (
 	pseudo Varchar(45) NOT NULL,
         motdepasse Varchar(100) NOT NULL,
         email Varchar(100) NOT NULL,
-	idVoiture INTEGER,
+	idVoiture INTEGER NOT NULL,
 	photo Varchar(100) NOT NULL,
 	note INTEGER,
 	solde INTEGER NOT NULL,
@@ -66,21 +66,19 @@ CREATE TABLE avis (
      			ON UPDATE RESTRICT
 );
 
--- CREATE TABLE voiture (
--- 	idVoiture INTEGER NOT NULL,
--- 	idPossesseur INTEGER NOT NULL,
--- 	marque Varchar(45) NOT NULL,
---     modèle VarChar(45) NOT NULL,
---     couleur VarChar(45) NOT NULL,
---     image VarChar(100),
---     annee INTEGER NOT NULL,
--- 	PRIMARY KEY(idVoiture),
--- 	FOREIGN KEY(idVoiture)
--- 		REFERENCES user(idVoiture)
---       			ON DELETE CASCADE
---      			ON UPDATE RESTRICT,
---   	FOREIGN KEY(idPossesseur)
---    		REFERENCES user(idUser)
---      			ON DELETE CASCADE
---      			ON UPDATE RESTRICT
--- );
+CREATE TABLE voiture (
+	idVoiture INTEGER NOT NULL,
+	idPossesseur INTEGER NOT NULL,
+	marque Varchar(45) NOT NULL,
+        modele VarChar(45) NOT NULL,
+        couleur VarChar(45) NOT NULL,
+        image VarChar(100),
+        annee INTEGER NOT NULL,
+	PRIMARY KEY(idVoiture),	
+  	FOREIGN KEY(idPossesseur)
+   		REFERENCES user(idUser)
+     			ON DELETE CASCADE
+     			ON UPDATE RESTRICT
+);
+
+ALTER TABLE `user` ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`idVoiture`) REFERENCES `bddprovisoire`.`voiture`(`idVoiture`) ON DELETE CASCADE ON UPDATE RESTRICT; 

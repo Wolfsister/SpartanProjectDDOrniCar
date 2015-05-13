@@ -77,7 +77,7 @@ include '../pagetype/hautPage.php';
                             <div class="form-group">
                                 <div class="col-md-12 col-xs-12 col-sm-12">
                                     <div class="input-group">
-                                        <input type="number" name="anneenaissance" class="form-control" id="anneenaissance" placeholder="Année de Naissance (ex: 1984)">
+                                        <input type="number" name="anneenaissance" class="form-control" id="anneenaissance" min='1900' max='2000'  placeholder="Année de Naissance (ex: 1984)">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                                     </div>
                                 </div>

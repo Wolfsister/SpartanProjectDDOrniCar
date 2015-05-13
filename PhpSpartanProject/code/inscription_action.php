@@ -52,7 +52,7 @@ if (!empty($_POST)) {
 //        $erreur = true;
 //    }
     
-    if (!isset($_FILES)) {
+    if ($_FILES['icone']['error']==4) {
         echo("Veuillez choisir une photo de profil. <br/>");
         $erreur = true;
     }
