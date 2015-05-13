@@ -5,6 +5,7 @@ if (!isset($_SESSION)) {
         $_SESSION['connected']=0;
     }
 }
+include '../code/fonctions.php';
 ?>
 <head>
     <meta charset="utf-8">

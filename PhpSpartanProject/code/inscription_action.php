@@ -5,7 +5,6 @@ include '../pagetype/hautPage.php';
 
 <?php
 
-require_once './fonctions.php';
 
 if (!empty($_POST)) {
 //    echo var_dump($_POST);
@@ -36,6 +35,17 @@ if (!empty($_POST)) {
         echo("Le champ de confirmation du mot de passe est vide. <br/>");
         $erreur = true;
     }
+    
+    if (empty($_POST["anneenaissance"])) {
+        echo("Veuillez indiquer votre année de naissance.<br/>");
+        $erreur = true;
+    }
+    
+    if((!empty($_POST["anneenaissance"])) && ($_POST['anneenaissance']>2015)){
+        echo ("Êtes-vous sûr d'être né ? <br />");
+        $erreur=true;
+    }
+    
 
 //    if ($_FILES["name"]=="") {
 //        echo("Veuillez choisir une photo de profil. <br/>");
@@ -73,7 +83,7 @@ if (!empty($_POST)) {
 //        }
 //        echo "Connected successfully";
         
-        $insertion = "INSERT INTO user (idUser, nom, prenom, pseudo, motdepasse, email, idVoiture, photo, note, solde, age) VALUES (NULL, '".$_POST['nom']."', '". $_POST['prenom']."', '". $_POST['pseudo']."', '".$_POST['mdp']."', '".$_POST['email']."', NULL, '".$emplacementDeplacement."', NULL,'0',NULL)";
+        $insertion = "INSERT INTO user (idUser, nom, prenom, pseudo, motdepasse, email, idVoiture, photo, note, solde, age, admin) VALUES (NULL, '".$_POST['nom']."', '". $_POST['prenom']."', '". $_POST['pseudo']."', '".$_POST['mdp']."', '".$_POST['email']."', NULL, '".$emplacementDeplacement."', NULL,'0','".$_POST['anneenaissance']."','0')";
         mysqli_query($conn, $insertion);
         
         

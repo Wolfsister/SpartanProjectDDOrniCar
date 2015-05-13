@@ -10,6 +10,7 @@ CREATE TABLE user (
 	note INTEGER,
 	solde INTEGER NOT NULL,
 	age INTEGER,
+        admin INTEGER NOT NULL, 
 	PRIMARY KEY(idUser)
 );
 

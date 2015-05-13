@@ -64,11 +64,20 @@ include '../pagetype/hautPage.php';
                                     </div>
                                 </div>
                             </div>
+                        
+                            <div class="form-group">
+                                <div class="col-md-12 col-xs-12 col-sm-12">
+                                    <div class="input-group">
+                                        <input type="password" name="mdp2" class="form-control" id="passe" placeholder="Mot de passe">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <div class="col-md-12 col-xs-12 col-sm-12">
                                     <div class="input-group">
-                                        <input type="password" name="mdp2" class="form-control" id="passe2" placeholder="Confirmation mot de passe">
+                                        <input type="number" name="anneenaissance" class="form-control" id="anneenaissance" placeholder="Année de Naissance (ex: 1984)">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                                     </div>
                                 </div>

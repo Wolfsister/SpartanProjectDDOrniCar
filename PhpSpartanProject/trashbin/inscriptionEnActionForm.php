@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once './fonctions.php';
-$loginOK = false;
+//include './fonctions.php';
+//$loginOK = false;
 ?>
 
 <!DOCTYPE html>

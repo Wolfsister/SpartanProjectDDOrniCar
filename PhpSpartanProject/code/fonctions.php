@@ -1,12 +1,5 @@
 <?php
 
-function enregistrerUtilisateurToutesInfos() {
-    
-}
-
-function enregistrerUtilisateurSansVoiture() {
-    
-}
 
 function connexionBdd() {
     $conn = new mysqli('localhost', 'root', '', 'testornicar');
@@ -20,9 +13,7 @@ function passerConnecté() {
 function logout() {
     session_destroy();
     $_SESSION['connected'] = 'No';
-
     //unset Cookies
-
     header('Location: ../code/index.php');
 }
 
@@ -59,6 +50,7 @@ function isAlreadyRegistered($email, $pseudo, $nom, $prenom) {
 function logRightAfterRegister($pseudo) {
     $_SESSION['pseudo'] = $pseudo;
     $_SESSION['connected'] = 1;
+    //$_SESSION['image']
     header('Location: ../code/compte.php');
 }
 
@@ -73,6 +65,13 @@ function logClassic($email) {
     var_dump($_SESSION);
     echo 'connected =' . $_SESSION['connected'];
     header('Location: ../code/compte.php');
+}
+
+function searchInDataBase($type, $info){
+    echo 'type='.$type.', info='.$info;
+    
+    // idée : rentrer un array avec [key]=>value avec type de l'info et info
+    // Ensuite faire la requete grace à un foreach
 }
 
 ?>

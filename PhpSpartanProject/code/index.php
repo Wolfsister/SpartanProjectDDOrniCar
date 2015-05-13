@@ -1,6 +1,5 @@
 <?php
-include '../code/fonctions.php';
-$title = '';
+$title = 'Accueil Ornicar';
 include '../pagetype/hautPage.php';
 ?>
 <div class="slider-area">
