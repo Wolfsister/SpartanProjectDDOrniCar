@@ -55,16 +55,17 @@ if (isset($_POST)) {
     
     if(($erreurSaisie==false)&&($emailExiste==true)){
         $tabResultat=mysqli_fetch_array(mysqli_query($co, $rechercheMail));
-        //print_r($tabResultat);
         $mdpReel=$tabResultat['motdepasse'];
         $mdpPropose=$_POST['passe'];
         if($mdpReel==$mdpPropose){
             echo 'Bonne combinaison email/mot de passe, vous êtes désormais loggé !';
-            $_SESSION['connected']=1;
-            $_SESSION['pseudo']=$tabResultat['pseudo'];
-            var_dump($_SESSION);
-            echo 'connected ='.$_SESSION['connected'];
-            header('Location: ../code/compte.php');
+//            $_SESSION['connected']=1;
+//            $_SESSION['pseudo']=$tabResultat['pseudo'];
+//            var_dump($_SESSION);
+//            echo 'connected ='.$_SESSION['connected'];
+//            header('Location: ../code/compte.php');         
+            
+            logClassic($_POST['email']);
         }else{
             echo 'Le mot de passe saisi n\'est pas le bon, veuillez réessayer en cliquant <a href="./inscription.php">ici</a>.';
         }

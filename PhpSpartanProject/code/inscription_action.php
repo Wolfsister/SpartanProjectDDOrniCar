@@ -29,7 +29,7 @@ if (!empty($_POST)) {
         $erreur = true;
     }
     if (empty($_POST["mdp"])) {
-        echo("Le champ mot de passe est vide. <br/>");
+        echo("Le champ mot de passe est vide, veuillez choisir un mot de passe. <br/>");
         $erreur = true;
     }
     if (empty($_POST["mdp2"])) {
@@ -79,6 +79,7 @@ if (!empty($_POST)) {
         
 
         echo 'Félicitations pour votre inscription '.$_POST['prenom'].' '.$_POST['nom'].', ou '.$_POST['pseudo'].' devrais-je dire ! :)';
+        logRightAfterRegister($_POST['pseudo']);
     }
 }
 ?>
