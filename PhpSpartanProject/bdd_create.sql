@@ -9,7 +9,7 @@ CREATE TABLE user (
 	photo Varchar(100) NOT NULL,
 	note INTEGER,
 	solde INTEGER NOT NULL,
-	age INTEGER,
+	anneenaissance INTEGER,
         admin INTEGER NOT NULL, 
 	PRIMARY KEY(idUser)
 );
@@ -65,3 +65,22 @@ CREATE TABLE avis (
      			ON DELETE CASCADE
      			ON UPDATE RESTRICT
 );
+
+-- CREATE TABLE voiture (
+-- 	idVoiture INTEGER NOT NULL,
+-- 	idPossesseur INTEGER NOT NULL,
+-- 	marque Varchar(45) NOT NULL,
+--     modèle VarChar(45) NOT NULL,
+--     couleur VarChar(45) NOT NULL,
+--     image VarChar(100),
+--     annee INTEGER NOT NULL,
+-- 	PRIMARY KEY(idVoiture),
+-- 	FOREIGN KEY(idVoiture)
+-- 		REFERENCES user(idVoiture)
+--       			ON DELETE CASCADE
+--      			ON UPDATE RESTRICT,
+--   	FOREIGN KEY(idPossesseur)
+--    		REFERENCES user(idUser)
+--      			ON DELETE CASCADE
+--      			ON UPDATE RESTRICT
+-- );

@@ -1,11 +1,13 @@
 <?php
-$title='';
+$title='Fichier pour tester';
 include '../pagetype/hautPage.php';
 ?>
 
 <p>
 <?php
-searchInDataBase('', 'infotets');
+$deb= "La phrase commence ";
+$fin= "et finit.";
+echo $deb.$fin;
 ?>
     
     

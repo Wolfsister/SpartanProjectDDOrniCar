@@ -67,9 +67,26 @@ function logClassic($email) {
     header('Location: ../code/compte.php');
 }
 
-function searchInDataBase($type, $info){
-    echo 'type='.$type.', info='.$info;
+
+function searchInDataBase($tab){
+    $co=  connexionBdd();
+    $requeteDeb='SELECT * ';
+    $requeteFrom='FROM ';
+    $requeteWhere='WHERE ';
     
+    //Création de la Requête
+    foreach ($tab as $key1 => $value1) {
+        $requeteFrom=$requeteFrom.$key1;
+        foreach ($value1 as $key2 => $value2){
+            $requeteWhereMorceau=" ".$key1.".".$key2."='".$value2."' ";
+            $requeteWhere=$requeteWhere.$requeteWhereMorceau;
+        }
+    }
+    
+    $requete=$requeteDeb.$requeteFrom.$requeteWhere;
+    $tabResultat=mysqli_fetch_array(mysqli_query($co, $requete));
+    
+    return $tabResultat;
     // idée : rentrer un array avec [key]=>value avec type de l'info et info
     // Ensuite faire la requete grace à un foreach
 }

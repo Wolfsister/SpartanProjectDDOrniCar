@@ -51,6 +51,11 @@ if (!empty($_POST)) {
 //        echo("Veuillez choisir une photo de profil. <br/>");
 //        $erreur = true;
 //    }
+    
+    if (!isset($_FILES)) {
+        echo("Veuillez choisir une photo de profil. <br/>");
+        $erreur = true;
+    }
 
     if (!isset($_POST['accept'])) {
         echo("Vous devez accepter les Conditions Générales d'Utilisation pour pouvoir profiter d'OrniCar. <br/>");
@@ -83,7 +88,7 @@ if (!empty($_POST)) {
 //        }
 //        echo "Connected successfully";
         
-        $insertion = "INSERT INTO user (idUser, nom, prenom, pseudo, motdepasse, email, idVoiture, photo, note, solde, age, admin) VALUES (NULL, '".$_POST['nom']."', '". $_POST['prenom']."', '". $_POST['pseudo']."', '".$_POST['mdp']."', '".$_POST['email']."', NULL, '".$emplacementDeplacement."', NULL,'0','".$_POST['anneenaissance']."','0')";
+        $insertion = "INSERT INTO user (idUser, nom, prenom, pseudo, motdepasse, email, idVoiture, photo, note, solde, anneenaissance, admin) VALUES (NULL, '".$_POST['nom']."', '". $_POST['prenom']."', '". $_POST['pseudo']."', '".$_POST['mdp']."', '".$_POST['email']."', NULL, '".$emplacementDeplacement."', NULL,'0','".$_POST['anneenaissance']."','0')";
         mysqli_query($conn, $insertion);
         
         

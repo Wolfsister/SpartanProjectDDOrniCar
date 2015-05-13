@@ -22,4 +22,6 @@
 
 -Banniere Spéciale Admin ?
 
+-Propre fonction pour donner id unique à la création d'une voiture
+
 -Optionnel : trouver une MEILLEURE icone pour mettre sur l'onglet à cote du nom
