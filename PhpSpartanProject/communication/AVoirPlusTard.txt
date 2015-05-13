@@ -1,5 +1,6 @@
 -Vérifier si pseudo et email n'existent pas déjà dans la base de données lorsqu'on procède à la création du bonhomme.
 
+-Dans MONCOMPTE =>  Ajouter Voiture, Modifier Photo, Rentrer Age, Voir historique paiements
 
 -A la fin d'inscription : logger automatiquement
 
