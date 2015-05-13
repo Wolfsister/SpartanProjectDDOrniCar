@@ -46,13 +46,7 @@ if (!empty($_POST)) {
         $erreur=true;
     }
     
-
-//    if ($_FILES["name"]=="") {
-//        echo("Veuillez choisir une photo de profil. <br/>");
-//        $erreur = true;
-//    }
-    
-    if ($_FILES['icone']['error']==4) {
+    if ($_FILES['icone']['error']==4) { // Erreur concernant la non-transmission de fichier
         echo("Veuillez choisir une photo de profil. <br/>");
         $erreur = true;
     }
@@ -75,6 +69,7 @@ if (!empty($_POST)) {
     if ($erreur == true) {
         printf("<a href='inscription.php'> Retour à l'inscription </a>");
     } else {
+        //Récupération de la photo de profil de l'utilisateur
         $icone = $_FILES['icone'];
         $iconeName = $icone['tmp_name'];
         $iconeType = $icone["type"];
@@ -82,19 +77,13 @@ if (!empty($_POST)) {
         move_uploaded_file($iconeName, $emplacementDeplacement);
 
         // Ajout dans BDD
-        $conn= new mysqli('localhost', 'root', '', 'testornicar');
-//        if ($conn->connect_error) {
-//            die("Connection failed: " . $conn->connect_error);
-//        }
-//        echo "Connected successfully";
-        
+        $conn= new mysqli('localhost', 'root', '', 'testornicar');      
         $insertion = "INSERT INTO user (idUser, nom, prenom, pseudo, motdepasse, email, idVoiture, photo, note, solde, anneenaissance, admin) VALUES (NULL, '".$_POST['nom']."', '". $_POST['prenom']."', '". $_POST['pseudo']."', '".$_POST['mdp']."', '".$_POST['email']."', NULL, '".$emplacementDeplacement."', NULL,'0','".$_POST['anneenaissance']."','0')";
         mysqli_query($conn, $insertion);
-        
-        
 
+        //Finalisation Inscription
         echo 'Félicitations pour votre inscription '.$_POST['prenom'].' '.$_POST['nom'].', ou '.$_POST['pseudo'].' devrais-je dire ! :)';
-        logRightAfterRegister($_POST['pseudo']);
+        logRightAfterRegister($_POST['pseudo'], $emplacementDeplacement);
     }
 }
 ?>

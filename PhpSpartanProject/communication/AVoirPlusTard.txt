@@ -1,8 +1,13 @@
+Priorité : 1 important, 2 moins important..etc
+0= juste une idée/suggestion, pas forcément à faire
+
 -DORIAN : Dans les champs des formulaires, une partie de la saisie (le bas) est tronquée, regarde si t'y arrives à corriger, tu connais mieux cette partie de code que moi
 
--DANS INSCRIPTION : GERER LE FAIT DE NE PAS INSERER DE PHOTO
+0 - Est-ce qu'on met une taille limite pour la photo de profil ? Si non, supprimer le texte montrant une limitation à 15ko
 
 -Dans MONCOMPTE =>  Ajouter Voiture, Modifier Photo, Rentrer Age, Voir historique paiements
+
+0 - Proposer identification par email ou Pseudo (pas compliqué normalement)
 
 -Vérifier si creation n'est pas deja dans base de données  (fonction isAlreadyRegistered)  // A VERIFIER mais m'a l'air de bien fonctionner
 
@@ -10,8 +15,6 @@
 => Mettre infos dans cookies si le gars coche "se souvenir de moi" ???
 
 -Mise à jour du solde (si on le met dans la bannière utilisateur) : faire une mise à jour à chaque actualisation de page, donc faire ça dans le php commun à toutes les pages ?
- 
--(Mettre image du guy dans la banniere, ca fera plus joli)
 
 -Faire une fonction pour chercher directement (si attribut existe) dans BDD   => automatiser la recherche dans BDD, chaud mais je vais voir ce que je peux faire
 

@@ -47,7 +47,7 @@ function isAlreadyRegistered($email, $pseudo, $nom, $prenom) {
     return $registered;
 }
 
-function logRightAfterRegister($pseudo) {
+function logRightAfterRegister($pseudo, $icone) {
     $_SESSION['pseudo'] = $pseudo;
     $_SESSION['connected'] = 1;
     //$_SESSION['image']
