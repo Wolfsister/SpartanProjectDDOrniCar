@@ -6,10 +6,12 @@ Priorité : 1 important, 2 moins important..etc
 1- Faire fonctions INSERT INTO
 
 5-DORIAN : Dans les champs des formulaires, une partie de la saisie (le bas) est tronquée, regarde si t'y arrives à corriger, tu connais mieux cette partie de code que moi
+=> Changer attribut active dans mainMenuArea donc faire attribut onglet actif
+
 
 0 - Est-ce qu'on met une taille limite pour la photo de profil ? Si non, supprimer le texte montrant une limitation à 15ko
 
-2-Dans MONCOMPTE =>  Ajouter Voiture, Modifier Photo, Rentrer Age, Voir historique paiements
+2-Dans MONCOMPTE =>  Ajouter Voiture, Modifier Photo, Voir historique paiements, Donner avis apres trajets, messagerie
 
 0 - Proposer identification par email ou Pseudo (pas compliqué normalement)
 
