@@ -46,11 +46,23 @@ function isAlreadyRegistered($email, $pseudo, $nom, $prenom) {
     return $registered;
 }
 
+function aUneVoiture($idUser) {
+    $aUneVoiture = false;
+    $requete = "SELECT * FROM voiture WHERE idPossesseur= '" . $idUser . "' ";
+    $co = connexionBdd();
+    $resultat = mysqli_query($co, $requete);
+    $nbLignes = mysqli_num_rows($resultat);
+    if ($nbLignes == 1) {
+        $aUneVoiture = true;
+    }
+    return $aUneVoiture;
+}
+
 function logRightAfterRegister($pseudo) {
     $_SESSION['pseudo'] = $pseudo;
     $_SESSION['connected'] = 1;
-    $id=  getIdUserByPseudo($pseudo);
-    $_SESSION['id']=$id;
+    $id = getIdUserByPseudo($pseudo);
+    $_SESSION['id'] = $id;
 
     header('Location: ../code/compte.php');
 }
@@ -60,11 +72,11 @@ function logClassic($email) {
     $co = connexionBdd();
     $rechercheMail = "SELECT * FROM user WHERE email='" . $email . "' ";
     $tabResultat = mysqli_fetch_array(mysqli_query($co, $rechercheMail));
-    $id=  getIdUserByEmail($email);
+    $id = getIdUserByEmail($email);
 
     $_SESSION['connected'] = 1;
     $_SESSION['pseudo'] = $tabResultat['pseudo'];
-    $_SESSION['id']=$id;
+    $_SESSION['id'] = $id;
 
     var_dump($_SESSION);
     echo 'connected =' . $_SESSION['connected'];
@@ -82,7 +94,7 @@ function getIdUserByPseudo($pseudo) {
     return $tabQuery['idUser'];
 }
 
-function getIdUserByEmail($email) { 
+function getIdUserByEmail($email) {
     $co = connexionBdd();
     $requete = "SELECT * FROM user WHERE email='" . $email . "'";
     $query = mysqli_query($co, $requete);
@@ -94,7 +106,7 @@ function getIdUserByEmail($email) {
     return $id;
 }
 
-function getUserByEmail($email){
+function getUserByEmail($email) {
     $co = connexionBdd();
     $requete = "SELECT * FROM user WHERE email='" . $email . "'";
     $query = mysqli_query($co, $requete);
@@ -105,7 +117,7 @@ function getUserByEmail($email){
     return $tabQuery;
 }
 
-function getUserByPseudo($pseudo){
+function getUserByPseudo($pseudo) {
     $co = connexionBdd();
     $requete = "SELECT * FROM user WHERE pseudo='" . $pseudo . "'";
     $query = mysqli_query($co, $requete);
@@ -116,7 +128,7 @@ function getUserByPseudo($pseudo){
     return $tabQuery;
 }
 
-function searchInDataBase($tab) {
+function searchInDataBase($tab) { //rentre tableau [table]=>([attribut]=>'valeur') 
     $co = connexionBdd();
     $requeteDeb = 'SELECT * ';
     $requeteFrom = 'FROM ';
@@ -160,16 +172,36 @@ function createIDCar() {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
     $nbLignes = mysqli_num_rows($doQuery);
-    $idCreation = $nbLignes + 1;
+    $idCreation = $nbLignes+100;
     return $idCreation;
 }
 
-function insertIntoUser() {
-    
+function insertIntoUser($nom, $prenom, $pseudo, $passe, $email, $photo, $anneenaissance) {
+    if (isAlreadyRegistered($email, $pseudo, $nom, $prenom) == false) {
+        $co = connexionBdd();
+        $requete = "INSERT INTO user VALUES (NULL, '" . $nom . "', '" . $prenom . "', '" . $pseudo . "', '" . $passe . "', '" . $email . "', NULL, '" . $photo . "', '', '', '" . $anneenaissance . "', '0')";
+        echo $requete;
+        $doQuery = mysqli_query($co, $requete);
+        if (mysqli_connect_errno()) {
+            echo "Failed to connect to MySQL: " . mysqli_connect_error();
+        }
+        echo 'DONE';
+    } else {
+        echo 'L\'utilisateur existe déjà !';
+    }
 }
 
-function insertIntoVoiture() {
-    
+function insertIntoVoiture($idUser, $marque, $modele, $couleur, $annee, $image) {
+    $co = connexionBdd();
+    $idVoiture=  createIDCar();
+    echo 'idVoiture ='.$idVoiture.'<br />';
+    $requete = "INSERT INTO voiture VALUES ('".$idVoiture."', '".$idUser."', '".$marque."', '".$modele."', '".$couleur."', '".$image."', '".$annee."')";
+    echo $requete;
+    $doQuery = mysqli_query($co, $requete);
+    if (mysqli_connect_errno()) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
+    echo 'DONE';
 }
 
 function insertIntoTrajet() {

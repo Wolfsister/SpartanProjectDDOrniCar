@@ -15,6 +15,10 @@ include '../pagetype/hautPage.php';
 
 //    createIDCar();
 
+
+    $test=  aUneVoiture('2');
+    if($test==true){ echo 'Oui';}else{echo 'Non'; }
+    
 ?>
     
       

@@ -4,14 +4,17 @@ include '../pagetype/hautPage.php';
 ?>
 
 
+<div class="row">
+    <?php
+   include ('./profil.php');
+    if (aUneVoiture($_SESSION['id'])) {
+        include ('./maVoiture.php');
+    } else {
+        include ('./add_Voiture.php');
+    }
+  ?>
+</div>
 
-<!--begin of the page-->
-<p>
-Vous êtes bien connecté ! Bientôt des infos sur votre compte se trouveront ici !    
-    
-</p> <!-- End slider area -->
-
-<!--end of the page-->
 
 
 <?php

@@ -1,7 +1,5 @@
 <?php
 session_start();
-//include './fonctions.php';
-//$loginOK = false;
 ?>
 
 <!DOCTYPE html>

@@ -11,7 +11,11 @@ Priorité : 1 important, 2 moins important..etc
 
 0 - Est-ce qu'on met une taille limite pour la photo de profil ? Si non, supprimer le texte montrant une limitation à 15ko
 
-2-Dans MONCOMPTE =>  Ajouter Voiture, Modifier Photo, Voir historique paiements, Donner avis apres trajets, messagerie
+
+2- Page de validation acceptée apres inscription
+
+
+2-Dans MONCOMPTE =>  Ajouter Voiture, (bloquer l'ajout si une voiture existe deja) Modifier Photo, Voir historique paiements, Donner avis apres trajets, messagerie
 
 0 - Proposer identification par email ou Pseudo (pas compliqué normalement)
 
@@ -30,7 +34,7 @@ Priorité : 1 important, 2 moins important..etc
 
 3-Banniere Spéciale Admin ?
 
-2 [FAIT MAIS SUREMENT AMELIORABLE]-Propre fonction pour donner id unique à la création d'une voiture
+2- [FAIT MAIS SUREMENT AMELIORABLE]-Propre fonction pour donner id unique à la création d'une voiture
 
 -Optionnel : -trouver une MEILLEURE icone pour mettre sur l'onglet à cote du nom
              -changer image dans le formulaire pour l'année de naissance
