@@ -49,7 +49,9 @@ function isAlreadyRegistered($email, $pseudo, $nom, $prenom) {
 function logRightAfterRegister($pseudo) {
     $_SESSION['pseudo'] = $pseudo;
     $_SESSION['connected'] = 1;
-    //$_SESSION['image']
+    $id=  getIdUserByPseudo($pseudo);
+    $_SESSION['id']=$id;
+
     header('Location: ../code/compte.php');
 }
 
@@ -90,6 +92,28 @@ function getIdUserByEmail($email) {
     $tabQuery = mysqli_fetch_array($query);
     $id = $tabQuery['idUser'];
     return $id;
+}
+
+function getUserByEmail($email){
+    $co = connexionBdd();
+    $requete = "SELECT * FROM user WHERE email='" . $email . "'";
+    $query = mysqli_query($co, $requete);
+    if (!$query) {
+        die('Invalid query: ' . mysql_error());
+    }
+    $tabQuery = mysqli_fetch_array($query);
+    return $tabQuery;
+}
+
+function getUserByPseudo($pseudo){
+    $co = connexionBdd();
+    $requete = "SELECT * FROM user WHERE pseudo='" . $pseudo . "'";
+    $query = mysqli_query($co, $requete);
+    if (!$query) {
+        die('Invalid query: ' . mysql_error());
+    }
+    $tabQuery = mysqli_fetch_array($query);
+    return $tabQuery;
 }
 
 function searchInDataBase($tab) {

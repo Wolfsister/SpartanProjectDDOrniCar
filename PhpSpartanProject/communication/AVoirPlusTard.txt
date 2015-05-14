@@ -1,6 +1,7 @@
 Priorité : 1 important, 2 moins important..etc
 0= juste une idée/suggestion, pas forcément à faire
 
+1- Faire fonction add car
 
 1- Faire fonctions INSERT INTO
 
