@@ -61,17 +61,33 @@ function logClassic($email) {
 
     $_SESSION['connected'] = 1;
     $_SESSION['pseudo'] = $tabResultat['pseudo'];
+
     var_dump($_SESSION);
     echo 'connected =' . $_SESSION['connected'];
     header('Location: ../code/compte.php');
 }
 
-function getIdUser($pseudo) {
+function getIdUserByPseudo($pseudo) {
     $co = connexionBdd();
-    $requete = "SELECT idUser FROM user WHERE user.pseudo='Wolfsister'";
+    $requete = "SELECT * FROM user WHERE pseudo='" . $pseudo . "'";
     $query = mysqli_query($co, $requete);
+    if (!$query) {
+        die('Invalid query: ' . mysql_error());
+    }
     $tabQuery = mysqli_fetch_array($query);
     return $tabQuery['idUser'];
+}
+
+function getIdUserByEmail($email) { 
+    $co = connexionBdd();
+    $requete = "SELECT * FROM user WHERE email='" . $email . "'";
+    $query = mysqli_query($co, $requete);
+    if (!$query) {
+        die('Invalid query: ' . mysql_error());
+    }
+    $tabQuery = mysqli_fetch_array($query);
+    $id = $tabQuery['idUser'];
+    return $id;
 }
 
 function searchInDataBase($tab) {

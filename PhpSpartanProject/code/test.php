@@ -15,11 +15,15 @@ include '../pagetype/hautPage.php';
 
 //    createIDCar();
 
-$co=  connexionBdd();
-$requete= "SELECT idUser FROM user WHERE user.pseudo='Wolfsister'";
-$query=mysqli_query($co, $requete);
-$tabQuery=mysqli_fetch_array($query);
-echo $tabQuery['idUser'];
+//$co=  connexionBdd();
+//$requete= "SELECT idUser FROM user WHERE user.email='denis.chenesseau@gmail.com'";
+//$query=mysqli_query($co, $requete);
+//$tabQuery=mysqli_fetch_array($query);
+//echo $tabQuery['idUser'];
+
+
+    $pseudo='Admin';
+    getIdUserByPseudo($pseudo);
 ?>
     
       
