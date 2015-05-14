@@ -1,30 +1,30 @@
 Priorité : 1 important, 2 moins important..etc
 0= juste une idée/suggestion, pas forcément à faire
 
--DORIAN : Dans les champs des formulaires, une partie de la saisie (le bas) est tronquée, regarde si t'y arrives à corriger, tu connais mieux cette partie de code que moi
+5-DORIAN : Dans les champs des formulaires, une partie de la saisie (le bas) est tronquée, regarde si t'y arrives à corriger, tu connais mieux cette partie de code que moi
 
 0 - Est-ce qu'on met une taille limite pour la photo de profil ? Si non, supprimer le texte montrant une limitation à 15ko
 
--Dans MONCOMPTE =>  Ajouter Voiture, Modifier Photo, Rentrer Age, Voir historique paiements
+2-Dans MONCOMPTE =>  Ajouter Voiture, Modifier Photo, Rentrer Age, Voir historique paiements
 
 0 - Proposer identification par email ou Pseudo (pas compliqué normalement)
 
--Vérifier si creation n'est pas deja dans base de données  (fonction isAlreadyRegistered)  // A VERIFIER mais m'a l'air de bien fonctionner
+1-Vérifier si creation n'est pas deja dans base de données  (fonction isAlreadyRegistered)  // A VERIFIER mais m'a l'air de bien fonctionner
 
--ETABLIR CLAIREMENT QU'EST CE QU'ON MET EN VARIABLES SESSION/COOKIES.
-=> Mettre infos dans cookies si le gars coche "se souvenir de moi" ???
+1-ETABLIR CLAIREMENT QU'EST CE QU'ON MET EN VARIABLES SESSION/COOKIES.
+1=> Mettre infos dans cookies si le gars coche "se souvenir de moi" ???
 
--Mise à jour du solde (si on le met dans la bannière utilisateur) : faire une mise à jour à chaque actualisation de page, donc faire ça dans le php commun à toutes les pages ?
+6- (UPDATE DENIS : Je pense pas que ce soit hyper utile finalement de mettre dans la bannière) Mise à jour du solde (si on le met dans la bannière utilisateur) : faire une mise à jour à chaque actualisation de page, donc faire ça dans le php commun à toutes les pages ?
 
--Faire une fonction pour chercher directement (si attribut existe) dans BDD   => automatiser la recherche dans BDD, chaud mais je vais voir ce que je peux faire
+2 (A finaliser) -Faire une fonction pour chercher directement (si attribut existe) dans BDD   => automatiser la recherche dans BDD, chaud mais je vais voir ce que je peux faire
 
--DORIAN : Lorsqu'on est dans MonCompte, Accueil est "surligné". Cool si enlevable.
+5-DORIAN : Lorsqu'on est dans MonCompte, Accueil est "surligné". Cool si enlevable.
 
--Système de messagerie interne
+2-Système de messagerie interne
 
--Banniere Spéciale Admin ?
+3-Banniere Spéciale Admin ?
 
--Propre fonction pour donner id unique à la création d'une voiture
+2 [FAIT MAIS SUREMENT AMELIORABLE]-Propre fonction pour donner id unique à la création d'une voiture
 
 -Optionnel : -trouver une MEILLEURE icone pour mettre sur l'onglet à cote du nom
              -changer image dans le formulaire pour l'année de naissance
