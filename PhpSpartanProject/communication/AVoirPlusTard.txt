@@ -1,6 +1,9 @@
 Priorité : 1 important, 2 moins important..etc
 0= juste une idée/suggestion, pas forcément à faire
 
+
+1- Faire fonctions INSERT INTO
+
 5-DORIAN : Dans les champs des formulaires, une partie de la saisie (le bas) est tronquée, regarde si t'y arrives à corriger, tu connais mieux cette partie de code que moi
 
 0 - Est-ce qu'on met une taille limite pour la photo de profil ? Si non, supprimer le texte montrant une limitation à 15ko

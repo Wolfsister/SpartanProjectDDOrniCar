@@ -66,6 +66,14 @@ function logClassic($email) {
     header('Location: ../code/compte.php');
 }
 
+function getIdUser($pseudo) {
+    $co = connexionBdd();
+    $requete = "SELECT idUser FROM user WHERE user.pseudo='Wolfsister'";
+    $query = mysqli_query($co, $requete);
+    $tabQuery = mysqli_fetch_array($query);
+    return $tabQuery['idUser'];
+}
+
 function searchInDataBase($tab) {
     $co = connexionBdd();
     $requeteDeb = 'SELECT * ';
@@ -109,9 +117,33 @@ function createIDCar() {
     if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
-    $nbLignes=mysqli_num_rows($doQuery);
-    $idCreation=$nbLignes+1;
+    $nbLignes = mysqli_num_rows($doQuery);
+    $idCreation = $nbLignes + 1;
     return $idCreation;
+}
+
+function insertIntoUser() {
+    
+}
+
+function insertIntoVoiture() {
+    
+}
+
+function insertIntoTrajet() {
+    
+}
+
+function insertIntoAvis() {
+    
+}
+
+function addCar($idPossesseur, $marque, $modele, $couleur, $image, $annee) {
+//récuperer photos, mettre Pseudo+idVoiture en nom de fichier. Doit on mettre l'image en attribut de la table ? EN fait ca sert ptet à rien mais bon
+    $idVoiture = createIDCar();
+    $co = connexionBdd();
+    $requeteNombreVoiture = 'SELECT * FROM voiture';
+    $doQuery = mysqli_query($co, $requeteNombreVoiture);
 }
 
 ?>

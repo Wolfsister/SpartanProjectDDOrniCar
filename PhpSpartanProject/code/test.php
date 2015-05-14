@@ -13,7 +13,13 @@ include '../pagetype/hautPage.php';
 //$tabRes=searchInDataBase($tab);
 //print_r($tabRes);
 
-    createIDCar();
+//    createIDCar();
+
+$co=  connexionBdd();
+$requete= "SELECT idUser FROM user WHERE user.pseudo='Wolfsister'";
+$query=mysqli_query($co, $requete);
+$tabQuery=mysqli_fetch_array($query);
+echo $tabQuery['idUser'];
 ?>
     
       
