@@ -58,9 +58,11 @@ function logClassic($email) {
     $co = connexionBdd();
     $rechercheMail = "SELECT * FROM user WHERE email='" . $email . "' ";
     $tabResultat = mysqli_fetch_array(mysqli_query($co, $rechercheMail));
+    $id=  getIdUserByEmail($email);
 
     $_SESSION['connected'] = 1;
     $_SESSION['pseudo'] = $tabResultat['pseudo'];
+    $_SESSION['id']=$id;
 
     var_dump($_SESSION);
     echo 'connected =' . $_SESSION['connected'];
