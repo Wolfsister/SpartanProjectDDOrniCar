@@ -19,7 +19,7 @@ include '../pagetype/hautPage.php';
 
         <div class="col-md-4 col-xs-12 col-sm-4">
             <div class="col-md-6 col-sm-12">
-                <form class="form-horizontal" role="form" method="post" action="recherche_action.php">
+                <form class="form-horizontal" role="form" method="post" action="rechercheTrajet_action.php">
                     <fieldset>
                         <legend>Recherche avancée</legend>
 
@@ -61,10 +61,10 @@ include '../pagetype/hautPage.php';
 
                         <div class="form-group">
                             <div class="col-md-12 col-xs-12 col-sm-12">
-                                <input type="date" name="DateDepart">
+                                <input type="date" name="DateDepart" placeholder="Date (YYYY-MM-DD)">
                             </div>
                         </div>
-
+                       
                         <div class="form-group">
                             <div class="col-md-12 col-xs-12 col-sm-12">
                                 <button type="submit" value="register" id="register" name="register" class="btn btn-default btn-lg btn-block">Faire une recherche</button>

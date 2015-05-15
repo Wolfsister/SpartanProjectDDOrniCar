@@ -212,7 +212,7 @@ function insertIntoTrajet($idConducteur, $villeDepart, $villeArrivee, $prix, $an
 }
 
 function insertIntoAvis($idDonneur, $idReceveur, $idTrajet, $note) {
-    $co = connexionBdd();
+    $co = connexionBdd();   
     $requete = "INSERT INTO avis VALUES ('" . $idDonneur . "', '" . $idReceveur . "', '" . $idTrajet . "', '" . $note . "' )";
     $doQuery = mysqli_query($co, $requete);
     if (mysqli_connect_errno()) {
@@ -223,11 +223,21 @@ function insertIntoAvis($idDonneur, $idReceveur, $idTrajet, $note) {
 function insertIntoPassager($idPassager, $idTrajet) {
     $co = connexionBdd();
     $requete = "INSERT INTO passager VALUES ('" . $idPassager . "','" . $idTrajet . "' )";
-    echo $requete;
     $doQuery = mysqli_query($co, $requete);
     if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
+}
+
+function aDonnéAvis($idDonneur, $idReceveur, $idTrajet){
+    $avisDonné=false;
+    $co = connexionBdd();
+    $requete = "SELECT * FROM avis WHERE idDonneur='".$idDonneur."' AND idReceveur='".$idReceveur."' AND idTrajet='".$idTrajet."' ";
+    $doQuery = mysqli_query($co, $requete);
+    if(mysqli_num_rows($doQuery)>0){
+        $avisDonné=true;
+    }
+    return $avisDonné;
 }
 
 function chercherVille($villeArrivee) {
@@ -264,6 +274,21 @@ function lectureTableauHtmlResultatRequete($objetMysqliquery) { // simple ebauch
         echo '</tr>';
     }
     echo '</table>';
+}
+
+function lectureTableauPhpResultatRequete($objetMySql){
+    $tab;
+    $count=0;
+    
+    while ($tabSql=  mysqli_fetch_array($objetMySql)){
+        
+        foreach ($tabSql as $key => $value) {
+            if(!is_int($key)){
+                $tab[$key][]=$value;
+            }
+        }
+    }
+    return $tab; 
 }
 
 ?>

@@ -9,11 +9,17 @@ include '../pagetype/hautPage.php';
 <?php
 
 //$co = connexionBdd();
-//$sql2 = " SELECT * FROM trajet ";
+//$sql2 = " SELECT * FROM user";
 //$result2 = mysqli_query($co, $sql2) or die("Requete pas comprise");
-//lectureTableauHtmlResultatRequete($result2);
 
-var_dump($_SESSION);
+$idDonneur='4';
+$idReceveur='1';
+$idTrajet='8';
+if(aDonnéAvis($idDonneur, $idReceveur, $idTrajet)){echo 'avisDonné'; }else{ echo 'Pas avis';};
+
+//echo '<pre>';
+//print_r($tab2);
+//echo '</pre>';
 ?>
 
 </div>

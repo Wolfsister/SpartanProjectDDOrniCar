@@ -6,6 +6,8 @@ Priorité : 1 important, 2 moins important..etc
 
 6- (MAJ DENIS : En fait pas trop grave parce que si on fait une recherche, le probleme se "compense" ) Regler probleme encodage de la BDD. (Orléans devient OrlÃ©ans )
 
+2- Trier fonctions et les mettre dans des sous-fonctions.php afin de les retrouver plus facilement
+
 3- Reste tout le temps connecté sur site (sauf si déconnexion). Combien de temps durent variables de session ?!
 
 5-DORIAN : Dans les champs des formulaires, une partie de la saisie (le bas) est tronquée, regarde si t'y arrives à corriger, tu connais mieux cette partie de code que moi
