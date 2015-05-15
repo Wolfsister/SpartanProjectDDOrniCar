@@ -36,10 +36,18 @@ include '../pagetype/hautPage.php';
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-12 col-xs-12 col-sm-12  splan">
+                                <div class="input-group">
+                                    <input type="number" min='0' name="prix" id="prix" placeholder="Prix du voyage"/>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-12 col-xs-12 col-sm-12">
-                                <input type="date" name="date" placeholder="Date (YYYY-MM-DD)">
+                                <input type="date" name="date" min='2015-05-16' placeholder="Date (YYYY-MM-DD)">
                             </div>
                         </div>
                        
