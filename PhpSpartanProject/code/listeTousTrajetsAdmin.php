@@ -5,7 +5,7 @@ include '../pagetype/hautPage.php';
 ?>
 
 <?php if($_SESSION['id']==1){ ?>
-<div class="essaiDenis">
+<div class="container">
     <p>
     <h1>Trajets Créés sur OrniCar</h1>   
 

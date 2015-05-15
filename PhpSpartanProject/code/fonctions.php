@@ -1,5 +1,4 @@
 <?php
-
 function connexionBdd() {
     $conn = new mysqli('localhost', 'root', '', 'testornicar');
     return $conn;

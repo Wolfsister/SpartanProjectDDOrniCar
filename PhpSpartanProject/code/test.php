@@ -5,7 +5,7 @@ $title = 'Test';
 include '../pagetype/hautPage.php';
 ?>
 
-<div class="essaiDenis">
+<div class="container">
 <?php
 
 //$co = connexionBdd();

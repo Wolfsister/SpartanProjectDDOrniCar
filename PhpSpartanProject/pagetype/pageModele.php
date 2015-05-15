@@ -4,7 +4,7 @@ $title='';
 include '../pagetype/hautPage.php';
 ?>
 
-<div class="essaiDenis">
+<div class="container">
 
 
 
