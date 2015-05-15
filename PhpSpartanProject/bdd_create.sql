@@ -20,9 +20,9 @@ CREATE TABLE trajet (
 	villeDepart Varchar(45) NOT NULL,
 	villeArrivee VarChar(45) NOT NULL,
 	prix INTEGER NOT NULL,
-	anneeMoisJour DATE NOT NULL,
+	anneeMoisJour DATE NOT NULL, -- Format YYYY-MM-DD
 	heure INTEGER NOT NULL,
-	minute INTEGER NOT NULL,
+ 	minute INTEGER NOT NULL, 
 	PRIMARY KEY(idTrajet),
 	FOREIGN KEY(idConducteur)
 		REFERENCES user(idUser)
@@ -82,3 +82,9 @@ CREATE TABLE voiture (
 );
 
 ALTER TABLE `user` ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`idVoiture`) REFERENCES `bddprovisoire`.`voiture`(`idVoiture`) ON DELETE CASCADE ON UPDATE RESTRICT; 
+
+ALTER TABLE `avis` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `passager` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `trajet` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `user` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `voiture` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
