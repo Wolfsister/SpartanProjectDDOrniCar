@@ -13,5 +13,5 @@ if($_SESSION['connected']==1){
 }    
 
 include '../pagetype/bannerOrnicar.html';
-include '../pagetype/mainMenuArea.html';
+include '../pagetype/mainMenuArea.php';
 ?>

@@ -1,5 +1,6 @@
 <?php
 $title = 'Accueil Ornicar';
+$path = "/code/index.php/";
 include '../pagetype/hautPage.php';
 ?>
 <div class="slider-area">

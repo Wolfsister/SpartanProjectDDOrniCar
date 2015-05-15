@@ -1,11 +1,10 @@
 Priorité : 1 important, 2 moins important..etc
 0= juste une idée/suggestion, pas forcément à faire
 
-1- Faire fonctions INSERT INTO (DEUX à FINIR)
 
 2- Fonction de recuperation de plusieurs tuples retournés par une requete
 
-3- (MAJ DENIS : En fait pas trop grave parce que si on fait une recherche, le probleme se "compense" ) Regler probleme encodage de la BDD. (Orléans devient OrlÃ©ans )
+6- (MAJ DENIS : En fait pas trop grave parce que si on fait une recherche, le probleme se "compense" ) Regler probleme encodage de la BDD. (Orléans devient OrlÃ©ans )
 
 3- Reste tout le temps connecté sur site (sauf si déconnexion). Combien de temps durent variables de session ?!
 
