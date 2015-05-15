@@ -44,6 +44,14 @@ include '../pagetype/hautPage.php';
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-12 col-xs-12 col-sm-12  splan">
+                                <div class="input-group">
+                                    <input type="number" min='0' name="places" id="places" placeholder="Nombre de places disponibles pour les passagers"/>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-12 col-xs-12 col-sm-12">
