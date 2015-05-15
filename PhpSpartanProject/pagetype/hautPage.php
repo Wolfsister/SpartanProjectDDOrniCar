@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
-<?php
-include '../pagetype/head.php';
-echo '<body>';
-// si mec connecté dans variable de session, afficher header de connecté, sinon afficher header de déconnecté
-if($_SESSION['connected']==1){
-    include '../pagetype/headerConnected.php';
-    //echo 'headerConnected';
-}else{
-    include '../pagetype/headerWhenDisconnected.php';
-    //echo 'headerDisconnected';
-}    
+    <?php
+    if (!isset($path)) {
+        $path = '';
+    }
 
-include '../pagetype/bannerOrnicar.html';
-include '../pagetype/mainMenuArea.php';
-?>
+    include '../pagetype/head.php';
+    echo '<body>';
+    
+// si mec connecté dans variable de session, afficher header de connecté, sinon afficher header de déconnecté
+    if ($_SESSION['connected'] == 1) {
+        include '../pagetype/headerConnected.php';
+    } else {
+        include '../pagetype/headerWhenDisconnected.php';
+    }
+
+    include '../pagetype/bannerOrnicar.html';
+    include '../pagetype/mainMenuArea.php';
+    ?>

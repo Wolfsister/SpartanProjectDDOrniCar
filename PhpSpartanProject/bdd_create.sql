@@ -83,8 +83,14 @@ CREATE TABLE voiture (
 
 ALTER TABLE `user` ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`idVoiture`) REFERENCES `bddprovisoire`.`voiture`(`idVoiture`) ON DELETE CASCADE ON UPDATE RESTRICT; 
 
-ALTER TABLE `avis` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-ALTER TABLE `passager` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-ALTER TABLE `trajet` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-ALTER TABLE `user` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-ALTER TABLE `voiture` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+--Debut code pour essayer update idVoiture de user
+ALTER TABLE `user` DROP FOREIGN KEY `user_ibfk_1`;
+UPDATE user SET idVoiture="102" WHERE idUser="5";
+ALTER TABLE `user` ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`idVoiture`) REFERENCES `bddprovisoire`.`voiture`(`idVoiture`) ON DELETE CASCADE ON UPDATE RESTRICT;
+
+
+-- ALTER TABLE `avis` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+-- ALTER TABLE `passager` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+-- ALTER TABLE `trajet` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+-- ALTER TABLE `user` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+-- ALTER TABLE `voiture` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci; 

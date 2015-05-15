@@ -8,10 +8,12 @@ include '../pagetype/hautPage.php';
 <div class="essaiDenis">
 <?php
 
-$co = connexionBdd();
-$sql2 = " SELECT * FROM trajet ";
-$result2 = mysqli_query($co, $sql2) or die("Requete pas comprise");
-lectureTableauHtmlResultatRequete($result2);
+//$co = connexionBdd();
+//$sql2 = " SELECT * FROM trajet ";
+//$result2 = mysqli_query($co, $sql2) or die("Requete pas comprise");
+//lectureTableauHtmlResultatRequete($result2);
+
+var_dump($_SESSION);
 ?>
 
 </div>

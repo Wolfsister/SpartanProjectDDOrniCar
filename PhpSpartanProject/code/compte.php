@@ -7,7 +7,7 @@ include '../pagetype/hautPage.php';
 <div class="row">
     <?php
    include ('./profil.php');
-    if (aUneVoiture($_SESSION['id'])) {
+    if (aUneVoiture($_SESSION['id'])==true) { 
         include ('./maVoiture.php');
     } else {
         include ('./add_Voiture.php');

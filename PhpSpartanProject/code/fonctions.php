@@ -47,13 +47,13 @@ function isAlreadyRegistered($email, $pseudo, $nom, $prenom) {
 }
 
 function aUneVoiture($idUser) {
-    $aUneVoiture = false;
+    $aUneVoiture = true;
     $requete = "SELECT * FROM voiture WHERE idPossesseur= '" . $idUser . "' ";
     $co = connexionBdd();
     $resultat = mysqli_query($co, $requete);
     $nbLignes = mysqli_num_rows($resultat);
-    if ($nbLignes == 1) {
-        $aUneVoiture = true;
+    if ($nbLignes == 0) {
+        $aUneVoiture = false;
     }
     return $aUneVoiture;
 }
@@ -194,12 +194,12 @@ function insertIntoUser($nom, $prenom, $pseudo, $passe, $email, $photo, $anneena
 function insertIntoVoiture($idUser, $marque, $modele, $couleur, $annee, $image) {
     $co = connexionBdd();
     $idVoiture = createIDCar();
-    echo 'idVoiture =' . $idVoiture . '<br />';
-    $requete = "INSERT INTO voiture VALUES ('" . $idVoiture . "', '" . $idUser . "', '" . $marque . "', '" . $modele . "', '" . $couleur . "', '" . $image . "', '" . $annee . "')";
-    $doQuery = mysqli_query($co, $requete);
-    if (mysqli_connect_errno()) {
-        echo "Failed to connect to MySQL: " . mysqli_connect_error();
-    }
+    $requeteInsert = "INSERT INTO voiture VALUES ('" . $idVoiture . "', '" . $idUser . "', '" . $marque . "', '" . $modele . "', '" . $couleur . "', '" . $image . "', '" . $annee . "')";
+    echo $requeteInsert;
+    mysqli_query($co, $requeteInsert);
+    //Update idVoiture dans tuple User
+    $requeteUpdate= "UPDATE user SET idVoiture='".$idVoiture."' WHERE idUser='".$idUser."'  ";
+    mysqli_query($co, $requeteUpdate);
 }
 
 function insertIntoTrajet($idConducteur, $villeDepart, $villeArrivee, $prix, $anneeMoisJour, $heure, $minute) { //$anneMoisJour : YYYY-MM-DD

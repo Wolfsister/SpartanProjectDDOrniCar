@@ -1,9 +1,11 @@
 <?php
-$title='';
-include '../pagetype/hautPage.php';
-?>
-
-<?php
+if (!isset($_SESSION)) {
+    session_start();
+    if(empty($_SESSION['connected'])){
+        $_SESSION['connected']=0;
+    }
+}
+include '../code/fonctions.php';
 
 if (!empty($_POST)) {
     $erreur = false;
@@ -20,13 +22,13 @@ if (!empty($_POST)) {
         echo("Le champ couleur est vide.<br/>");
         $erreur = true;
     }
-    
+
     if (empty($_POST["annee"])) {
         echo("Veuillez préciser une année de mise en circulation.<br/>");
         $erreur = true;
     }
-    
-    if ($_FILES['imvoiture']['error']==4) { // Erreur concernant la non-transmission de fichier
+
+    if ($_FILES['imvoiture']['error'] == 4) { // Erreur concernant la non-transmission de fichier
         echo("Veuillez choisir une photo de profil. <br/>");
         $erreur = true;
     }
@@ -37,6 +39,7 @@ if (!empty($_POST)) {
         //Récupération de la photo de profil de l'utilisateur
         $icone = $_FILES['imvoiture'];
         $iconeName = $icone['tmp_name'];
+        var_dump($_SESSION);
         $emplacementDeplacement = '../ressources/imagesVoitures/' . $_SESSION['pseudo'] . '.jpg';
         move_uploaded_file($iconeName, $emplacementDeplacement);
 
@@ -44,15 +47,8 @@ if (!empty($_POST)) {
         insertIntoVoiture($_SESSION['id'], $_POST["marque"], $_POST["modele"], $_POST["couleur"], $_POST["annee"], $emplacementDeplacement);
 
         //Finalisation Inscription
+        header('Location: ../code/compte.php');
     }
 }
 ?>
-
-
-
-<?php
-include '../pagetype/basPage.php';
-?>
-
-
 
