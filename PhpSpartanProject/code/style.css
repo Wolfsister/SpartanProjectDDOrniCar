@@ -1,3 +1,22 @@
+//Ajout par Denis
+
+.essaiDenis{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.tableauAffichageBDD{
+    width:100%;
+    border: 1px solid #1ABC9C;    
+}
+
+
+
+// Fin des ajouts par Denis
+
+
 .floatleft { float: left }
 .floatright { float: right }
 .alignleft {

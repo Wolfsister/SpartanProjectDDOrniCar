@@ -213,15 +213,16 @@ function insertIntoTrajet($idConducteur, $villeDepart, $villeArrivee, $prix, $an
 
 function insertIntoAvis($idDonneur, $idReceveur, $idTrajet, $note) {
     $co = connexionBdd();
-    $requete = "INSERT INTO avis VALUES ('".$idDonneur."', '".$idReceveur."', '".$idTrajet."', '".$note."' )";
+    $requete = "INSERT INTO avis VALUES ('" . $idDonneur . "', '" . $idReceveur . "', '" . $idTrajet . "', '" . $note . "' )";
     $doQuery = mysqli_query($co, $requete);
     if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
 }
-function insertIntoPassager($idPassager,$idTrajet) {
+
+function insertIntoPassager($idPassager, $idTrajet) {
     $co = connexionBdd();
-    $requete = "INSERT INTO passager VALUES ('".$idPassager."','".$idTrajet."' )";
+    $requete = "INSERT INTO passager VALUES ('" . $idPassager . "','" . $idTrajet . "' )";
     echo $requete;
     $doQuery = mysqli_query($co, $requete);
     if (mysqli_connect_errno()) {
@@ -237,24 +238,32 @@ function chercherVille($villeArrivee) {
     print_r($tab);
 }
 
-function lectureResultatRequete($objetMyqliquery) { // simple ebauche
-    while ($tabavions = mysqli_fetch_array($requeteavions)) {
+function lectureTableauHtmlResultatRequete($objetMysqliquery) { // simple ebauche
+    echo '<table class="tableauAffichageBDD"><tr>';
+
+    $premieresValeurs=array();
+    foreach ($tab1= mysqli_fetch_array($objetMysqliquery) as $key => $value) { //Récupère les noms des colonnes ainsi que le premier tuple
+        if (!is_int($key)) {
+            echo '<th>' . $key . '</th>';
+            $premieresValeurs[]=$value;
+        }
+    }
+    echo '</tr>';
+    echo '<tr>';
+    foreach ($premieresValeurs as $key => $value) { //Met le premier tuple dans le tableau
+        echo '<td>' . $value . '</td>';
+    }
+    echo '</tr>';
+    while ($tab = mysqli_fetch_array($objetMysqliquery)) { //Ajoute tous les tuples suivants dans le tableau
         echo '<tr>';
-        foreach ($tabavions as $key => $value) {
+        foreach ($tab as $key => $value) {
             if (!is_int($key)) {
                 echo '<td>' . $value . '</td>';
             }
         }
         echo '</tr>';
     }
-}
-
-function addCar($idPossesseur, $marque, $modele, $couleur, $image, $annee) {
-//récuperer photos, mettre Pseudo+idVoiture en nom de fichier. Doit on mettre l'image en attribut de la table ? EN fait ca sert ptet à rien mais bon
-    $idVoiture = createIDCar();
-    $co = connexionBdd();
-    $requeteNombreVoiture = 'SELECT * FROM voiture';
-    $doQuery = mysqli_query($co, $requeteNombreVoiture);
+    echo '</table>';
 }
 
 ?>

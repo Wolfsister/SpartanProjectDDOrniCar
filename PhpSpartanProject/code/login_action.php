@@ -1,5 +1,5 @@
 <?php
-
+$path='';
 $title = '';
 include '../pagetype/hautPage.php';
 ?>

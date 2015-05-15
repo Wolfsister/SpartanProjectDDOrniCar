@@ -20,6 +20,8 @@ $pageEnCours=basename($path, ".php"); // nous permet de récupérer la page sur 
                         <li <?php if($pageEnCours=='rechercheTrajet'){echo 'class="active"';} ?>><a href="../code/rechercheTrajet.php">Chercher un trajet</a></li>
                         <li <?php if($pageEnCours=='proposerTrajet'){echo 'class="active"';} ?>><a href="../code/proposerTrajet.php">Proposer un trajet</a></li>
                         <li <?php if($pageEnCours=='contact'){echo 'class="active"';} ?>><a href="../code/contact.php">Contact</a></li>
+                        <li><a href="../code/test.php">Test</a></li>
+
                     </ul>
                 </div>  
             </div>
