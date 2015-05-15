@@ -240,6 +240,23 @@ function aDonnéAvis($idDonneur, $idReceveur, $idTrajet){
     return $avisDonné;
 }
 
+function donnerAvis($idDonneur, $idReceveur, $idTrajet,$note){ 
+    if(aDonnéAvis($idDonneur, $idReceveur, $idTrajet)){
+        echo 'Vous avez déjà donné un avis à cet utilisateur pour ce trajet.';
+    }else{
+        insertIntoAvis($idDonneur, $idReceveur, $idTrajet, $note);
+    }
+}
+
+function calculNoteMoyenne($idUser){ //Permet de calculer la note moyenne d'un utilisateur en fonction de toutes les notes qu'il a recu
+    $co = connexionBdd();
+    $requete = "SELECT avg(note) FROM avis WHERE idReceveur='".$idUser."' ";
+    $r = mysqli_query($co, $requete);
+    return mysqli_fetch_array($r)['avg(note)'];
+    
+    // Marche, mais diminuer la précision de la note, une note au dixième suffit
+}
+
 function chercherVille($villeArrivee) {
     $co = connexionBdd();
     $requete = "SELECT * FROM trajet WHERE villeArrivee='" . $villeArrivee . "' ";

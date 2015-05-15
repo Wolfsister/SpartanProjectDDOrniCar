@@ -12,10 +12,11 @@ include '../pagetype/hautPage.php';
 //$sql2 = " SELECT * FROM user";
 //$result2 = mysqli_query($co, $sql2) or die("Requete pas comprise");
 
-$idDonneur='4';
-$idReceveur='1';
-$idTrajet='8';
-if(aDonnéAvis($idDonneur, $idReceveur, $idTrajet)){echo 'avisDonné'; }else{ echo 'Pas avis';};
+
+donnerAvis('5', '4', '9', '2');
+
+calculNoteMoyenne('4');
+
 
 //echo '<pre>';
 //print_r($tab2);
