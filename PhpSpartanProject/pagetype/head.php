@@ -8,7 +8,7 @@ if (!isset($_SESSION)) {
 include '../code/fonctions.php';
 ?>
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="../ressources/imagesSite/iconeSiteOnglet.ico">

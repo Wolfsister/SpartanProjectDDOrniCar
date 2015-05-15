@@ -1,12 +1,17 @@
 Priorité : 1 important, 2 moins important..etc
 0= juste une idée/suggestion, pas forcément à faire
 
-1- Faire fonction add car
+1- Faire fonctions INSERT INTO (DEUX à FINIR)
 
-1- Faire fonctions INSERT INTO
+2- Fonction de recuperation de plusieurs tuples retournés par une requete
+
+3- (MAJ DENIS : En fait pas trop grave parce que si on fait une recherche, le probleme se "compense" ) Regler probleme encodage de la BDD. (Orléans devient OrlÃ©ans )
+
+3- Reste tout le temps connecté sur site (sauf si déconnexion). Combien de temps durent variables de session ?!
 
 5-DORIAN : Dans les champs des formulaires, une partie de la saisie (le bas) est tronquée, regarde si t'y arrives à corriger, tu connais mieux cette partie de code que moi
-=> Changer attribut active dans mainMenuArea donc faire attribut onglet actif
+
+2=> Changer attribut active dans mainMenuArea donc faire attribut onglet actif (voir page en cours)
 
 
 0 - Est-ce qu'on met une taille limite pour la photo de profil ? Si non, supprimer le texte montrant une limitation à 15ko
@@ -19,22 +24,18 @@ Priorité : 1 important, 2 moins important..etc
 
 0 - Proposer identification par email ou Pseudo (pas compliqué normalement)
 
-1-Vérifier si creation n'est pas deja dans base de données  (fonction isAlreadyRegistered)  // A VERIFIER mais m'a l'air de bien fonctionner
-
 1-ETABLIR CLAIREMENT QU'EST CE QU'ON MET EN VARIABLES SESSION/COOKIES.
 1=> Mettre infos dans cookies si le gars coche "se souvenir de moi" ???
 
-6- (UPDATE DENIS : Je pense pas que ce soit hyper utile finalement de mettre dans la bannière) Mise à jour du solde (si on le met dans la bannière utilisateur) : faire une mise à jour à chaque actualisation de page, donc faire ça dans le php commun à toutes les pages ?
 
 2 (A finaliser) -Faire une fonction pour chercher directement (si attribut existe) dans BDD   => automatiser la recherche dans BDD, chaud mais je vais voir ce que je peux faire
 
-5-DORIAN : Lorsqu'on est dans MonCompte, Accueil est "surligné". Cool si enlevable.
 
 2-Système de messagerie interne
 
 3-Banniere Spéciale Admin ?
 
-2- [FAIT MAIS SUREMENT AMELIORABLE]-Propre fonction pour donner id unique à la création d'une voiture
 
 -Optionnel : -trouver une MEILLEURE icone pour mettre sur l'onglet à cote du nom
              -changer image dans le formulaire pour l'année de naissance
+             -Ouvrir les formulaires dans des popups

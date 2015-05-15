@@ -172,7 +172,7 @@ function createIDCar() {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
     $nbLignes = mysqli_num_rows($doQuery);
-    $idCreation = $nbLignes+100;
+    $idCreation = $nbLignes + 100;
     return $idCreation;
 }
 
@@ -193,23 +193,60 @@ function insertIntoUser($nom, $prenom, $pseudo, $passe, $email, $photo, $anneena
 
 function insertIntoVoiture($idUser, $marque, $modele, $couleur, $annee, $image) {
     $co = connexionBdd();
-    $idVoiture=  createIDCar();
-    echo 'idVoiture ='.$idVoiture.'<br />';
-    $requete = "INSERT INTO voiture VALUES ('".$idVoiture."', '".$idUser."', '".$marque."', '".$modele."', '".$couleur."', '".$image."', '".$annee."')";
+    $idVoiture = createIDCar();
+    echo 'idVoiture =' . $idVoiture . '<br />';
+    $requete = "INSERT INTO voiture VALUES ('" . $idVoiture . "', '" . $idUser . "', '" . $marque . "', '" . $modele . "', '" . $couleur . "', '" . $image . "', '" . $annee . "')";
+    $doQuery = mysqli_query($co, $requete);
+    if (mysqli_connect_errno()) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
+}
+
+function insertIntoTrajet($idConducteur, $villeDepart, $villeArrivee, $prix, $anneeMoisJour, $heure, $minute) { //$anneMoisJour : YYYY-MM-DD
+    $co = connexionBdd();
+    $requete = "INSERT INTO trajet VALUES (NULL, '" . $idConducteur . "', '" . $villeDepart . "', '" . $villeArrivee . "', '" . $prix . "', '" . $anneeMoisJour . "', '" . $heure . "', '" . $minute . "')";
+    $doQuery = mysqli_query($co, $requete);
+    if (mysqli_connect_errno()) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
+}
+
+function insertIntoAvis($idDonneur, $idReceveur, $idTrajet, $note) {
+    $co = connexionBdd();
+    $requete = "INSERT INTO avis VALUES ('".$idDonneur."', '".$idReceveur."', '".$idTrajet."', '".$note."' )";
+    $doQuery = mysqli_query($co, $requete);
+    if (mysqli_connect_errno()) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
+}
+function insertIntoPassager($idPassager,$idTrajet) {
+    $co = connexionBdd();
+    $requete = "INSERT INTO passager VALUES ('".$idPassager."','".$idTrajet."' )";
     echo $requete;
     $doQuery = mysqli_query($co, $requete);
     if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
-    echo 'DONE';
 }
 
-function insertIntoTrajet() {
-    
+function chercherVille($villeArrivee) {
+    $co = connexionBdd();
+    $requete = "SELECT * FROM trajet WHERE villeArrivee='" . $villeArrivee . "' ";
+    $r = mysqli_query($co, $requete);
+    $tab = mysqli_fetch_array($r);
+    print_r($tab);
 }
 
-function insertIntoAvis() {
-    
+function lectureResultatRequete($objetMyqliquery) { // simple ebauche
+    while ($tabavions = mysqli_fetch_array($requeteavions)) {
+        echo '<tr>';
+        foreach ($tabavions as $key => $value) {
+            if (!is_int($key)) {
+                echo '<td>' . $value . '</td>';
+            }
+        }
+        echo '</tr>';
+    }
 }
 
 function addCar($idPossesseur, $marque, $modele, $couleur, $image, $annee) {
