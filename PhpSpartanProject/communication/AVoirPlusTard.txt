@@ -9,12 +9,10 @@ Priorité : 1 important, 2 moins important..etc
 
 2- Si l'utilisateur n'a pas d'image dans le répertoire, mettre l'image par défaut
 
-2-Faire profil.php et affichage propre de ma voiture
+2-  Faire profil.php et affichage propre de ma voiture
 
 
 6- (MAJ DENIS : En fait pas trop grave parce que si on fait une recherche, le probleme se "compense" ) Regler probleme encodage de la BDD. (Orléans devient OrlÃ©ans )
-
-2- Trier fonctions et les mettre dans des sous-fonctions.php afin de les retrouver plus facilement
 
 3- Reste tout le temps connecté sur site (sauf si déconnexion). Combien de temps durent variables de session ?!
 
@@ -33,6 +31,7 @@ Priorité : 1 important, 2 moins important..etc
 1-ETABLIR CLAIREMENT QU'EST CE QU'ON MET EN VARIABLES SESSION/COOKIES.
 1=> Mettre infos dans cookies si le gars coche "se souvenir de moi" ???
 
+3- Corriger avis pour donner que à ceux avec qui on a voyagé
 
 2-Système de messagerie interne
 
