@@ -17,7 +17,9 @@ include '../pagetype/hautPage.php';
 //
 //CALCULNOTEMOYENNE('4');
 
-var_dump($_SESSION);
+
+$idTrajet='9';
+echo nombrePlacesRestantes($idTrajet);
 
 
 //echo '<pre>';

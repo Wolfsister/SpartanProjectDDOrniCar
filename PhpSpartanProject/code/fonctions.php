@@ -1,6 +1,7 @@
 <?php
 function connexionBdd() {
     $conn = new mysqli('localhost', 'root', '', 'testornicar');
+    //$conn = new mysqli('mysql.hostinger.fr', 'u885690161_admin', 'doriandenis', 'u885690161_orni');
     return $conn;
 }
 
@@ -305,6 +306,23 @@ function lectureTableauPhpResultatRequete($objetMySql){
         }
     }
     return $tab; 
+}
+
+function nombrePlacesRestantes($idTrajet){
+    $co=  connexionBdd();
+    //Savoir combien de places étaient disponibles au départ pour le trajet
+    $requeteNbPlaces= "SELECT * FROM trajet WHERE idTrajet='".$idTrajet."'  ";
+    $sqlireq=  mysqli_query($co, $requeteNbPlaces);
+    $tabNbPlaces=lectureTableauPhpResultatRequete($sqlireq);
+    $nbPlacesOriginales=$tabNbPlaces['nombrePlaces'][0];
+    //Savoir combien de passagers ont deja réservé ce voyage
+    $requeteNbPassagers= "SELECT * FROM passager WHERE idTrajet='".$idTrajet."'  ";
+    $sqlireqNbPassagers=  mysqli_query($co, $requeteNbPassagers);
+    $nbPlacesPrises= mysqli_num_rows($sqlireqNbPassagers);
+   
+    $nbPlacesRestantes= ($nbPlacesOriginales) - ($nbPlacesPrises);
+    return $nbPlacesRestantes;
+    
 }
 
 ?>
