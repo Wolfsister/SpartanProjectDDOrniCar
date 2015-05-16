@@ -13,9 +13,11 @@ include '../pagetype/hautPage.php';
 //$result2 = mysqli_query($co, $sql2) or die("Requete pas comprise");
 
 
-donnerAvis('5', '4', '9', '2');
+//DONNERAVIS('5', '4', '9', '2');
+//
+//CALCULNOTEMOYENNE('4');
 
-calculNoteMoyenne('4');
+var_dump($_SESSION);
 
 
 //echo '<pre>';

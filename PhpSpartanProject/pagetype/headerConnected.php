@@ -1,6 +1,6 @@
 <?php
-if ($_SESSION['id'] != 1) {
-    ?>    
+if ($_SESSION['id'] != 1) { //Si utilisateur n'est pas l'admin
+?>    
 
 
     <div class="header-area">
@@ -22,7 +22,7 @@ if ($_SESSION['id'] != 1) {
     </div> <!-- End header area -->
 
     <?php
-} else {
+} else {   //Si utilisateur est l'admin
     ?>
 
     <div class="header-area">

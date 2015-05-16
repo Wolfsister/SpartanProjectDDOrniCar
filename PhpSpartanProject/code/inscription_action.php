@@ -73,7 +73,7 @@ if (!empty($_POST)) {
         $icone = $_FILES['icone'];
         $iconeName = $icone['tmp_name'];
         $iconeType = $icone["type"];
-        $emplacementDeplacement = '../ressources/imagesProfiles/' . $_POST['pseudo'] . '.jpg';
+        $emplacementDeplacement = '../ressources/imagesProfiles/' . $_POST["pseudo"] . '.jpg';
         move_uploaded_file($iconeName, $emplacementDeplacement);
 
         // Ajout dans BDD
@@ -83,7 +83,7 @@ if (!empty($_POST)) {
 
         //Finalisation Inscription
         echo 'Félicitations pour votre inscription '.$_POST['prenom'].' '.$_POST['nom'].', ou '.$_POST['pseudo'].' devrais-je dire ! :)';
-        logRightAfterRegister($_POST['pseudo'], $emplacementDeplacement);
+        logRightAfterRegister($_POST['pseudo']);
     }
 }
 ?>
