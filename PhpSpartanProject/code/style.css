@@ -12,7 +12,44 @@
     border: 1px solid #1ABC9C;    
 }
 
+#profilMonCompte{
+    width: 49%;
+    border-style: solid; 
+    border-width: 2px;
+    border-color: #00cc99;
+    margin-left: 0px;
+    margin-top:20px;
+    margin-bottom:20px;
+    float:left;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 
+#profilVoiture{
+    width: 49%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #00cc99;
+    margin-right: 0px;
+    margin-top:20px;
+    margin-bottom:20px;
+    float:right;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.monCompte h1{
+    color: #00cc99;
+}
+
+.monCompte li{
+    font-size: medium;
+    font-style: italic;
+}
 
 // Fin des ajouts par Denis
 
@@ -94,10 +131,10 @@ body { font-family: 'Titillium Web', sans-serif; }
 }
 
 .mainmenu-area {background: none repeat scroll 0 0 #1abc9c;
-font-family: "Roboto Condensed",sans-serif;
-text-transform: uppercase;
-width: 100%;
-z-index: 999;}
+                font-family: "Roboto Condensed",sans-serif;
+                text-transform: uppercase;
+                width: 100%;
+                z-index: 999;}
 
 
 
@@ -175,61 +212,61 @@ z-index: 999;}
 .slider-area, .promo-area, .brands-area, .maincontent-area, .footer-top-area, .product-widget-area, .product-breadcroumb-area, .single-product-area {position: relative;overflow: hidden}
 .zigzag-bottom {}
 .slide-text-wrapper {
-  height: 700px;
+    height: 700px;
 }
 .slide-text-wrapper {
-  display: table;width: 100%;
+    display: table;width: 100%;
 }
 
 .slide-text {display: table-cell;vertical-align: middle}
 
 .zigzag-bottom {
-background: none repeat scroll 0 0 #1abc9c;
-bottom: -80px;
-height: 165px;
-left: -5%;
-position: absolute;
-transform: rotate(3deg);
-width: 108%;
-z-index: 9;
+    background: none repeat scroll 0 0 #1abc9c;
+    bottom: -80px;
+    height: 165px;
+    left: -5%;
+    position: absolute;
+    transform: rotate(3deg);
+    width: 108%;
+    z-index: 9;
 }
 
 .slide-bg {
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;background-position: center;background-size: cover
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;background-position: center;background-size: cover
 }
 .slide-bg:after {
-  background: none repeat scroll 0 0 #000;
-  content: "";
-  height: 100%;
-  left: 0;
-  opacity: 0.6;
-  position: absolute;
-  top: 0;
-  width: 100%;
+    background: none repeat scroll 0 0 #000;
+    content: "";
+    height: 100%;
+    left: 0;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
 .slide-one {background-image: url(img/slide-1.jpg)}
 .slide-two {background-image: url(img/slide-2.jpg)}
 .slide-three {background-image: url(img/slide-3.jpg)}
 .slide-text {color: #fff;font-size: 18px;font-weight: 200}
 .slide-text h2 {
-  font-size: 45px;font-weight: 200
+    font-size: 45px;font-weight: 200
 }
 
 .slide-content {position: relative;z-index: 9;padding: 30px}
 .slide-content:before {
-  background: none repeat scroll 0 0 #000;
-  content: "";
-  height: 100%;
-  left: 0;
-  opacity: 0.6;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: -1;
+    background: none repeat scroll 0 0 #000;
+    content: "";
+    height: 100%;
+    left: 0;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
 }
 
 
@@ -249,15 +286,15 @@ z-index: 9;
 
 
 .promo-area {
-  background: none repeat scroll 0 0 #1abc9c;
-  color: #fff;
-  padding: 77px 0 200px;
+    background: none repeat scroll 0 0 #1abc9c;
+    color: #fff;
+    padding: 77px 0 200px;
 }
 
 .brands-area {
-  background: none repeat scroll 0 0 #1abc9c;
-  color: #fff;
-  padding: 0px 0 200px;
+    background: none repeat scroll 0 0 #1abc9c;
+    color: #fff;
+    padding: 0px 0 200px;
 }
 
 .promo-area .zigzag-bottom, .brands-area .zigzag-bottom{background: #fff}
@@ -269,17 +306,17 @@ z-index: 9;
     text-align: center;
 }
 .single-promo i {
-  font-size: 50px;
+    font-size: 50px;
 }
 
 .single-promo:hover {color: #fff;background: #222;border-color: #222}
 
 .section-title {
-  font-family: "Raleway",sans-serif;
-  font-size: 50px;
-  font-weight: 100;
-  margin-bottom: 50px;
-  text-align: center;
+    font-family: "Raleway",sans-serif;
+    font-size: 50px;
+    font-weight: 100;
+    margin-bottom: 50px;
+    text-align: center;
 }
 
 
@@ -294,14 +331,14 @@ z-index: 9;
     width: 100%;overflow: hidden;border: 1px solid #ddd;
 }
 .product-hover:after {
-  background: none repeat scroll 0 0 #000;
-  content: "";
-  height: 100%;
-  left: -100%;
-  opacity: 0.6;
-  position: absolute;
-  top: 0;
-  width: 100%;transition: .4s;
+    background: none repeat scroll 0 0 #000;
+    content: "";
+    height: 100%;
+    left: -100%;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    width: 100%;transition: .4s;
 }
 .product-hover a {
     background: none repeat scroll 0 0 #1abc9c;
@@ -319,14 +356,14 @@ z-index: 9;
     width: 80%;z-index: 99;transition: .4s;
 }
 .product-hover a:hover {
-  background: #000;
-  text-decoration: none;border-color: #444;
+    background: #000;
+    text-decoration: none;border-color: #444;
 }
 .product-carousel-price ins {
-  color: #1abc9c;
-  font-weight: 700;
-  margin-right: 5px;
-  text-decoration: none;
+    color: #1abc9c;
+    font-weight: 700;
+    margin-right: 5px;
+    text-decoration: none;
 }
 .product-hover a i.fa {
     margin-right: 5px;
@@ -350,7 +387,7 @@ z-index: 9;
 }
 
 .single-product {
-  overflow: hidden;
+    overflow: hidden;
 }
 .single-product:hover {}
 .single-product:hover .product-hover a.add-to-cart-link {top: 32%;}
@@ -359,43 +396,43 @@ z-index: 9;
 
 
 .product-carousel {
-  padding-top: 40px;
+    padding-top: 40px;
 }
 .latest-product .owl-nav {
-  position: absolute;
-  right: 0;
-  top: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .latest-product .owl-nav div, .related-products-wrapper .owl-nav div {
-  border: 1px solid #1abc9c;
-  color: #1abc9c;
-  display: inline-block;
-  margin-left: 15px;
-  padding: 1px 10px;
+    border: 1px solid #1abc9c;
+    color: #1abc9c;
+    display: inline-block;
+    margin-left: 15px;
+    padding: 1px 10px;
 }
 .latest-product .owl-nav div:hover, .brand-wrapper .owl-nav div:hover, .related-products-wrapper .owl-nav div:hover {color: #222;border-color: #222}
 .brand-list {padding-top: 40px;}
 .brand-list .owl-nav {
-  position: absolute;
-  right: 0;
-  top: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 .brand-wrapper .owl-nav div {
-  border: 1px solid #fff;
-  color: #fff;
-  display: inline-block;
-  margin-left: 15px;
-  padding: 1px 10px;
+    border: 1px solid #fff;
+    color: #fff;
+    display: inline-block;
+    margin-left: 15px;
+    padding: 1px 10px;
 }
 
 .maincontent-area {padding-bottom: 170px}
 
 .product-wid-title {
-  font-family: raleway;
-  font-size: 30px;
-  font-weight: 100;
-  margin-bottom: 40px;
+    font-family: raleway;
+    font-size: 30px;
+    font-weight: 100;
+    margin-bottom: 40px;
 }
 
 
@@ -442,28 +479,28 @@ z-index: 9;
     position: relative;
 }
 .product-widget-area {
-  padding-bottom: 150px;
-  padding-top: 30px;
+    padding-bottom: 150px;
+    padding-top: 30px;
 }
 .product-widget-area .zigzag-bottom{background: #333}
 .footer-top-area .zigzag-bottom{background: #000}
 .footer-top-area {background: none repeat scroll 0 0 #333;
-color: #999;
-padding: 35px 0 180px;}
+                  color: #999;
+                  padding: 35px 0 180px;}
 
 
 .footer-bottom-area {background: #000;color: #fff}
 .footer-about-us span {
-  color: #1abc9c;
+    color: #1abc9c;
 }
 .footer-wid-title {
-  font-family: raleway;
-  font-size: 30px;
-  font-weight: 100;color: #fff
+    font-family: raleway;
+    font-size: 30px;
+    font-weight: 100;color: #fff
 }
 
 .footer-about-us h2 {
-  font-weight: 200;
+    font-weight: 200;
 }
 .footer-menu ul {
     list-style: outside none none;
@@ -481,16 +518,16 @@ padding: 35px 0 180px;}
 
 
 .footer-social a {
-  background: none repeat scroll 0 0 #1abc9c;
-  color: #fff;
-  display: inline-block;
-  font-size: 20px;
-  height: 40px;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  padding-top: 5px;
-  text-align: center;
-  width: 40px;border: 1px solid #1abc9c;
+    background: none repeat scroll 0 0 #1abc9c;
+    color: #fff;
+    display: inline-block;
+    font-size: 20px;
+    height: 40px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    padding-top: 5px;
+    text-align: center;
+    width: 40px;border: 1px solid #1abc9c;
 }
 
 .footer-social a:hover {background-color: #222;border-color: #666}
@@ -521,9 +558,9 @@ padding: 35px 0 180px;}
 a {color: #1abc9c}
 a:hover, a:focus {color: #17a78b}
 .footer-bottom-area {
-  background: none repeat scroll 0 0 #000;
-  color: #fff;
-  padding-bottom: 40px;
+    background: none repeat scroll 0 0 #000;
+    color: #fff;
+    padding-bottom: 40px;
 }
 
 
@@ -536,28 +573,28 @@ a:hover, a:focus {color: #17a78b}
     z-index: 99;
 }
 ol.slide-indicators {
-left: inherit;
-list-style: outside none none;
-margin: 0;
-padding: 0;
-position: relative;
-width: 100%;
+    left: inherit;
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
 }
 ol.slide-indicators li {
-background: none repeat scroll 0 0 #222;
-border: medium none;
-border-radius: 0;
-cursor: pointer;
-display: inline-block;
-height: 10px;
-margin: 0 0 0 5px;
-width: 10px;
+    background: none repeat scroll 0 0 #222;
+    border: medium none;
+    border-radius: 0;
+    cursor: pointer;
+    display: inline-block;
+    height: 10px;
+    margin: 0 0 0 5px;
+    width: 10px;
 }
 ol.slide-indicators li.active {
-background: none repeat scroll 0 0 #fff;
-height: 10px;
-margin: 0 0 0 5px;
-width: 10px;
+    background: none repeat scroll 0 0 #fff;
+    height: 10px;
+    margin: 0 0 0 5px;
+    width: 10px;
 }
 
 
@@ -571,28 +608,28 @@ width: 10px;
 }
 
 .footer-card-icon {
-  font-size: 30px;
-  text-align: right;
+    font-size: 30px;
+    text-align: right;
 }
 
 .copyright > p {
-  margin: 10px 0 0;
+    margin: 10px 0 0;
 }
 
 .product-big-title-area {background: url(img/crossword.png) repeat scroll 0 0 #1ABC9C}
 
 .product-bit-title h2 {
-  font-family: raleway;
-  font-size: 50px;
-  font-weight: 200;
-  margin: 0;
-  padding: 50px 0;color: #fff;
+    font-family: raleway;
+    font-size: 50px;
+    font-weight: 200;
+    margin: 0;
+    padding: 50px 0;color: #fff;
 }
 
 .single-product-area .zigzag-bottom {background-color: #333333}
 
 .single-product-area {
-  padding: 80px 0 130px;
+    padding: 80px 0 130px;
 }
 
 
@@ -779,17 +816,17 @@ form.cart {
 }
 
 .related-products-wrapper {
-  margin-top: 30px;
+    margin-top: 30px;
 }
 .related-products-title {color: #3dc6ab;
-font-size: 25px;
-margin-bottom: 30px;
-text-transform: uppercase;}
+                         font-size: 25px;
+                         margin-bottom: 30px;
+                         text-transform: uppercase;}
 
 .related-products-wrapper .owl-nav {
-  position: absolute;
-  right: 0;
-  top: -56px;
+    position: absolute;
+    right: 0;
+    top: -56px;
 }
 
 
@@ -960,17 +997,17 @@ a.about_paypal {
 
 
 #customer_details select, .shipping_calculator select {
-  border: 1px solid #ddd;
-  margin-bottom: 15px;
-  padding: 10px;
-  width: 100%;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding: 10px;
+    width: 100%;
 }
 
 
 table.shop_table td.product-remove a {
-  display: inline-block;
-  padding: 0 5px 2px;
-  text-transform: uppercase;
+    display: inline-block;
+    padding: 0 5px 2px;
+    text-transform: uppercase;
 }
 
 
@@ -985,8 +1022,8 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 
 
 .cart-collaterals .shipping_calculator {
-  float: right;
-  width: 40%;
+    float: right;
+    width: 40%;
 }
 
 
@@ -1020,5 +1057,5 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 .single-shop-product {margin-bottom: 50px}
 
 .pagination > li > a, .pagination > li > span {
-  color: #1abc9c;
+    color: #1abc9c;
 }

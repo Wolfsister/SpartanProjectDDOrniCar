@@ -295,8 +295,7 @@ function lectureTableauHtmlResultatRequete($objetMysqliquery) { // simple ebauch
 
 function lectureTableauPhpResultatRequete($objetMySql){
     $tab;
-    $count=0;
-    
+   
     while ($tabSql=  mysqli_fetch_array($objetMySql)){
         
         foreach ($tabSql as $key => $value) {
@@ -321,8 +320,7 @@ function nombrePlacesRestantes($idTrajet){
     $nbPlacesPrises= mysqli_num_rows($sqlireqNbPassagers);
    
     $nbPlacesRestantes= ($nbPlacesOriginales) - ($nbPlacesPrises);
-    return $nbPlacesRestantes;
-    
+    return $nbPlacesRestantes;   
 }
 
 ?>
