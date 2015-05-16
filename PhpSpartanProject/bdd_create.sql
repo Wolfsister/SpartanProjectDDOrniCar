@@ -22,7 +22,8 @@ CREATE TABLE trajet (
 	prix INTEGER NOT NULL,
 	anneeMoisJour DATE NOT NULL, -- Format YYYY-MM-DD
 	heure INTEGER NOT NULL,
- 	minute INTEGER NOT NULL, 
+ 	minute INTEGER NOT NULL,
+        nombrePlaces INTEGER NOT NULL,
 	PRIMARY KEY(idTrajet),
 	FOREIGN KEY(idConducteur)
 		REFERENCES user(idUser)

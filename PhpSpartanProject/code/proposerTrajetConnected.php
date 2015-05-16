@@ -70,7 +70,7 @@
                        
                         <div class="form-group">
                             <div class="col-md-12 col-xs-12 col-sm-12">
-                                <button type="submit" value="register" id="register" name="register" class="btn btn-default btn-lg btn-block">Faire une recherche</button>
+                                <button type="submit" value="register" id="register" name="register" class="btn btn-default btn-lg btn-block">Proposer Trajet</button>
                             </div>
                         </div>
                     </fieldset>

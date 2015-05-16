@@ -2,6 +2,15 @@
 <!--begin of the page-->
 <div class="row">
   
+    <?php
+        $idUser=$_SESSION['id'];
+        
+        
+        
+    
+    ?>
+    
+    
 </div>
 
 

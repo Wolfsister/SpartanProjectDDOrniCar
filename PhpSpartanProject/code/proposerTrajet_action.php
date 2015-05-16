@@ -36,10 +36,15 @@ if (isset($_POST)) {
         $erreurSaisie = true;
     }
     
+    if (empty($_POST["places"])) {
+        echo("Veuillez indiquer le nombre de places disponibles pour votre trajet.<br/>");
+        $erreurSaisie = true;
+    }
+    
     if ($erreurSaisie == true) {
         echo '<a href ="./proposerTrajet.php"> Retour à la connexion. </a>';
     }else{
-        insertIntoTrajet($_SESSION['id'], $_POST['VilleDepart'], $_POST['VilleArrivee'], $_POST['prix'], $_POST['date'], $_POST['heure'], $_POST['minute']);
+        insertIntoTrajet($_SESSION['id'], $_POST['VilleDepart'], $_POST['VilleArrivee'], $_POST['prix'], $_POST['date'], $_POST['heure'], $_POST['minute'], $_POST['places']);
         echo 'Votre trajet a bien été enregistré !';
     }
 }    

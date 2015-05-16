@@ -36,10 +36,8 @@ if (isset($_POST)) {
             printf("Error: %s\n", mysqli_error($co));
             exit();
         }
-        //$tab = mysqli_fetch_array($resultat);
-        //print_r($tab);
+
         $nbLignes = mysqli_num_rows($resultat); // Affiche le nombre de lignes de la requete
-        //echo ($nbLignes);
         
         if($nbLignes==0){
             $emailExiste=false;
