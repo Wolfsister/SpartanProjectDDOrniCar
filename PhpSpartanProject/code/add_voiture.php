@@ -1,8 +1,3 @@
-
-
-<!--beginning of the page-->
-
-<div class="container">
     <div class="row pplan" id="anim1">
         <div class="col-md-12 col-xs-12 col-sm-12  pplan">
             </br>
@@ -11,9 +6,7 @@
         </div>
     </div>
     <div class="row" id="anim2">
-        <div class="col-md-4 col-sm-3">
-        </div>
-        <div class="col-md-4 col-xs-12 col-sm-6">
+        
             <form enctype="multipart/form-data" method='post' class="form-horizontal" role="form" action='./voiture_action.php'>
 
                 <div class="form-group">
@@ -63,7 +56,7 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-12 col-xs-12 col-sm-12">
+                    <div class="boutonDenisDorianAjouterVoitureZoheir col-md-12 col-xs-12 col-sm-12">
                         <button type="submit" class="btn btn-default btn-lg btn-block" name="register">Ajouter votre voiture</button>
                     </div>
                 </div>
@@ -73,12 +66,6 @@
                 </br>
             </form>
 
-        </div>
-
         <div class="col-md-4 col-sm-3">
         </div>
     </div>
-</div>
-
-<!--end of the page-->
-
