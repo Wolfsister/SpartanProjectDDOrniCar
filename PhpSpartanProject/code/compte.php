@@ -13,7 +13,7 @@ include '../pagetype/hautPage.php';
 
 
         <section id='profilVoiture'>
-            <h1>Ma Voiture</h1>           
+            <h1 class='titreMaVoiture'>Ma Voiture</h1>           
 
             <?php
             if (aUneVoiture($_SESSION['id']) == true) {
