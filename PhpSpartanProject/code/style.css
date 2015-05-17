@@ -12,34 +12,48 @@
     border: 1px solid #1ABC9C;    
 }
 
-#profilMonCompte{
-    width: 47%;
-    border-style: solid; 
+#profilVoiture, #profilMonCompte{
+    width: 45%;
+    border-style: solid;
     border-width: 2px;
     border-color: #00cc99;
-    margin-left: 25px;
-    margin-top:20px;
-    margin-bottom:20px;
-    float:left;
-    padding-left: 10px;
+/*    margin-left: 20;
+*/    margin-top:20px;
+    margin-bottom:20px;   /*
+*/    padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-#profilVoiture{
-    width: 47%;
-    border-style: solid;
+#profilMonCompte{
+    //width: 47%;
+/*    border-style: solid; 
     border-width: 2px;
-    border-color: #00cc99;
-    margin-right: 25px;
-    margin-top: 20px;
-    margin-bottom:20px;
-    float:right;
-    padding-left: 10px;
+    border-color: #00cc99;*/
+    float:left;
+    margin-left: 3%;
+/*    margin-top:20px;
+    margin-bottom:20px;   */
+/*    padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 10px;*/
+}
+
+#profilVoiture{
+    //width: 47%;
+/*    border-style: solid;
+    border-width: 2px;
+    border-color: #00cc99;*/
+    float:right;
+    margin-right: 3%;
+/*    margin-top: 20px;
+    margin-bottom:20px;*/
+/*    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;*/
 }
 
 .monCompte h1{

@@ -10,6 +10,7 @@ Priorité : 1 important, 2 moins important..etc
 
 1- Corriger date dans la proposition d'un trajet
 
+2- Ajouter options de modifier informations de notre profil
 
 2- Si l'utilisateur n'a pas d'image dans le répertoire, mettre l'image par défaut
 
