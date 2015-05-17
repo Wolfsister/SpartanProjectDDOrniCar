@@ -323,4 +323,8 @@ function nombrePlacesRestantes($idTrajet){
     return $nbPlacesRestantes;   
 }
 
+//function lienImageUser($pseudo){
+//   $lien='../ressources/'
+//}
+
 ?>

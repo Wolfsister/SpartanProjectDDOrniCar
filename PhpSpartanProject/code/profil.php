@@ -18,7 +18,10 @@ $photo = '../ressources/imagesProfiles/' . $_SESSION['pseudo'] . '.jpg';
 ?>
 
 <section id='profilMonCompte'>
+    <img class="ImageProfilMonCompte"  src='../ressources/imagesProfiles/<?php echo $pseudo . ".jpg"; ?>' alt='Image de Profil'/>
+
     <h1>Mon Profil </h1>
+
     <ul>
         <li>Pseudo : <?php echo $pseudo; ?></li>
         <li>Nom : <?php echo $nom; ?></li>

@@ -6,7 +6,7 @@ Priorité : 1 important, 2 moins important..etc
 
 11111111- Ajouter colonnes autoroute 1 ou 0, et nbPlaces dans table trajet. Donc aussi refaire formulaire proposition trajet ainsi que la fonction insert into trajet !
 
-1- addVoiture que si le monsieur souhaite ajouter une voiture !!!!
+1- addVoiture que si le monsieur souhaite ajouter une voiture !!!! (js onClick)
 
 1- Corriger date dans la proposition d'un trajet
 
