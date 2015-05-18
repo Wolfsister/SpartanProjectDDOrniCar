@@ -28,7 +28,6 @@ $photo = '../ressources/imagesProfiles/' . $_SESSION['pseudo'] . '.jpg';
         <li>Prénom : <?php echo $prenom; ?></li>
         <li>Solde : <?php echo $solde . ' €'; ?></li>
         <li>Nombre de Trajets Effectués : <?php echo $nbTrajetsEnPassager . ' en tant que passager, ' . $nbTrajetsEnConducteur . ' en tant que conducteur, pour un total de ' . $nbTrajetsTotal; ?> </li>
-        <li>Photo à mettre dans l'encart</li>
 
     </ul>
 </section>

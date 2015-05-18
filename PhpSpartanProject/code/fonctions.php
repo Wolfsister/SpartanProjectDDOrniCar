@@ -65,6 +65,9 @@ function logRightAfterRegister($pseudo) {
     $_SESSION['id'] = $id;
 
     header('Location: ../code/compte.php');
+    
+//    echo '<script type = "text/javascript">alert("Inscription Réussie !")</script> ';
+//    echo '<script type="text/javascript"> document.location.href="../code/compte.php"    </script>';
 }
 
 function logClassic($email) {

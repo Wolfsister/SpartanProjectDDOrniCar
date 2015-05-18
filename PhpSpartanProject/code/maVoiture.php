@@ -20,7 +20,6 @@ $photo = '../ressources/imagesVoitures/' . $_SESSION['pseudo'] . '.jpg';
         <li>Modèle : <?php echo $modele; ?></li>
         <li>Couleur : <?php echo $couleur; ?></li>
         <li>Année de Mise en Circulation : <?php echo $annee; ?></li>
-        <li>Photo à mettre dans l'encart</li>
 
     </ul>
 </div>

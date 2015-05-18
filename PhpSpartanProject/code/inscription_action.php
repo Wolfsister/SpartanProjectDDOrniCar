@@ -1,11 +1,9 @@
 <?php
-$title='';
+$title = '';
 include '../pagetype/hautPage.php';
 ?>
 
 <?php
-
-
 if (!empty($_POST)) {
 //    echo var_dump($_POST);
 //    echo var_dump($_FILES);
@@ -35,18 +33,18 @@ if (!empty($_POST)) {
         echo("Le champ de confirmation du mot de passe est vide. <br/>");
         $erreur = true;
     }
-    
+
     if (empty($_POST["anneenaissance"])) {
         echo("Veuillez indiquer votre année de naissance.<br/>");
         $erreur = true;
     }
-    
-    if((!empty($_POST["anneenaissance"])) && ($_POST['anneenaissance']>2015)){
+
+    if ((!empty($_POST["anneenaissance"])) && ($_POST['anneenaissance'] > 2015)) {
         echo ("Êtes-vous sûr d'être né ? <br />");
-        $erreur=true;
+        $erreur = true;
     }
-    
-    if ($_FILES['icone']['error']==4) { // Erreur concernant la non-transmission de fichier
+
+    if ($_FILES['icone']['error'] == 4) { // Erreur concernant la non-transmission de fichier
         echo("Veuillez choisir une photo de profil. <br/>");
         $erreur = true;
     }
@@ -56,12 +54,12 @@ if (!empty($_POST)) {
         $erreur = true;
     }
 
-    $existeDeja=  isAlreadyRegistered($_POST['email'], $_POST['pseudo'], $_POST['nom'], $_POST['prenom']);
-    if($existeDeja==true){
-        $erreur=true;
+    $existeDeja = isAlreadyRegistered($_POST['email'], $_POST['pseudo'], $_POST['nom'], $_POST['prenom']);
+    if ($existeDeja == true) {
+        $erreur = true;
     }
-    
-    if ((($_POST['mdp']) != ($_POST['mdp2'])) && ($existeDeja==false)) {
+
+    if ((($_POST['mdp']) != ($_POST['mdp2'])) && ($existeDeja == false)) {
         echo("La vérification de mot de passe ne correspond pas au mot de passe précédemment saisi. <br/>");
         $erreur = true;
     }
@@ -77,22 +75,28 @@ if (!empty($_POST)) {
         move_uploaded_file($iconeName, $emplacementDeplacement);
 
         // Ajout dans BDD
-        $conn= new mysqli('localhost', 'root', '', 'testornicar');      
-        $insertion = "INSERT INTO user (idUser, nom, prenom, pseudo, motdepasse, email, idVoiture, photo, note, solde, anneenaissance, admin) VALUES (NULL, '".$_POST['nom']."', '". $_POST['prenom']."', '". $_POST['pseudo']."', '".$_POST['mdp']."', '".$_POST['email']."', NULL, '".$emplacementDeplacement."', NULL,'0','".$_POST['anneenaissance']."','0')";
+        $conn = new mysqli('localhost', 'root', '', 'testornicar');
+        $insertion = "INSERT INTO user (idUser, nom, prenom, pseudo, motdepasse, email, idVoiture, photo, note, solde, anneenaissance, admin) VALUES (NULL, '" . $_POST['nom'] . "', '" . $_POST['prenom'] . "', '" . $_POST['pseudo'] . "', '" . $_POST['mdp'] . "', '" . $_POST['email'] . "', NULL, '" . $emplacementDeplacement . "', NULL,'0','" . $_POST['anneenaissance'] . "','0')";
         mysqli_query($conn, $insertion);
 
         //Finalisation Inscription
-        echo 'Félicitations pour votre inscription '.$_POST['prenom'].' '.$_POST['nom'].', ou '.$_POST['pseudo'].' devrais-je dire ! :)';
+
+        //echo 'Félicitations pour votre inscription '.$_POST['prenom'].' '.$_POST['nom'].', ou '.$_POST['pseudo'].' devrais-je dire ! :)';
+
+        
+        //echo '<script type = "text/javascript">alert("Inscription Réussie !")</script> ';
         logRightAfterRegister($_POST['pseudo']);
-    }
-}
-?>
+        
+        
+        }
+        }
+        ?>
 
 
 
-<?php
-include '../pagetype/basPage.php';
-?>
+        <?php
+        include '../pagetype/basPage.php';
+        ?>
 
 
 

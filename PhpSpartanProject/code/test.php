@@ -17,6 +17,8 @@ include '../pagetype/hautPage.php';
 //echo '<pre>';
 //print_r($tab2);
 //echo '</pre>';
+    
+    var_dump($_SESSION);
     ?>
 <!--    <div class='monCompte'>
         <section id='profilMonCompte'>
@@ -46,6 +48,7 @@ include '../pagetype/hautPage.php';
     </div>    
 
 </div>-->
+
 
 <?php
 include '../pagetype/basPage.php';
