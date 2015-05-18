@@ -11,6 +11,11 @@ function afficherAjoutVoiture(){
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row" id="anim2">
+        <h2 class="titreAjoutVoiture">Ajouter une voiture :</h2>
+        
+            <form enctype="multipart/form-data" method='post' class="form-horizontal" role="form" action='./voiture_action.php'>
 
         <div class="form-group">
             <div class="col-md-12 col-xs-12 col-sm-12">
