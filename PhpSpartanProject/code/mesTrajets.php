@@ -8,12 +8,33 @@ include '../pagetype/hautPage.php';
 
     <?php
     
+    echo '<h2>En tant que conducteur : </h2>';
     $co=  connexionBdd();
-    $reqSql= "SELECT * FROM trajet WHERE idConducteur='".$_SESSION['id']."' ORDER BY anneMoisJour";
-    $reqConducteur=  mysqli_query($co, $reqSql);
+    $reqSqlC= "SELECT * FROM trajet WHERE idConducteur='".$_SESSION['id']."' ORDER BY anneeMoisJour";
+    $reqConducteur=  mysqli_query($co, $reqSqlC);
     
-    echo "En Conducteur";
-    lectureTableauPhpResultatRequete($reqConducteur);
+    $nbLignes1=  mysqli_num_rows($reqConducteur);
+    if($nbLignes1==0){
+        echo "Vous ne prenez part à aucun trajet en tant que conducteur.";
+    }else{
+        lectureTableauHtmlResultatRequete($reqConducteur);
+    }
+    
+    
+    
+    
+    echo '<h2>En tant que passager : </h2>';
+    $reqSqlP= "SELECT * FROM trajet as t, passager as p WHERE p.idPassager='".$_SESSION['id']."' AND t.idTrajet=p.idTrajet ORDER BY anneeMoisJour" ;
+    $reqPassager= mysqli_query($co, $reqSqlP);
+    
+    $nbLignes2=  mysqli_num_rows($reqConducteur);
+    if($nbLignes2==0){
+        echo "Vous ne prenez part à aucun trajet en tant que passager.";
+    }else{
+        lectureTableauHtmlResultatRequete($reqPassager);
+    }
+    
+    
     ?>
 
 

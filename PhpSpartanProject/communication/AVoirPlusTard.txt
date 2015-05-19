@@ -5,17 +5,22 @@ Priorité : 1 important, 2 moins important..etc
 
 1- Enregistrer Voiture probleme
 
-1- Afficher ImageVoiture dans maVoiture.php
-
 1- addVoiture que si le monsieur souhaite ajouter une voiture !!!! (js onClick)
 
 1- Corriger date dans la proposition d'un trajet
 
-2- Ajouter options de modifier informations de notre profil
+2- Faire un bien meilleur affichage de la recherche de trajet
 
-2- Si l'utilisateur n'a pas d'image dans le répertoire, mettre l'image par défaut
+4- Ajouter options de modifier informations de notre profil
 
-2-  Faire profil.php et affichage propre de ma voiture
+3- Si l'utilisateur n'a pas d'image dans le répertoire, mettre l'image par défaut
+
+2- Redimensionner images (poids) lors de l'enregistrement pour gagner de la place
+
+4- Dans fonction lectureHTML, gérer si la requete est vide eventuellement.
+
+
+
 
 
 6- (MAJ DENIS : En fait pas trop grave parce que si on fait une recherche, le probleme se "compense" ) Regler probleme encodage de la BDD. (Orléans devient OrlÃ©ans )
@@ -29,9 +34,6 @@ Priorité : 1 important, 2 moins important..etc
 
 2- Page de validation acceptée apres inscription (js alert je crois)
 
-
-2-Dans MONCOMPTE =>  Ajouter Voiture, (bloquer l'ajout si une voiture existe deja) Modifier Photo, Voir historique paiements, Donner avis apres trajets, messagerie
-
 0 - Proposer identification par email ou Pseudo (pas compliqué normalement)
 
 1-ETABLIR CLAIREMENT QU'EST CE QU'ON MET EN VARIABLES SESSION/COOKIES.
@@ -40,6 +42,9 @@ Priorité : 1 important, 2 moins important..etc
 3- Corriger avis pour donner que à ceux avec qui on a voyagé
 
 2-Système de messagerie interne
+
+
+
 
 -Optionnel : -trouver une MEILLEURE icone pour mettre sur l'onglet à cote du nom
              -changer image dans le formulaire pour l'année de naissance
