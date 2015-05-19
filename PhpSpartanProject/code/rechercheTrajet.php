@@ -27,13 +27,13 @@ include '../pagetype/hautPage.php';
                             <div class="col-md-12 col-xs-12 col-sm-12  splan">
                                 <div class="input-group">
                                     <label for="nom">Ville de départ</label><br/>
-                                    <select name="VilleDepart" id="VilleDepart">
+                                    <select name="villeDepart" id="villeDepart">
                                         <?php
                                         $co=  connexionBdd();
-                                        $sql1 = " SELECT DISTINCT villeDepart FROM trajet ";
+                                        $sql1 = " SELECT DISTINCT villeDepart FROM trajet ORDER BY villeDepart ";
                                         $result1 = mysqli_query($co, $sql1) or die("Requete pas comprise");
                                         while ($row1 = mysqli_fetch_array($result1)) {
-                                            echo "<option>" . $row1[villeDepart] . " </option> ";
+                                            echo "<option name=".$row1[villeDepart].">" . $row1[villeDepart] . " </option> ";
                                         }
                                         ?> 
                                     </select>
@@ -45,13 +45,13 @@ include '../pagetype/hautPage.php';
                             <div class="col-md-12 col-xs-12 col-sm-12">
                                 <div class="input-group">
                                     <label for="nom">Ville d'arrivée</label><br/>
-                                    <select name="VilleArrivee" id="VilleArrivee">
+                                    <select name="villeArrivee" id="villeArrivee">
                                         <?php
                                         $co=  connexionBdd();
-                                        $sql2 = " SELECT DISTINCT villeArrivee FROM trajet ";
+                                        $sql2 = " SELECT DISTINCT villeArrivee FROM trajet ORDER BY villeArrivee";
                                         $result2 = mysqli_query($co, $sql2) or die("Requete pas comprise");
                                         while ($row2 = mysqli_fetch_array($result2)) {
-                                            echo "<option>" . $row2[villeArrivee] . " </option> ";
+                                            echo "<option name=".$row2[villeArrivee].">" . $row2[villeArrivee] . " </option> ";
                                         }
                                         ?> 
                                     </select>
@@ -61,7 +61,7 @@ include '../pagetype/hautPage.php';
 
                         <div class="form-group">
                             <div class="col-md-12 col-xs-12 col-sm-12">
-                                <input type="date" name="DateDepart" placeholder="Date (YYYY-MM-DD)">
+                                <input type="date" name="dateDepart" placeholder="Date (YYYY-MM-DD)">
                             </div>
                         </div>
                        

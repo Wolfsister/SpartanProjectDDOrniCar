@@ -19,58 +19,37 @@ if (isset($_POST)) {
     }
 
     if ($erreurSaisie == true) {
-        echo '<a href ="./login.php"> Retour à la connexion. </a>';
+        echo '<a href ="./rechercheTrajet.php"> Retour à la recherche. </a>';
     }
-    
-    $rechercheMail;
-    $emailExiste=false;
 
     if ($erreurSaisie == false) {   
-        $email = $_POST["email"];
-        // echo 'email='.$_POST["email"];
+        $villeDepart=$_POST['villeDepart'];
+        $villeArrivee=$_POST['villeArrivee'];
+        $date=$_POST['dateDepart'];
+         
         $co = connexionBdd();
-        $rechercheMail = "SELECT * FROM user WHERE email='" . $email . "' ";
-        $resultat = mysqli_query($co, $rechercheMail);
+        $rechercheTrajet = "SELECT * FROM trajet WHERE villeDepart='".$villeDepart."' AND villeArrivee='".$villeArrivee."' AND anneeMoisJour='".$date."' ";
+        $resultat = mysqli_query($co, $rechercheTrajet);
         if (!$resultat) {
             printf("Error: %s\n", mysqli_error($co));
             exit();
         }
-        //$tab = mysqli_fetch_array($resultat);
-        //print_r($tab);
+       
         $nbLignes = mysqli_num_rows($resultat); // Affiche le nombre de lignes de la requete
-        //echo ($nbLignes);
+    
         
         if($nbLignes==0){
-            $emailExiste=false;
-            echo 'Il n\'existe pas d\'adresse mail à cette adresse, merci de vérifier votre saisie, ou cliquez <a href="./inscription.php">ici</a> pour créer un compte.';
+            echo 'Il n\'existe pas de trajet, désolé ! Proposez en un <a href="../code/proposerTrajet.php">ici</a> si vous le souhaitez !';
         }else{
-            $emailExiste=true;
-            echo 'Email existant <br />';
+            // affichage de tous les trajets
+            lectureTableauHtmlResultatRequete($resultat);
+            
         }
     }
 
-    
-    
-    if(($erreurSaisie==false)&&($emailExiste==true)){
-        $tabResultat=mysqli_fetch_array(mysqli_query($co, $rechercheMail));
-        $mdpReel=$tabResultat['motdepasse'];
-        $mdpPropose=$_POST['passe'];
-        if($mdpReel==$mdpPropose){
-            echo 'Bonne combinaison email/mot de passe, vous êtes désormais loggé !';
-//            $_SESSION['connected']=1;
-//            $_SESSION['pseudo']=$tabResultat['pseudo'];
-//            var_dump($_SESSION);
-//            echo 'connected ='.$_SESSION['connected'];
-//            header('Location: ../code/compte.php');         
-            
-            logClassic($_POST['email']);
-        }else{
-            echo 'Le mot de passe saisi n\'est pas le bon, veuillez réessayer en cliquant <a href="./inscription.php">ici</a>.';
-        }
-    }
 } else {
     echo 'Veuillez remplir les champs. <br />';
-    echo '<a href ="./login.php"> Retour à la connexion </a>';
+    echo '<a href ="./rechercheTrajet.php"> Retour à la recherche </a>';
 }
 ?>
 
