@@ -82,8 +82,6 @@ function logClassic($email) {
     $_SESSION['pseudo'] = $tabResultat['pseudo'];
     $_SESSION['id'] = $id;
 
-    var_dump($_SESSION);
-    echo 'connected =' . $_SESSION['connected'];
     header('Location: ../code/compte.php');
 }
 

@@ -1,10 +1,7 @@
 <?php
 $path='';
 $title = '';
-include '../pagetype/hautPage.php';
-?>
-
-<?php
+$contenu='';
 
 if (isset($_POST)) {
     $erreurSaisie = false;
@@ -57,7 +54,7 @@ if (isset($_POST)) {
         $mdpReel=$tabResultat['motdepasse'];
         $mdpPropose=$_POST['passe'];
         if($mdpReel==$mdpPropose){
-            echo 'Bonne combinaison email/mot de passe, vous êtes désormais loggé !';
+//            echo 'Bonne combinaison email/mot de passe, vous êtes désormais loggé !';
 //            $_SESSION['connected']=1;
 //            $_SESSION['pseudo']=$tabResultat['pseudo'];
 //            var_dump($_SESSION);
@@ -78,6 +75,6 @@ if (isset($_POST)) {
 
 
 <?php
-
+include '../pagetype/hautPage.php';
 include '../pagetype/basPage.php';
 ?>
