@@ -326,8 +326,54 @@ function nombrePlacesRestantes($idTrajet){
     return $nbPlacesRestantes;   
 }
 
-//function lienImageUser($pseudo){
-//   $lien='../ressources/'
-//}
+function recupererIdTrajetsEnTab($id){
+    
+    
+    $co = connexionBdd();
+    $tabTousTrajets = array();
+    $currentTime = date("Y-m-d");
+    //Faire aussi test sur l'heure
+    
+    //En conducteur
+    $reqTrajetsConducteur = "SELECT idTrajet FROM trajet as t WHERE anneeMoisJour<='" . $currentTime . "' AND t.idConducteur='" . $id . "' ";
+    $sqliCon = mysqli_query($co, $reqTrajetsConducteur);
+    while ($resultCon = mysqli_fetch_array($sqliCon)) {
+        foreach ($resultCon as $key => $value) {
+            if (is_integer($key)) {
+                $tabTousTrajets[] = $value;
+            }
+        }
+    }
+
+
+    //En passager
+    $reqTrajetsPassager = "SELECT p.idTrajet FROM passager as p, trajet as t WHERE anneeMoisJour<='" . $currentTime . "' AND p.idPassager='" . $id . "' AND p.idTrajet=t.idTrajet ";
+    $sqliPas = mysqli_query($co, $reqTrajetsPassager);
+    while ($resultPas = mysqli_fetch_array($sqliPas)) {
+        foreach ($resultPas as $key => $value) {
+            if (is_integer($key)) {
+                $tabTousTrajets[] = $value;
+            }
+        }
+    }
+
+    return $tabTousTrajets;
+}
+
+function affichageTrajetPourAvis($idTrajet){
+    $co=  connexionBdd();
+    $requete="SELECT * FROM trajet WHERE idTrajet='".$idTrajet."'";
+    $requeteSqli=  mysqli_query($co, $requete);
+    $tabTrajet=  lectureTableauPhpResultatRequete($requeteSqli);
+    $villeDepart=$tabTrajet['villeDepart'][0];
+    $villeArrivee=$tabTrajet['villeArrivee'][0];
+    $anneeMoisJour=$tabTrajet['anneeMoisJour'][0];
+    $date= date("d-m-Y", strtotime($anneeMoisJour));
+    $prix=$tabTrajet['prix'][0];
+    
+//    echo '<table><tr><th>Ville de Départ</th><th>Ville d\'Arrivée</th><th>Date</th><th>Prix</th><th>Donner Avis</th></tr>';
+    echo '<tr><td>'.$villeDepart.'</td><td>'.$villeArrivee.'</td><td>'.$date.'</td><td>'.$prix.' €</td><td><div class="col-md-12 col-xs-12 col-sm-12"><button type="submit" class="btn btn-default btn-lg btn-block" name="register">Donner Avis</button></div></td></tr>';
+    
+} 
 
 ?>
