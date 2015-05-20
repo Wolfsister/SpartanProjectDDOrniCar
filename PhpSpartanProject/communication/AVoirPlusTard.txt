@@ -3,6 +3,9 @@ Priorité : 1 important, 2 moins important..etc
 
 ------------------------------------------------------------------------
 
+
+0- Donner argent une fois que l'avis est donné, pas avant
+
 1- addVoiture que si le monsieur souhaite ajouter une voiture !!!! (js onClick)
 
 1- Corriger date dans la proposition d'un trajet

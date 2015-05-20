@@ -34,12 +34,11 @@ if (!empty($_POST)) {
     }
 
     if ($erreur == true) {
-        printf("<a href='add_voiture.php'> Retour à l'enregistrement de la voiture </a>");
+        printf("<a href='compte.php'> Retour à l'enregistrement de la voiture </a>");
     } else {
         //Récupération de la photo de profil de l'utilisateur
         $icone = $_FILES['imvoiture'];
         $iconeName = $icone['tmp_name'];
-        var_dump($_SESSION);
         $emplacementDeplacement = '../ressources/imagesVoitures/' . $_SESSION['id'] . '.jpg';
         move_uploaded_file($iconeName, $emplacementDeplacement);
 

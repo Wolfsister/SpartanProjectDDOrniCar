@@ -12,7 +12,7 @@ if ($_SESSION['id'] != 1) { //Si utilisateur n'est pas l'admin
                             <li><img src="../ressources/imagesProfiles/<?php echo $_SESSION['id']; ?>.jpg" alt='Image de Profil de l\'Utilisateur' style="width:30px; height:30px;"/></li>                       
                             <li>Bonjour <?php echo $_SESSION['pseudo']; ?></li>
                             <li><a href="../code/compte.php"><i class="fa fa-user"></i> Mon Compte</a></li>
-                            <li><a href="../code/mesTrajets.php"><i class="fa fa-user"></i> Trajets</a></li>
+                            <li><a href="../code/mesTrajets.php"><i class="fa fa-user"></i> Mes Trajets</a></li>
                             <li><a href="../code/logout.php">Déconnexion</a></li>
                         </ul>
                     </div>
@@ -34,7 +34,7 @@ if ($_SESSION['id'] != 1) { //Si utilisateur n'est pas l'admin
                             <li><img src="../ressources/imagesProfiles/<?php echo $_SESSION['id']; ?>.jpg" alt='Image de Profil de l\'Utilisateur' style="width:30px; height:30px;"/></li>                       
                             <li>Bonjour <?php echo $_SESSION['pseudo']; ?></li>
                             <li><a href="../code/compte.php"><i class="fa fa-user"></i> Mon Compte</a></li>
-                            <li><a href="../code/mesTrajets.php"><i class="fa fa-user"></i> Trajets</a></li>
+                            <li><a href="../code/mesTrajets.php"><i class="fa fa-user"></i> Mes Trajets</a></li>
                             <li><a href='../code/listeTousComptesAdmin.php'><i class="fa fa-user"></i> Tous Les Comptes</a></li>
                             <li><a href='../code/listeTousTrajetsAdmin.php'><i class="fa fa-user"></i> Tous Les Trajets</a></li>
                             <li><a href="logout.php">Déconnexion</a></li>
