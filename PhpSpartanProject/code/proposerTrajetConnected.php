@@ -51,7 +51,7 @@
 
                         <div class="form-group">
                             <div class="col-md-12 col-xs-12 col-sm-12">
-                                <input type="date" name="date" min='2015-05-16' placeholder="Date (YYYY-MM-DD)">
+                                <input type="text" name="date" id="datepicker" placeholder="Date">
                             </div>
                         </div>
                        

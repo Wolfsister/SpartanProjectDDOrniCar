@@ -1,5 +1,6 @@
 <!-- Latest jQuery form server -->
-<script src="https://code.jquery.com/jquery.min.js"></script>
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 <!-- Bootstrap JS form CDN -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -13,3 +14,12 @@
 
 <!-- Main Script -->
 <script src="../code/js/main.js"></script>
+
+<!-- CUSTOM -->
+<script>
+    $(function() {
+        if( $("#datepicker").length ) {
+            $("#datepicker").datepicker();
+        }
+    });
+</script>

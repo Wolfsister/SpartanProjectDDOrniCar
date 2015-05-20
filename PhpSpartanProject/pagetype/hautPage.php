@@ -1,3 +1,11 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+    if(empty($_SESSION['connected'])){
+        $_SESSION['connected']=0;
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
     <?php

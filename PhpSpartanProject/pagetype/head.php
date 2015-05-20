@@ -1,10 +1,4 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
-    if(empty($_SESSION['connected'])){
-        $_SESSION['connected']=0;
-    }
-}
 include '../code/fonctions.php';
 ?>
 <head>
@@ -31,6 +25,7 @@ include '../code/fonctions.php';
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="../code/css/owl.carousel.css">
     <link rel="stylesheet" href="../code/style.css">
     <link rel="stylesheet" href="../code/css/responsive.css">

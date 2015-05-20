@@ -17,15 +17,10 @@ Priorité : 1 important, 2 moins important..etc
 
 2- Redimensionner images (poids) lors de l'enregistrement pour gagner de la place
 
-4- Dans fonction lectureHTML, gérer si la requete est vide eventuellement.
-
-
 
 
 
 6- (MAJ DENIS : En fait pas trop grave parce que si on fait une recherche, le probleme se "compense" ) Regler probleme encodage de la BDD. (Orléans devient OrlÃ©ans )
-
-3- Reste tout le temps connecté sur site (sauf si déconnexion). Combien de temps durent variables de session ?!
 
 5- DORIAN : Dans les champs des formulaires, une partie de la saisie (le bas) est tronquée, regarde si t'y arrives à corriger, tu connais mieux cette partie de code que moi
 
@@ -34,20 +29,18 @@ Priorité : 1 important, 2 moins important..etc
 
 2- Page de validation acceptée apres inscription (js alert je crois)
 
+5- Mettre une limite de durée aux variables de session
+
 0 - Proposer identification par email ou Pseudo (pas compliqué normalement)
 
-1-ETABLIR CLAIREMENT QU'EST CE QU'ON MET EN VARIABLES SESSION/COOKIES.
-1=> Mettre infos dans cookies si le gars coche "se souvenir de moi" ???
-
-3- Corriger avis pour donner que à ceux avec qui on a voyagé
 
 2-Système de messagerie interne
 
-
+3- Gérer le "se souvenir de moi" au login
 
 
 -Optionnel : -trouver une MEILLEURE icone pour mettre sur l'onglet à cote du nom
              -changer image dans le formulaire pour l'année de naissance
              -Ouvrir les formulaires dans des popups
-             -Probleme accent enregistrement photo
+             -Changer distances css en %
              -Réduire taille des photos à l'enregistrement (je crois qu'il y a une fonction php existante pour ca)
