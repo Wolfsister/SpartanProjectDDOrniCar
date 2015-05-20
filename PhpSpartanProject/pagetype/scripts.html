@@ -19,7 +19,8 @@
 <script>
     $(function() {
         if( $("#datepicker").length ) {
-            $("#datepicker").datepicker({dateFormat: 'yy-mm-dd'});
+            var dateActuelle=new Date();
+            $("#datepicker").datepicker({dateFormat: 'yy-mm-dd', minDate: dateActuelle});
         }
     });
 </script>
