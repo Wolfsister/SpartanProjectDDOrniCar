@@ -23,7 +23,7 @@ include '../pagetype/hautPage.php';
 //    print_r($tabIdTrajet);
     $tabIdTrajet=  recupererIdTrajetsEnTab('35');
     
-    echo '<table><tr><th>Ville de Départ</th><th>Ville d\'Arrivée</th><th>Date</th><th>Prix</th><th>Donner Avis</th></tr>';
+    echo '<table><tr><th>Ville de Départ</th><th>Ville d\'Arrivée</th><th>Date</th><th>Prix</th><th></th></tr>';
     foreach ($tabIdTrajet as $key => $value) {
         affichageTrajetPourAvis($value);
     }

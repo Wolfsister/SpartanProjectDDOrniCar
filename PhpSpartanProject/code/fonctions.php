@@ -1,4 +1,5 @@
 <?php
+
 function connexionBdd() {
     $conn = new mysqli('localhost', 'root', '', 'testornicar');
     //$conn = new mysqli('mysql.hostinger.fr', 'u885690161_admin', 'doriandenis', 'u885690161_orni');
@@ -65,7 +66,7 @@ function logRightAfterRegister($pseudo) {
     $_SESSION['id'] = $id;
 
     header('Location: ../code/compte.php');
-    
+
 //    echo '<script type = "text/javascript">alert("Inscription Réussie !")</script> ';
 //    echo '<script type="text/javascript"> document.location.href="../code/compte.php"    </script>';
 }
@@ -201,13 +202,13 @@ function insertIntoVoiture($idUser, $marque, $modele, $couleur, $annee, $image) 
     echo $requeteInsert;
     mysqli_query($co, $requeteInsert);
     //Update idVoiture dans tuple User
-    $requeteUpdate= "UPDATE user SET idVoiture='".$idVoiture."' WHERE idUser='".$idUser."'  ";
+    $requeteUpdate = "UPDATE user SET idVoiture='" . $idVoiture . "' WHERE idUser='" . $idUser . "'  ";
     mysqli_query($co, $requeteUpdate);
 }
 
 function insertIntoTrajet($idConducteur, $villeDepart, $villeArrivee, $prix, $anneeMoisJour, $heure, $minute, $nbPlaces) { //$anneMoisJour : YYYY-MM-DD
     $co = connexionBdd();
-    $requete = "INSERT INTO trajet VALUES (NULL, '" . $idConducteur . "', '" . $villeDepart . "', '" . $villeArrivee . "', '" . $prix . "', '" . $anneeMoisJour . "', '" . $heure . "', '" . $minute . "', '".$nbPlaces."' )";
+    $requete = "INSERT INTO trajet VALUES (NULL, '" . $idConducteur . "', '" . $villeDepart . "', '" . $villeArrivee . "', '" . $prix . "', '" . $anneeMoisJour . "', '" . $heure . "', '" . $minute . "', '" . $nbPlaces . "' )";
     $doQuery = mysqli_query($co, $requete);
     if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -215,7 +216,7 @@ function insertIntoTrajet($idConducteur, $villeDepart, $villeArrivee, $prix, $an
 }
 
 function insertIntoAvis($idDonneur, $idReceveur, $idTrajet, $note) {
-    $co = connexionBdd();   
+    $co = connexionBdd();
     $requete = "INSERT INTO avis VALUES ('" . $idDonneur . "', '" . $idReceveur . "', '" . $idTrajet . "', '" . $note . "' )";
     $doQuery = mysqli_query($co, $requete);
     if (mysqli_connect_errno()) {
@@ -232,31 +233,31 @@ function insertIntoPassager($idPassager, $idTrajet) {
     }
 }
 
-function aDonnéAvis($idDonneur, $idReceveur, $idTrajet){
-    $avisDonné=false;
+function aDonnéAvis($idDonneur, $idReceveur, $idTrajet) {
+    $avisDonné = false;
     $co = connexionBdd();
-    $requete = "SELECT * FROM avis WHERE idDonneur='".$idDonneur."' AND idReceveur='".$idReceveur."' AND idTrajet='".$idTrajet."' ";
+    $requete = "SELECT * FROM avis WHERE idDonneur='" . $idDonneur . "' AND idReceveur='" . $idReceveur . "' AND idTrajet='" . $idTrajet . "' ";
     $doQuery = mysqli_query($co, $requete);
-    if(mysqli_num_rows($doQuery)>0){
-        $avisDonné=true;
+    if (mysqli_num_rows($doQuery) > 0) {
+        $avisDonné = true;
     }
     return $avisDonné;
 }
 
-function donnerAvis($idDonneur, $idReceveur, $idTrajet,$note){ 
-    if(aDonnéAvis($idDonneur, $idReceveur, $idTrajet)){
+function donnerAvis($idDonneur, $idReceveur, $idTrajet, $note) {
+    if (aDonnéAvis($idDonneur, $idReceveur, $idTrajet)) {
         echo 'Vous avez déjà donné un avis à cet utilisateur pour ce trajet.';
-    }else{
+    } else {
         insertIntoAvis($idDonneur, $idReceveur, $idTrajet, $note);
     }
 }
 
-function calculNoteMoyenne($idUser){ //Permet de calculer la note moyenne d'un utilisateur en fonction de toutes les notes qu'il a recu
+function calculNoteMoyenne($idUser) { //Permet de calculer la note moyenne d'un utilisateur en fonction de toutes les notes qu'il a recu
     $co = connexionBdd();
-    $requete = "SELECT avg(note) FROM avis WHERE idReceveur='".$idUser."' ";
+    $requete = "SELECT avg(note) FROM avis WHERE idReceveur='" . $idUser . "' ";
     $r = mysqli_query($co, $requete);
     return mysqli_fetch_array($r)['avg(note)'];
-    
+
     // Marche, mais diminuer la précision de la note, une note au dixième suffit
 }
 
@@ -269,71 +270,75 @@ function chercherVille($villeArrivee) {
 }
 
 function lectureTableauHtmlResultatRequete($objetMysqliquery) { // simple ebauche
-    echo '<table class="tableauAffichageBDD"><tr>';
+    if (mysqli_num_rows($objetMysqliquery) > 0) {
+        echo '<table class="tableauAffichageBDD"><tr>';
 
-    $premieresValeurs=array();
-    foreach ($tab1= mysqli_fetch_array($objetMysqliquery) as $key => $value) { //Récupère les noms des colonnes ainsi que le premier tuple
-        if (!is_int($key)) {
-            echo '<th>' . $key . '</th>';
-            $premieresValeurs[]=$value;
-        }
-    }
-    echo '</tr>';
-    echo '<tr>';
-    foreach ($premieresValeurs as $key => $value) { //Met le premier tuple dans le tableau
-        echo '<td>' . $value . '</td>';
-    }
-    echo '</tr>';
-    while ($tab = mysqli_fetch_array($objetMysqliquery)) { //Ajoute tous les tuples suivants dans le tableau
-        echo '<tr>';
-        foreach ($tab as $key => $value) {
+        $premieresValeurs = array();
+        foreach ($tab1 = mysqli_fetch_array($objetMysqliquery) as $key => $value) { //Récupère les noms des colonnes ainsi que le premier tuple
             if (!is_int($key)) {
-                echo '<td>' . $value . '</td>';
+                echo '<th>' . $key . '</th>';
+                $premieresValeurs[] = $value;
             }
         }
         echo '</tr>';
+        echo '<tr>';
+        foreach ($premieresValeurs as $key => $value) { //Met le premier tuple dans le tableau
+            echo '<td>' . $value . '</td>';
+        }
+        echo '</tr>';
+        while ($tab = mysqli_fetch_array($objetMysqliquery)) { //Ajoute tous les tuples suivants dans le tableau
+            echo '<tr>';
+            foreach ($tab as $key => $value) {
+                if (!is_int($key)) {
+                    echo '<td>' . $value . '</td>';
+                }
+            }
+            echo '</tr>';
+        }
+        echo '</table>';
     }
-    echo '</table>';
 }
 
-function lectureTableauPhpResultatRequete($objetMySql){
-    $tab;
-   
-    while ($tabSql=  mysqli_fetch_array($objetMySql)){
-        
-        foreach ($tabSql as $key => $value) {
-            if(!is_int($key)){
-                $tab[$key][]=$value;
+function lectureTableauPhpResultatRequete($objetMySql) {
+
+    if (mysqli_num_rows($objetMySql) > 0) {
+        $tab;
+
+        while ($tabSql = mysqli_fetch_array($objetMySql)) {
+
+            foreach ($tabSql as $key => $value) {
+                if (!is_int($key)) {
+                    $tab[$key][] = $value;
+                }
             }
         }
+        return $tab;
     }
-    return $tab; 
 }
 
-function nombrePlacesRestantes($idTrajet){
-    $co=  connexionBdd();
+function nombrePlacesRestantes($idTrajet) {
+    $co = connexionBdd();
     //Savoir combien de places étaient disponibles au départ pour le trajet
-    $requeteNbPlaces= "SELECT * FROM trajet WHERE idTrajet='".$idTrajet."'  ";
-    $sqlireq=  mysqli_query($co, $requeteNbPlaces);
-    $tabNbPlaces=lectureTableauPhpResultatRequete($sqlireq);
-    $nbPlacesOriginales=$tabNbPlaces['nombrePlaces'][0];
+    $requeteNbPlaces = "SELECT * FROM trajet WHERE idTrajet='" . $idTrajet . "'  ";
+    $sqlireq = mysqli_query($co, $requeteNbPlaces);
+    $tabNbPlaces = lectureTableauPhpResultatRequete($sqlireq);
+    $nbPlacesOriginales = $tabNbPlaces['nombrePlaces'][0];
     //Savoir combien de passagers ont deja réservé ce voyage
-    $requeteNbPassagers= "SELECT * FROM passager WHERE idTrajet='".$idTrajet."'  ";
-    $sqlireqNbPassagers=  mysqli_query($co, $requeteNbPassagers);
-    $nbPlacesPrises= mysqli_num_rows($sqlireqNbPassagers);
-   
-    $nbPlacesRestantes= ($nbPlacesOriginales) - ($nbPlacesPrises);
-    return $nbPlacesRestantes;   
+    $requeteNbPassagers = "SELECT * FROM passager WHERE idTrajet='" . $idTrajet . "'  ";
+    $sqlireqNbPassagers = mysqli_query($co, $requeteNbPassagers);
+    $nbPlacesPrises = mysqli_num_rows($sqlireqNbPassagers);
+
+    $nbPlacesRestantes = ($nbPlacesOriginales) - ($nbPlacesPrises);
+    return $nbPlacesRestantes;
 }
 
-function recupererIdTrajetsEnTab($id){
-    
-    
+function recupererIdTrajetsEnTab($id) {
+
+
     $co = connexionBdd();
     $tabTousTrajets = array();
     $currentTime = date("Y-m-d");
     //Faire aussi test sur l'heure
-    
     //En conducteur
     $reqTrajetsConducteur = "SELECT idTrajet FROM trajet as t WHERE anneeMoisJour<='" . $currentTime . "' AND t.idConducteur='" . $id . "' ";
     $sqliCon = mysqli_query($co, $reqTrajetsConducteur);
@@ -360,20 +365,19 @@ function recupererIdTrajetsEnTab($id){
     return $tabTousTrajets;
 }
 
-function affichageTrajetPourAvis($idTrajet){
-    $co=  connexionBdd();
-    $requete="SELECT * FROM trajet WHERE idTrajet='".$idTrajet."'";
-    $requeteSqli=  mysqli_query($co, $requete);
-    $tabTrajet=  lectureTableauPhpResultatRequete($requeteSqli);
-    $villeDepart=$tabTrajet['villeDepart'][0];
-    $villeArrivee=$tabTrajet['villeArrivee'][0];
-    $anneeMoisJour=$tabTrajet['anneeMoisJour'][0];
-    $date= date("d-m-Y", strtotime($anneeMoisJour));
-    $prix=$tabTrajet['prix'][0];
-    
+function affichageTrajetPourAvis($idTrajet) {
+    $co = connexionBdd();
+    $requete = "SELECT * FROM trajet WHERE idTrajet='" . $idTrajet . "'";
+    $requeteSqli = mysqli_query($co, $requete);
+    $tabTrajet = lectureTableauPhpResultatRequete($requeteSqli);
+    $villeDepart = $tabTrajet['villeDepart'][0];
+    $villeArrivee = $tabTrajet['villeArrivee'][0];
+    $anneeMoisJour = $tabTrajet['anneeMoisJour'][0];
+    $date = date("d-m-Y", strtotime($anneeMoisJour));
+    $prix = $tabTrajet['prix'][0];
+
 //    echo '<table><tr><th>Ville de Départ</th><th>Ville d\'Arrivée</th><th>Date</th><th>Prix</th><th>Donner Avis</th></tr>';
-    echo '<tr><td>'.$villeDepart.'</td><td>'.$villeArrivee.'</td><td>'.$date.'</td><td>'.$prix.' €</td><td><div class="col-md-12 col-xs-12 col-sm-12"><button type="submit" class="btn btn-default btn-lg btn-block" name="register">Donner Avis</button></div></td></tr>';
-    
-} 
+    echo '<tr><td>' . $villeDepart . '</td><td>' . $villeArrivee . '</td><td>' . $date . '</td><td>' . $prix . ' €</td><td><div class="col-md-12 col-xs-12 col-sm-12"><button type="submit" class="btn btn-default btn-lg btn-block" name="register">Donner Avis</button></div></td></tr>';
+}
 
 ?>

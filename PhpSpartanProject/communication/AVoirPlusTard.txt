@@ -7,7 +7,9 @@ Priorité : 1 important, 2 moins important..etc
 
 1- Corriger date dans la proposition d'un trajet
 
-2- Faire un bien meilleur affichage de la recherche de trajet
+3- (Recuperer ce qu'il y a dans avis)Faire un bien meilleur affichage de la recherche de trajet
+
+
 
 4- Ajouter options de modifier informations de notre profil
 
