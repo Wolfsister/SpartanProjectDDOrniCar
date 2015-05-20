@@ -3,8 +3,6 @@ Priorité : 1 important, 2 moins important..etc
 
 ------------------------------------------------------------------------
 
-1- Enregistrer Voiture probleme
-
 1- addVoiture que si le monsieur souhaite ajouter une voiture !!!! (js onClick)
 
 1- Corriger date dans la proposition d'un trajet
@@ -13,7 +11,7 @@ Priorité : 1 important, 2 moins important..etc
 
 4- Ajouter options de modifier informations de notre profil
 
-3- Si l'utilisateur n'a pas d'image dans le répertoire, mettre l'image par défaut
+3- Si l'utilisateur n'a pas d'image dans le répertoire, mettre l'image par défaut => Faire fonction : si id.jpg retourne quelque chose, ok , sinon retourner photo par défaut
 
 2- Redimensionner images (poids) lors de l'enregistrement pour gagner de la place
 

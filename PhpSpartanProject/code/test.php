@@ -6,51 +6,26 @@ include '../pagetype/hautPage.php';
 
 <div class="container">
     <?php
-//$co = connexionBdd();
-//$sql2 = " SELECT * FROM user";
-//$result2 = mysqli_query($co, $sql2) or die("Requete pas comprise");
-//DONNERAVIS('5', '4', '9', '2');
-//
-//CALCULNOTEMOYENNE('4');
-//$idTrajet='9';
-//echo nombrePlacesRestantes($idTrajet);
-//echo '<pre>';
-//print_r($tab2);
-//echo '</pre>';
+    //var_dump($_SESSION);
+
+    $date1 = date("d-m-Y");
+    //echo $date;
+    $heure = date("H-i");
+    //echo $heure;
+
+
+//    $datetime1 = new DateTime('2009-10-11');
+//    $datetime2 = new DateTime('2009-11-13');
+//    $interval = $datetime1->diff($datetime2);   // dt2 - dt1
+//    echo $interval->format('%R%a days');
+//    if( $datetime1<$datetime2){echo 'OK' ;}
     
-    var_dump($_SESSION);
-    $id=  getIdUserByPseudo('TetsPhoto');
-    echo "ID =".$id;
-    ?>
-<!--    <div class='monCompte'>
-        <section id='profilMonCompte'>
-            <h1>Mon Profil :</h1>
-            <ul>
-                <li>Pseudo</li>
-                <li>Nom</li>
-                <li>Prénom</li>
-                <li>Solde</li>
-                <li>Nombre de Trajets Effectués</li>
-                <li>Photo à mettre dans l'encart</li>
-                
-            </ul>
-        </section>
-        <section id='profilVoiture'>
-            <h1>Ma Voiture</h1>
-            //Si pas de voiture : Bouton Ajouter une voiture, en disant avant que x ne possède pas de voiture, sinon afficher :
-            <ul>
-                <li>Marque</li>
-                <li>Modèle</li>
-                <li>Couleur</li>
-                <li>Année de Mise en Circulation</li>
-                <li>Photo à mettre dans l'encart</li>
-                
-            </ul>
-        </section>
-    </div>    
-
-</div>-->
-
+    
+    $currentTime=date("Y-m-d");
+    $reqTrajets="SELECT * FROM trajet as t, passager as p WHERE anneeMoisJour<'".$currentTime."' AND ((t.idConducteur='".$_SESSION['id']."') OR (t.idTrajet=p.idTrajet AND p.idPassager='".$_SESSION['id']."')) ";
+    echo $reqTrajets;
+   
+?>
 
 <?php
 include '../pagetype/basPage.php';
