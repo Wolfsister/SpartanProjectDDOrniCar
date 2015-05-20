@@ -122,7 +122,7 @@ function afficherAjoutVoiture(){
         <div class="form-group">
             <div class="col-md-12 col-xs-12 col-sm-12">
                 <div class="input-group">
-                    <label for="icone">Image de la voiture (JPG, PNG ou GIF | max. 200 Ko) :</label><br />
+                    <label for="icone">Image de la voiture (JPG, PNG ou GIF) :</label><br />
                     <input type="file" name="imvoiture" accept="image/*" id="icone" /><br />
                 </div>
             </div>

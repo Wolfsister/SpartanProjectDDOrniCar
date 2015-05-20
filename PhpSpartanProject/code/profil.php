@@ -14,13 +14,13 @@ $reqPassager = "SELECT * FROM passager WHERE idPassager='" . $_SESSION['id'] . "
 $sqlquerypassager = mysqli_query($co, $reqPassager);
 $nbTrajetsEnPassager = mysqli_num_rows($sqlquerypassager);
 $nbTrajetsTotal = $nbTrajetsEnConducteur + $nbTrajetsEnPassager;
-$photo = '../ressources/imagesProfiles/' . $_SESSION['pseudo'] . '.jpg';
+$photo = '../ressources/imagesProfiles/' . $_SESSION['id'] . '.jpg';
 ?>
 
 <section id='profilMonCompte'>
 
     <h1>Mon Profil </h1>
-    <img class="ImageProfilMonCompte"  src='../ressources/imagesProfiles/<?php echo $pseudo . ".jpg"; ?>' alt='Image de Profil'/>
+    <img class="ImageProfilMonCompte"  src='<?php echo $photo;?>' alt='Image de Profil'/>
 
     <ul>
         <li>Pseudo : <?php echo $pseudo; ?></li>

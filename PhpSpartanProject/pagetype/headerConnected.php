@@ -9,7 +9,7 @@ if ($_SESSION['id'] != 1) { //Si utilisateur n'est pas l'admin
                 <div class="col-md-8">
                     <div class="user-menu">
                         <ul>
-                            <li><img src="../ressources/imagesProfiles/<?php echo $_SESSION['pseudo']; ?>.jpg" alt='Image de Profil de l\'Utilisateur' style="width:30px; height:30px;"/></li>                       
+                            <li><img src="../ressources/imagesProfiles/<?php echo $_SESSION['id']; ?>.jpg" alt='Image de Profil de l\'Utilisateur' style="width:30px; height:30px;"/></li>                       
                             <li>Bonjour <?php echo $_SESSION['pseudo']; ?></li>
                             <li><a href="../code/compte.php"><i class="fa fa-user"></i> Mon Compte</a></li>
                             <li><a href="../code/mesTrajets.php"><i class="fa fa-user"></i> Trajets</a></li>
@@ -31,7 +31,7 @@ if ($_SESSION['id'] != 1) { //Si utilisateur n'est pas l'admin
                 <div class="col-md-8">
                     <div class="user-menu">
                         <ul>
-                            <li><img src="../ressources/imagesProfiles/<?php echo $_SESSION['pseudo']; ?>.jpg" alt='Image de Profil de l\'Utilisateur' style="width:30px; height:30px;"/></li>                       
+                            <li><img src="../ressources/imagesProfiles/<?php echo $_SESSION['id']; ?>.jpg" alt='Image de Profil de l\'Utilisateur' style="width:30px; height:30px;"/></li>                       
                             <li>Bonjour <?php echo $_SESSION['pseudo']; ?></li>
                             <li><a href="../code/compte.php"><i class="fa fa-user"></i> Mon Compte</a></li>
                             <li><a href="../code/mesTrajets.php"><i class="fa fa-user"></i> Trajets</a></li>

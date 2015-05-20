@@ -40,7 +40,7 @@ if (!empty($_POST)) {
         $icone = $_FILES['imvoiture'];
         $iconeName = $icone['tmp_name'];
         var_dump($_SESSION);
-        $emplacementDeplacement = '../ressources/imagesVoitures/' . $_SESSION['pseudo'] . '.jpg';
+        $emplacementDeplacement = '../ressources/imagesVoitures/' . $_SESSION['id'] . '.jpg';
         move_uploaded_file($iconeName, $emplacementDeplacement);
 
         // Ajout dans BDD

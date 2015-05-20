@@ -19,6 +19,8 @@ include '../pagetype/hautPage.php';
 //echo '</pre>';
     
     var_dump($_SESSION);
+    $id=  getIdUserByPseudo('TetsPhoto');
+    echo "ID =".$id;
     ?>
 <!--    <div class='monCompte'>
         <section id='profilMonCompte'>
