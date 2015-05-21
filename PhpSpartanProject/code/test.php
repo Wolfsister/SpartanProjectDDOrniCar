@@ -26,7 +26,7 @@ include '../pagetype/hautPage.php';
 //    $tab=  getUserById(1);
 //    
 //    print_r($tab);
-    
+
     affichagePersonnesPourAvis(9, 4);
     
     ?>

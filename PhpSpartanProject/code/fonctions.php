@@ -421,12 +421,12 @@ function affichagePersonnesPourAvis($idTrajet, $idUser) {
             if ($key == 'idPassager') {
                 foreach ($valueinit as $key2 => $value) {
                     $nbLignes++;
-                    echo $nbLignes;
-                    $tabUser = getUserById($value);
+                    $tabUser = getUserById($value);                  
                     $nom = $tabUser['nom'];
                     $prenom = $tabUser['prenom'];
                     $pseudo = $tabUser['pseudo'];
                     $note = $tabUser['note'];
+                    //Jusque là pas de soucis
                     $photo = '<img src="../ressources/imagesProfiles/' . $value . '.jpg" width="20px" heigth="20px" />';
                     $select = "<select name='" . $nbLignes . "'><option value=1>1<option value=2>2<option value=3>3<option value=4>4<option value=5>5 </select>";
 
@@ -441,7 +441,7 @@ function affichagePersonnesPourAvis($idTrajet, $idUser) {
     }else {
         
     }
-
+    echo '</table>';
 
     echo '</form>';
 //Fin de form
