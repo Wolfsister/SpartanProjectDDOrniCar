@@ -5,6 +5,11 @@ Priorité : 1 important, 2 moins important..etc
 
 
 0- Donner argent une fois que l'avis est donné, pas avant
+0- Fonction regardant si idUser a donné avis à tous ces passagers avant d'afficher le trajet
+
+1- Faire l'inscription a un trajet !!!
+
+1- Pour avis, voir si les trajets ont déjà été notés par l'utilisateur, et si le mec a pas voyagé tout seul
 
 2- Tester si en changeant format date du datepicker cela enregistre bien dans la BDD
 

@@ -7,8 +7,12 @@ include '../pagetype/hautPage.php';
 <div class="container">
  
     
-    // Faire un select avec toutes les notes de 1 à 5
-
+<?php 
+$idTrajet=$_POST['idTrajet'];
+echo $idTrajet;
+$idUser=$_SESSION['id'];
+affichagePersonnesPourAvis($idTrajet, $idUser);
+?>
 
 </div>
 

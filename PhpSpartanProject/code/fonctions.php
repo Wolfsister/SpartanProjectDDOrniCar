@@ -493,4 +493,16 @@ function affichagePersonnesPourAvis($idTrajet, $idUser) {
 //Fin de form
 }
 
+function aDejaDonneAvis($idUser, $idReceveur, $idTrajet){
+    $avisDejaDonne=false;
+    $co=  connexionBdd();
+    $req= "SELECT * FROM avis WHERE idDonneur='".$idUser."' AND idReceveur='".$idReceveur."' AND idTrajet='".$idTrajet."' ";
+    $sql= mysqli_query($co, $req);
+    $nbLignes= mysqli_num_rows($sql);
+    if($nbLignes!=0){
+        $avisDejaDonne=true;
+    }
+    return $avisDejaDonne;
+}
+
 ?>
