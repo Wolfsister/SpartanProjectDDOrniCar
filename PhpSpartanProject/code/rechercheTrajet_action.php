@@ -5,7 +5,7 @@ include '../pagetype/hautPage.php';
 ?>
 
 <?php
-
+//echo $_POST['date'];
 if (isset($_POST)) {
     $erreurSaisie = false;
     if (empty($_POST["villeDepart"])) {
@@ -25,7 +25,7 @@ if (isset($_POST)) {
     if ($erreurSaisie == false) {   
         $villeDepart=$_POST['villeDepart'];
         $villeArrivee=$_POST['villeArrivee'];
-        $date=$_POST['dateDepart'];
+        $date=$_POST['date'];
          
         $co = connexionBdd();
         $rechercheTrajet = "SELECT * FROM trajet WHERE villeDepart='".$villeDepart."' AND villeArrivee='".$villeArrivee."' AND anneeMoisJour='".$date."' ";

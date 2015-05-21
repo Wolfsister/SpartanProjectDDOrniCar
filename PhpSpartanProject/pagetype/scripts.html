@@ -18,9 +18,9 @@
 <!-- CUSTOM -->
 <script>
     $(function() {
-        if( $("#datepicker").length ) {
+        if( $(".datepicker").length ) {
             var dateActuelle=new Date();
-            $("#datepicker").datepicker({dateFormat: 'yy-mm-dd', minDate: dateActuelle});
+            $(".datepicker").datepicker({dateFormat: 'yy-mm-dd', minDate: dateActuelle});
         }
     });
 </script>

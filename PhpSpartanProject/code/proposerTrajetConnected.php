@@ -51,7 +51,7 @@
 
                         <div class="form-group">
                             <div class="col-md-12 col-xs-12 col-sm-12">
-                                <input type="text" name="date" id="datepicker" placeholder="Date">
+                                <input type="text" name="date" class="datepicker" placeholder="Date">
                             </div>
                         </div>
                        
