@@ -12,6 +12,16 @@
     border: 1px solid #1ABC9C;    
 }
 
+.tableauAffichageBDD th{
+    text-align: center;
+    background-color: #66ffff;
+}
+
+.tableauAffichageBDD tr{
+    text-align: center;
+    border: solid 1px;
+}
+
 #profilVoiture, #profilMonCompte{
     width: 45%;
     border-style: solid;

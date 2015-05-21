@@ -12,6 +12,8 @@ include '../pagetype/hautPage.php';
     //echo $date;
     $heure = date("H-i");
     //echo $heure;
+    //$year=  date("Y");
+    //echo $year;
 //    $datetime1 = new DateTime('2009-10-11');
 //    $datetime2 = new DateTime('2009-11-13');
 //    $interval = $datetime1->diff($datetime2);   // dt2 - dt1
@@ -27,7 +29,10 @@ include '../pagetype/hautPage.php';
 //    
 //    print_r($tab);
 
-    affichagePersonnesPourAvis(9, 1);
+    //affichagePersonnesPourAvis(9, 1);
+    
+    //if(aDonnéAvis(1,4,8)){echo 'AVISDONNE';}else{echo 'nope';}
+    
     
     ?>
 
