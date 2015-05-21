@@ -421,7 +421,7 @@ function affichagePersonnesPourAvis($idTrajet, $idUser) {
             if ($key == 'idPassager') {
                 foreach ($valueinit as $key2 => $value) {
                     $nbLignes++;
-                    $tabUser = getUserById($value);                  
+                    $tabUser = getUserById($value);
                     $nom = $tabUser['nom'];
                     $prenom = $tabUser['prenom'];
                     $pseudo = $tabUser['pseudo'];
@@ -436,13 +436,59 @@ function affichagePersonnesPourAvis($idTrajet, $idUser) {
                 }
             }
         }
-// echo submit
-        echo '<input type="hidden" name="nbPassager" value="' . $nbLignes . '" >';
-    }else {
-        
+    } else {
+        //Recupération du conducteur
+        $nbLignes = 1;
+
+        $requeteC = "SELECT * FROM trajet WHERE idTrajet='" . $idTrajet . "' ";
+        $reqSql = mysqli_query($co, $requeteC);
+        $tabC = lectureTableauPhpResultatRequete($reqSql);
+        $nbLignes++;
+        $idConducteur = $tabC['idConducteur'][0];
+        $tabUser = getUserById($idConducteur);
+        $nom = $tabUser['nom'];
+        $prenom = $tabUser['prenom'];
+        $pseudo = $tabUser['pseudo'];
+        $note = $tabUser['note'];
+
+        $photo = '<img src="../ressources/imagesProfiles/' . $idConducteur . '.jpg" width="20px" heigth="20px" />';
+        $select = "<select name='" . $nbLignes . "'><option value=1>1<option value=2>2<option value=3>3<option value=4>4<option value=5>5 </select>";
+
+
+        echo '<tr><td>' . $photo . '</td><td>' . $pseudo . '</td><td>' . $nom . '</td><td>' . $prenom . '</td><td>' . $note . '</td><td>' . $select . '</td>';
+        echo '<input type="hidden" name="id' . $nbLignes . '" value=' . $idConducteur . ' />';
+
+
+        $requetePassager = "SELECT * FROM passager WHERE idTrajet ='" . $idTrajet . "' ";
+        $sqlPassager = mysqli_query($co, $requetePassager);
+        $tabPassager = lectureTableauPhpResultatRequete($sqlPassager);
+        foreach ($tabPassager as $key => $valueinit) {
+            if ($key == 'idPassager') {
+                foreach ($valueinit as $key2 => $value) {
+                    if ($value != $idUser) {
+                        $nbLignes++;
+                        $tabUser = getUserById($value);
+                        $nom = $tabUser['nom'];
+                        $prenom = $tabUser['prenom'];
+                        $pseudo = $tabUser['pseudo'];
+                        $note = $tabUser['note'];
+                        //Jusque là pas de soucis
+                        $photo = '<img src="../ressources/imagesProfiles/' . $value . '.jpg" width="20px" heigth="20px" />';
+                        $select = "<select name='" . $nbLignes . "'><option value=1>1<option value=2>2<option value=3>3<option value=4>4<option value=5>5 </select>";
+
+
+                        echo '<tr><td>' . $photo . '</td><td>' . $pseudo . '</td><td>' . $nom . '</td><td>' . $prenom . '</td><td>' . $note . '</td><td>' . $select . '</td>';
+                        echo '<input type="hidden" name="id' . $nbLignes . '" value=' . $value . ' />';
+                    }
+                }
+            }
+        }
     }
+
+    echo '<input type="hidden" name="nbPassager" value="' . $nbLignes . '" >';
     echo '</table>';
 
+    echo '<div class="col-md-12 col-xs-12 col-sm-12"><button type="submit" class="btn btn-default btn-lg btn-block" name="register">Valider tous les Avis</button> ';
     echo '</form>';
 //Fin de form
 }

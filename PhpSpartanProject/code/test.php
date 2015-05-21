@@ -27,7 +27,7 @@ include '../pagetype/hautPage.php';
 //    
 //    print_r($tab);
 
-    affichagePersonnesPourAvis(9, 4);
+    affichagePersonnesPourAvis(9, 1);
     
     ?>
 

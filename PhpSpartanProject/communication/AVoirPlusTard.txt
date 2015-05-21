@@ -24,7 +24,7 @@ Priorité : 1 important, 2 moins important..etc
 
 2- Redimensionner images (poids) lors de l'enregistrement pour gagner de la place
 
-
+2- A la reservation, enlever montant du solde à l'utilisateur
 
 
 6- (MAJ DENIS : En fait pas trop grave parce que si on fait une recherche, le probleme se "compense" ) Regler probleme encodage de la BDD. (Orléans devient OrlÃ©ans )
