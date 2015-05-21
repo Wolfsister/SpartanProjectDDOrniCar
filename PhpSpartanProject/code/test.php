@@ -17,20 +17,17 @@ include '../pagetype/hautPage.php';
 //    $interval = $datetime1->diff($datetime2);   // dt2 - dt1
 //    echo $interval->format('%R%a days');
 //    if( $datetime1<$datetime2){echo 'OK' ;}
+    
+    $co = connexionBdd();
+//    $requete = " SELECT * FROM passager WHERE idTrajet=9 ";
+//    $reqSql = mysqli_query($co, $requete);
+//    $tabC = lectureTableauPhpResultatRequete($reqSql);
 
-
-//    $tabIdTrajet=  recupererIdTrajetsEnTab($_SESSION['id']);
-//    print_r($tabIdTrajet);
-    $tabIdTrajet=  recupererIdTrajetsEnTab('35');
+//    $tab=  getUserById(1);
+//    
+//    print_r($tab);
     
-    echo '<table><tr><th>Ville de Départ</th><th>Ville d\'Arrivée</th><th>Date</th><th>Prix</th><th></th></tr>';
-    foreach ($tabIdTrajet as $key => $value) {
-        affichageTrajetPourAvis($value);
-    }
-    
-    echo '</table>';
-    
-    
+    affichagePersonnesPourAvis(9, 4);
     
     ?>
 

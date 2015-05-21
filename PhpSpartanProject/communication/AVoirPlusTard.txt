@@ -16,7 +16,7 @@ Priorité : 1 important, 2 moins important..etc
 
 3- (Recuperer ce qu'il y a dans avis)Faire un bien meilleur affichage de la recherche de trajet
 
-
+5- Dans avis action, mettre etoile plutôt qu'un select avec des notes
 
 4- Ajouter options de modifier informations de notre profil
 

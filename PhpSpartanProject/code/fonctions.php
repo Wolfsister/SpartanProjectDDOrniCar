@@ -2,7 +2,7 @@
 
 function connexionBdd() {
     $conn = new mysqli('localhost', 'root', '', 'testornicar');
-    //$conn = new mysqli('mysql.hostinger.fr', 'u885690161_admin', 'doriandenis', 'u885690161_orni');
+//$conn = new mysqli('mysql.hostinger.fr', 'u885690161_admin', 'doriandenis', 'u885690161_orni');
     return $conn;
 }
 
@@ -13,15 +13,15 @@ function passerConnecté() {
 function logout() {
     session_destroy();
     $_SESSION['connected'] = 'No';
-    //unset Cookies
+//unset Cookies
     header('Location: ../code/index.php');
 }
 
 function isAlreadyRegistered($email, $pseudo, $nom, $prenom) {
     $registered = false;
-    //Pseudo existe deja => registered=true, echo pseudo deja utilisé
-    //Email existe deja
-    //Couple Nom/Prenom existe deja
+//Pseudo existe deja => registered=true, echo pseudo deja utilisé
+//Email existe deja
+//Couple Nom/Prenom existe deja
     $co = connexionBdd();
     $rechercheMail = "SELECT * FROM user WHERE email='" . $email . "' ";
     $resultatMail = mysqli_query($co, $rechercheMail);
@@ -130,6 +130,17 @@ function getUserByPseudo($pseudo) {
     return $tabQuery;
 }
 
+function getUserById($idUser) {
+    $co = connexionBdd();
+    $requete = "SELECT * FROM user WHERE idUser='" . $idUser . "'";
+    $query = mysqli_query($co, $requete);
+    if (!$query) {
+        die('Invalid query: ' . mysql_error());
+    }
+    $tabQuery = mysqli_fetch_array($query);
+    return $tabQuery;
+}
+
 function searchInDataBase($tab) { //rentre tableau [table]=>([attribut]=>'valeur') 
     $co = connexionBdd();
     $requeteDeb = 'SELECT * ';
@@ -137,7 +148,7 @@ function searchInDataBase($tab) { //rentre tableau [table]=>([attribut]=>'valeur
     $requeteWhere = ' WHERE ';
     $requeteWhereMorceau = '';
     $count = 0;
-    //Création de la Requête
+//Création de la Requête
     foreach ($tab as $key1 => $value1) {
         $requeteFrom = $requeteFrom . $key1;
         foreach ($value1 as $key2 => $value2) {
@@ -152,7 +163,7 @@ function searchInDataBase($tab) { //rentre tableau [table]=>([attribut]=>'valeur
     }
 
     $requete = $requeteDeb . $requeteFrom . $requeteWhere;
-    //echo $requete;
+//echo $requete;
     $doQuery = mysqli_query($co, $requete);
 //    if (!$doQuery) {
 //            printf("Error: %s\n", mysqli_error($co));
@@ -162,8 +173,8 @@ function searchInDataBase($tab) { //rentre tableau [table]=>([attribut]=>'valeur
     $tabResultat = mysqli_fetch_array($doQuery);
 
     return $tabResultat;
-    // idée : rentrer un array avec [key]=>value avec type de l'info et info
-    // Ensuite faire la requete grace à un foreach
+// idée : rentrer un array avec [key]=>value avec type de l'info et info
+// Ensuite faire la requete grace à un foreach
 }
 
 function createIDCar() {
@@ -199,7 +210,7 @@ function insertIntoVoiture($idUser, $marque, $modele, $couleur, $annee, $image) 
     $requeteInsert = "INSERT INTO voiture VALUES ('" . $idVoiture . "', '" . $idUser . "', '" . $marque . "', '" . $modele . "', '" . $couleur . "', '" . $image . "', '" . $annee . "')";
     echo $requeteInsert;
     mysqli_query($co, $requeteInsert);
-    //Update idVoiture dans tuple User
+//Update idVoiture dans tuple User
     $requeteUpdate = "UPDATE user SET idVoiture='" . $idVoiture . "' WHERE idUser='" . $idUser . "'  ";
     mysqli_query($co, $requeteUpdate);
 }
@@ -256,7 +267,7 @@ function calculNoteMoyenne($idUser) { //Permet de calculer la note moyenne d'un 
     $r = mysqli_query($co, $requete);
     return mysqli_fetch_array($r)['avg(note)'];
 
-    // Marche, mais diminuer la précision de la note, une note au dixième suffit
+// Marche, mais diminuer la précision de la note, une note au dixième suffit
 }
 
 function chercherVille($villeArrivee) {
@@ -316,12 +327,12 @@ function lectureTableauPhpResultatRequete($objetMySql) {
 
 function nombrePlacesRestantes($idTrajet) {
     $co = connexionBdd();
-    //Savoir combien de places étaient disponibles au départ pour le trajet
+//Savoir combien de places étaient disponibles au départ pour le trajet
     $requeteNbPlaces = "SELECT * FROM trajet WHERE idTrajet='" . $idTrajet . "'  ";
     $sqlireq = mysqli_query($co, $requeteNbPlaces);
     $tabNbPlaces = lectureTableauPhpResultatRequete($sqlireq);
     $nbPlacesOriginales = $tabNbPlaces['nombrePlaces'][0];
-    //Savoir combien de passagers ont deja réservé ce voyage
+//Savoir combien de passagers ont deja réservé ce voyage
     $requeteNbPassagers = "SELECT * FROM passager WHERE idTrajet='" . $idTrajet . "'  ";
     $sqlireqNbPassagers = mysqli_query($co, $requeteNbPassagers);
     $nbPlacesPrises = mysqli_num_rows($sqlireqNbPassagers);
@@ -330,14 +341,27 @@ function nombrePlacesRestantes($idTrajet) {
     return $nbPlacesRestantes;
 }
 
+function isDriver($idUser, $idTrajet) {
+    $driver = false;
+    $co = connexionBdd();
+    $req = " SELECT * FROM trajet WHERE idTrajet='" . $idTrajet . "' ";
+    $requeteSqli = mysqli_query($co, $req);
+    $tab = lectureTableauPhpResultatRequete($requeteSqli);
+    $idConducteur = $tab["idConducteur"][0];
+    if ($idConducteur == $idUser) {
+        $driver = true;
+    }
+    return $driver;
+}
+
 function recupererIdTrajetsEnTab($id) {
 
 
     $co = connexionBdd();
     $tabTousTrajets = array();
     $currentTime = date("Y-m-d");
-    //Faire aussi test sur l'heure
-    //En conducteur
+//Faire aussi test sur l'heure
+//En conducteur
     $reqTrajetsConducteur = "SELECT idTrajet FROM trajet as t WHERE anneeMoisJour<='" . $currentTime . "' AND t.idConducteur='" . $id . "' ";
     $sqliCon = mysqli_query($co, $reqTrajetsConducteur);
     while ($resultCon = mysqli_fetch_array($sqliCon)) {
@@ -349,7 +373,7 @@ function recupererIdTrajetsEnTab($id) {
     }
 
 
-    //En passager
+//En passager
     $reqTrajetsPassager = "SELECT p.idTrajet FROM passager as p, trajet as t WHERE anneeMoisJour<='" . $currentTime . "' AND p.idPassager='" . $id . "' AND p.idTrajet=t.idTrajet ";
     $sqliPas = mysqli_query($co, $reqTrajetsPassager);
     while ($resultPas = mysqli_fetch_array($sqliPas)) {
@@ -376,9 +400,51 @@ function affichageTrajetPourAvis($idTrajet) {
 
     echo '<form method="post" action="avis_action.php"> ';
     echo '<tr><td>' . $villeDepart . '</td><td>' . $villeArrivee . '</td><td>' . $date . '</td><td>' . $prix . ' €</td><td><div class="col-md-12 col-xs-12 col-sm-12"><button type="submit" class="btn btn-default btn-lg btn-block" name="register">Donner Avis</button></div></td></tr>';
-    echo '<input type=hidden name="idTrajet" value="'.$idTrajet.'"/>';
+    echo '<input type=hidden name="idTrajet" value="' . $idTrajet . '"/>';
     echo '</form>';
-    
+}
+
+function affichagePersonnesPourAvis($idTrajet, $idUser) {
+    $co = connexionBdd();
+    $conducteur = isDriver($idUser, $idTrajet);
+//Debut FORM
+    echo "<form method='post' action=''>";
+
+    echo "<table><tr><th>Photo</th><th>Pseudo</th><th>Prénom</th><th>NoteMoyenneActuelle</th><th>Votre Avis (/5)</th><tr>"; //Mettre select note à la fin
+    if ($conducteur == true) {
+        $requeteC = "SELECT * FROM passager WHERE idTrajet='" . $idTrajet . "' ";
+        $reqSql = mysqli_query($co, $requeteC);
+        $tabC = lectureTableauPhpResultatRequete($reqSql);
+
+        $nbLignes = 0;
+        foreach ($tabC as $key => $valueinit) {
+            if ($key == 'idPassager') {
+                foreach ($valueinit as $key2 => $value) {
+                    $nbLignes++;
+                    echo $nbLignes;
+                    $tabUser = getUserById($value);
+                    $nom = $tabUser['nom'];
+                    $prenom = $tabUser['prenom'];
+                    $pseudo = $tabUser['pseudo'];
+                    $note = $tabUser['note'];
+                    $photo = '<img src="../ressources/imagesProfiles/' . $value . '.jpg" width="20px" heigth="20px" />';
+                    $select = "<select name='" . $nbLignes . "'><option value=1>1<option value=2>2<option value=3>3<option value=4>4<option value=5>5 </select>";
+
+
+                    echo '<tr><td>' . $photo . '</td><td>' . $pseudo . '</td><td>' . $nom . '</td><td>' . $prenom . '</td><td>' . $note . '</td><td>' . $select . '</td>';
+                    echo '<input type="hidden" name="id' . $nbLignes . '" value=' . $value . ' />';
+                }
+            }
+        }
+// echo submit
+        echo '<input type="hidden" name="nbPassager" value="' . $nbLignes . '" >';
+    }else {
+        
+    }
+
+
+    echo '</form>';
+//Fin de form
 }
 
 ?>
