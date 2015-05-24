@@ -7,6 +7,7 @@ Priorité : 1 important, 2 moins important..etc
 0- Donner argent une fois que l'avis est donné, pas avant
 0- Fonction regardant si idUser a donné avis à tous ces passagers avant d'afficher le trajet
 
+
 1- Faire l'inscription a un trajet !!!
 
 1- Pour avis, voir si les trajets ont déjà été notés par l'utilisateur, et si le mec a pas voyagé tout seul
@@ -51,7 +52,10 @@ Priorité : 1 important, 2 moins important..etc
 3- Gérer le "se souvenir de moi" au login
 
 
--Optionnel : -trouver une MEILLEURE icone pour mettre sur l'onglet à cote du nom
+3- Gérer mieux l'affichage des avis lorsqu'il n'y a pas de trajet à noter
+
+-Optionnel : -enlever attribut photo pour user
+             -trouver une MEILLEURE icone pour mettre sur l'onglet à cote du nom
              -changer image dans le formulaire pour l'année de naissance
              -Ouvrir les formulaires dans des popups
              -Changer distances css en %

@@ -6,8 +6,6 @@ include '../pagetype/hautPage.php';
 
 <div class="container">
 
-    // chercher tous les trajets où la date est antérieure à la date actuelle
-
     <?php
     $tabIdTrajet = recupererIdTrajetsEnTab($_SESSION['id']);
 

@@ -389,19 +389,38 @@ function recupererIdTrajetsEnTab($id) {
 
 function affichageTrajetPourAvis($idTrajet) {
     $co = connexionBdd();
-    $requete = "SELECT * FROM trajet WHERE idTrajet='" . $idTrajet . "'";
-    $requeteSqli = mysqli_query($co, $requete);
-    $tabTrajet = lectureTableauPhpResultatRequete($requeteSqli);
-    $villeDepart = $tabTrajet['villeDepart'][0];
-    $villeArrivee = $tabTrajet['villeArrivee'][0];
-    $anneeMoisJour = $tabTrajet['anneeMoisJour'][0];
-    $date = date("d-m-Y", strtotime($anneeMoisJour));
-    $prix = $tabTrajet['prix'][0];
 
-    echo '<form method="post" action="avis_action.php"> ';
-    echo '<tr><td>' . $villeDepart . '</td><td>' . $villeArrivee . '</td><td>' . $date . '</td><td>' . $prix . ' €</td><td><div class="col-md-12 col-xs-12 col-sm-12"><button type="submit" class="btn btn-default btn-lg btn-block" name="register">Donner Avis</button></div></td></tr>';
-    echo '<input type=hidden name="idTrajet" value="' . $idTrajet . '"/>';
-    echo '</form>';
+    //Tester si quelqu'un dans le voyage
+    $requeteNbAvisADonner = "SELECT * FROM passager WHERE idTrajet='" . $idTrajet . "' ";
+    $nbAvisADonner = mysqli_num_rows(mysqli_query($co, $requeteNbAvisADonner)); //1 seul conducteur et le passager se compense
+    //Tester si avis déjà donné
+    $trajetDejaNote = false;
+    if ($nbAvisADonner > 0) {
+        $requeteAvisDonne = "SELECT * FROM avis WHERE idDonneur='" . $_SESSION['id'] . "' AND idTrajet='" . $idTrajet . "' ";
+        $nbAvisDejaDonne = mysqli_num_rows(mysqli_query($co, $requeteAvisDonne)); //1 seul conducteur et le passager se compense
+        if ($nbAvisDejaDonne > 0) {
+            
+            $trajetDejaNote = true;
+        }
+        
+    }
+
+    if ($trajetDejaNote == false && $nbAvisADonner > 0) {
+
+        $requete = "SELECT * FROM trajet WHERE idTrajet='" . $idTrajet . "'";
+        $requeteSqli = mysqli_query($co, $requete);
+        $tabTrajet = lectureTableauPhpResultatRequete($requeteSqli);
+        $villeDepart = $tabTrajet['villeDepart'][0];
+        $villeArrivee = $tabTrajet['villeArrivee'][0];
+        $anneeMoisJour = $tabTrajet['anneeMoisJour'][0];
+        $date = date("d-m-Y", strtotime($anneeMoisJour));
+        $prix = $tabTrajet['prix'][0];
+
+        echo '<form method="post" action="avis_action.php"> ';
+        echo '<tr><td>' . $villeDepart . '</td><td>' . $villeArrivee . '</td><td>' . $date . '</td><td>' . $prix . ' €</td><td><div class="col-md-12 col-xs-12 col-sm-12"><button type="submit" class="btn btn-default btn-lg btn-block" name="register">Donner Avis</button></div></td></tr>';
+        echo '<input type=hidden name="idTrajet" value="' . $idTrajet . '"/>';
+        echo '</form>';
+    }
 }
 
 function affichagePersonnesPourAvis($idTrajet, $idUser) {
@@ -493,14 +512,14 @@ function affichagePersonnesPourAvis($idTrajet, $idUser) {
 //Fin de form
 }
 
-function aDejaDonneAvis($idUser, $idReceveur, $idTrajet){
-    $avisDejaDonne=false;
-    $co=  connexionBdd();
-    $req= "SELECT * FROM avis WHERE idDonneur='".$idUser."' AND idReceveur='".$idReceveur."' AND idTrajet='".$idTrajet."' ";
-    $sql= mysqli_query($co, $req);
-    $nbLignes= mysqli_num_rows($sql);
-    if($nbLignes!=0){
-        $avisDejaDonne=true;
+function aDejaDonneAvis($idUser, $idReceveur, $idTrajet) {
+    $avisDejaDonne = false;
+    $co = connexionBdd();
+    $req = "SELECT * FROM avis WHERE idDonneur='" . $idUser . "' AND idReceveur='" . $idReceveur . "' AND idTrajet='" . $idTrajet . "' ";
+    $sql = mysqli_query($co, $req);
+    $nbLignes = mysqli_num_rows($sql);
+    if ($nbLignes != 0) {
+        $avisDejaDonne = true;
     }
     return $avisDejaDonne;
 }
