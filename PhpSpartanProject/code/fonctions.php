@@ -427,7 +427,7 @@ function affichagePersonnesPourAvis($idTrajet, $idUser) {
     $co = connexionBdd();
     $conducteur = isDriver($idUser, $idTrajet);
 //Debut FORM
-    echo "<form method='post' action=''>";
+    echo "<form method='post' action='avis_action_action.php'>";
 
     echo "<table><tr><th>Photo</th><th>Pseudo</th><th>Prénom</th><th>NoteMoyenneActuelle</th><th>Votre Avis (/5)</th><tr>"; //Mettre select note à la fin
     if ($conducteur == true) {
@@ -451,7 +451,7 @@ function affichagePersonnesPourAvis($idTrajet, $idUser) {
 
 
                     echo '<tr><td>' . $photo . '</td><td>' . $pseudo . '</td><td>' . $nom . '</td><td>' . $prenom . '</td><td>' . $note . '</td><td>' . $select . '</td>';
-                    echo '<input type="hidden" name="id' . $nbLignes . '" value=' . $value . ' />';
+                    echo '<input type="hidden" name="id' . $nbLignes . '" value=' . $value . ' />'; //Value donne l'ID de la perosnne notée
                 }
             }
         }
@@ -462,7 +462,7 @@ function affichagePersonnesPourAvis($idTrajet, $idUser) {
         $requeteC = "SELECT * FROM trajet WHERE idTrajet='" . $idTrajet . "' ";
         $reqSql = mysqli_query($co, $requeteC);
         $tabC = lectureTableauPhpResultatRequete($reqSql);
-        $nbLignes++;
+        //$nbLignes++;
         $idConducteur = $tabC['idConducteur'][0];
         $tabUser = getUserById($idConducteur);
         $nom = $tabUser['nom'];
@@ -505,6 +505,7 @@ function affichagePersonnesPourAvis($idTrajet, $idUser) {
     }
 
     echo '<input type="hidden" name="nbPassager" value="' . $nbLignes . '" >';
+    echo '<input type="hidden" name="idTrajet" value="' . $idTrajet . '" >';
     echo '</table>';
 
     echo '<div class="col-md-12 col-xs-12 col-sm-12"><button type="submit" class="btn btn-default btn-lg btn-block" name="register">Valider tous les Avis</button> ';
