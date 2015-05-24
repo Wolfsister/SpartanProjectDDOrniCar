@@ -45,7 +45,7 @@ if (isset($_POST)) {
         echo '<a href ="./proposerTrajet.php"> Retour à la connexion. </a>';
     }else{
         insertIntoTrajet($_SESSION['id'], $_POST['VilleDepart'], $_POST['VilleArrivee'], $_POST['prix'], $_POST['date'], $_POST['heure'], $_POST['minute'], $_POST['places']);
-        echo 'Votre trajet a bien été enregistré !';
+        echo 'Votre trajet a bien été enregistré !'; //A sortir du php et mettre dans un div container
     }
 }    
     

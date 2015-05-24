@@ -55,7 +55,6 @@
                             </div>
                         </div>
                        
-                        Plutot Faire un Select avec toutes les heures
                         <div class="form-group">  
                             <div class="col-md-12 col-xs-12 col-sm-12">
                                 <input type="number" name="heure" min='0' max='24' placeholder="Heure (Format 24h)">   

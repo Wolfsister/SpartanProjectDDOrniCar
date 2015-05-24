@@ -525,4 +525,8 @@ function aDejaDonneAvis($idUser, $idReceveur, $idTrajet) {
     return $avisDejaDonne;
 }
 
+function redirection($lien){
+    header('Location: '.$lien);
+}
+
 ?>
