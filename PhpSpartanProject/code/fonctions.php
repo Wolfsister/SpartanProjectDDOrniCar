@@ -539,4 +539,14 @@ function retirerArgent($idUser, $montant){
     mysqli_query($co, $updateText);
 }
 
+function donnerArgent($idUser, $montant){
+    $co=  connexionBdd();
+    $reqText=" SELECT * FROM user WHERE idUser='".$idUser."' ";
+    $tab=  lectureTableauPhpResultatRequete(mysqli_query($co, $reqText));
+    $soldeAvant=$tab['solde'][0];
+    $soldeActuel=$soldeAvant+$montant;
+    $updateText="UPDATE user SET solde='".$soldeActuel."' WHERE idUser='".$idUser."' ";
+    mysqli_query($co, $updateText);
+}
+
 ?>
