@@ -4,13 +4,14 @@ Priorité : 1 important, 2 moins important..etc
 ------------------------------------------------------------------------
 
 
-0- Donner argent une fois que l'avis est donné, pas avant  A FAIRE
 
 1- Faire un "beau" recherche trajet, un peu comme lorsqu'on laisse un avis. 
 
 1- Comment mettre à jour la note (avec calcul de la moyenne) ? A chaque connexion ? A chaque requete sur la note ? 
 
-1- Faire l'inscription a un trajet !!!
+1- Faire l'inscription a un trajet !!! Penser à retirer l'argent à l'utilisateur
+
+1- Mettre à jour le nombre de places restantes dans un trajet
 
 2- Tester si en changeant format date du datepicker cela enregistre bien dans la BDD
 

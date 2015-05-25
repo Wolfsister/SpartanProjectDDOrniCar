@@ -32,14 +32,12 @@ include '../pagetype/hautPage.php';
     
     //if(aDonnéAvis(1,4,8)){echo 'AVISDONNE';}else{echo 'nope';}
     $co=  connexionBdd();
-    $textPrixTrajet=" SELECT * FROM trajet WHERE idTrajet='9' ";
-    $tab=lectureTableauPhpResultatRequete(mysqli_query($co, $textPrixTrajet));
-    $prix=$tab['prix'][0];
-    donnerArgent(1, $prix);
+    
+    echo getPseudoById(1);
     
     
     ?>
-
+</div>
     <?php
     include '../pagetype/basPage.php';
     ?>

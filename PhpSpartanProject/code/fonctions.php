@@ -141,6 +141,12 @@ function getUserById($idUser) {
     return $tabQuery;
 }
 
+function getPseudoById($idUser){
+    $tab=  getUserById($idUser);
+    $pseudo=$tab['pseudo'];
+    return $pseudo;
+}
+
 function searchInDataBase($tab) { //rentre tableau [table]=>([attribut]=>'valeur') 
     $co = connexionBdd();
     $requeteDeb = 'SELECT * ';
@@ -399,10 +405,9 @@ function affichageTrajetPourAvis($idTrajet) {
         $requeteAvisDonne = "SELECT * FROM avis WHERE idDonneur='" . $_SESSION['id'] . "' AND idTrajet='" . $idTrajet . "' ";
         $nbAvisDejaDonne = mysqli_num_rows(mysqli_query($co, $requeteAvisDonne)); //1 seul conducteur et le passager se compense
         if ($nbAvisDejaDonne > 0) {
-            
+
             $trajetDejaNote = true;
         }
-        
     }
 
     if ($trajetDejaNote == false && $nbAvisADonner > 0) {
@@ -525,28 +530,68 @@ function aDejaDonneAvis($idUser, $idReceveur, $idTrajet) {
     return $avisDejaDonne;
 }
 
-function redirection($lien){
-    header('Location: '.$lien);
+function redirection($lien) {
+    header('Location: ' . $lien);
 }
 
-function retirerArgent($idUser, $montant){
-    $co=  connexionBdd();
-    $reqText=" SELECT * FROM user WHERE idUser='".$idUser."' ";
-    $tab=  lectureTableauPhpResultatRequete(mysqli_query($co, $reqText));
-    $soldeAvant=$tab['solde'][0];
-    $soldeActuel=$soldeAvant-$montant;
-    $updateText="UPDATE user SET solde='".$soldeActuel."' WHERE idUser='".$idUser."' ";
+function retirerArgent($idUser, $montant) {
+    $co = connexionBdd();
+    $reqText = " SELECT * FROM user WHERE idUser='" . $idUser . "' ";
+    $tab = lectureTableauPhpResultatRequete(mysqli_query($co, $reqText));
+    $soldeAvant = $tab['solde'][0];
+    $soldeActuel = $soldeAvant - $montant;
+    $updateText = "UPDATE user SET solde='" . $soldeActuel . "' WHERE idUser='" . $idUser . "' ";
     mysqli_query($co, $updateText);
 }
 
-function donnerArgent($idUser, $montant){
-    $co=  connexionBdd();
-    $reqText=" SELECT * FROM user WHERE idUser='".$idUser."' ";
-    $tab=  lectureTableauPhpResultatRequete(mysqli_query($co, $reqText));
-    $soldeAvant=$tab['solde'][0];
-    $soldeActuel=$soldeAvant + $montant;
-    $updateText="UPDATE user SET solde='".$soldeActuel."' WHERE idUser='".$idUser."' ";
+function donnerArgent($idUser, $montant) {
+    $co = connexionBdd();
+    $reqText = " SELECT * FROM user WHERE idUser='" . $idUser . "' ";
+    $tab = lectureTableauPhpResultatRequete(mysqli_query($co, $reqText));
+    $soldeAvant = $tab['solde'][0];
+    $soldeActuel = $soldeAvant + $montant;
+    $updateText = "UPDATE user SET solde='" . $soldeActuel . "' WHERE idUser='" . $idUser . "' ";
     mysqli_query($co, $updateText);
+}
+
+function affichageTrajetPourReservation($villeDepart, $villeArrivee, $date) {
+
+
+    //A ADAPTER POUR RECHERCHE TRAJET
+
+    $co = connexionBdd();
+//Debut FORM
+    echo "<form method='post' action='rechercheTrajet_action.php'>";
+
+    echo "<table><tr><th>Ville de Départ</th><th>Ville d'Arrivée</th><th>Pseudo du Conducteur</th><th>Prix</th><th>Heure</th><th>Nombre Places Restantes</th><tr>";
+    $requeteText = "SELECT * FROM trajet WHERE villeDepart='" . $villeDepart . "' AND villeArrivee='" . $villeArrivee . "' AND anneeMoisJour='" . $date . "'  ";
+    $reqSql = mysqli_query($co, $requeteText);
+    $nbTrajets = mysqli_num_rows($reqSql);
+    $tab = lectureTableauPhpResultatRequete($reqSql);
+
+    for ($i = 0; $i <nbTrajets; $i++) {
+        $idConducteur=$tab['idConducteur'][$i];
+        $pseudoConducteur=getPseudoById($idConducteur);
+    }
+
+    $nom = $tabUser['nom'];
+    $prenom = $tabUser['prenom'];
+    $pseudo = $tabUser['pseudo'];
+    $note = $tabUser['note'];
+   
+// $photo = '<img src="../ressources/imagesProfiles/' . $value . '.jpg" width="20px" heigth="20px" />';
+
+    echo '<tr><td>' . $photo . '</td><td>' . $pseudo . '</td><td>' . $nom . '</td><td>' . $prenom . '</td><td>' . $note . '</td><td>' . $select . '</td>';
+    echo '<input type="hidden" name="id' . $nbLignes . '" value=' . $value . ' />'; //Value donne l'ID de la perosnne notée
+
+
+    echo '<input type="hidden" name="nbPassager" value="' . $nbLignes . '" >';
+    echo '<input type="hidden" name="idTrajet" value="' . $idTrajet . '" >';
+    echo '</table>';
+
+    echo '<div class="col-md-12 col-xs-12 col-sm-12"><button type="submit" class="btn btn-default btn-lg btn-block" name="register">Valider tous les Avis</button> ';
+    echo '</form>';
+//Fin de form
 }
 
 ?>
