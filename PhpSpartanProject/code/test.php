@@ -20,7 +20,6 @@ include '../pagetype/hautPage.php';
 //    echo $interval->format('%R%a days');
 //    if( $datetime1<$datetime2){echo 'OK' ;}
     
-    $co = connexionBdd();
 //    $requete = " SELECT * FROM passager WHERE idTrajet=9 ";
 //    $reqSql = mysqli_query($co, $requete);
 //    $tabC = lectureTableauPhpResultatRequete($reqSql);
@@ -32,7 +31,11 @@ include '../pagetype/hautPage.php';
     //affichagePersonnesPourAvis(9, 1);
     
     //if(aDonnéAvis(1,4,8)){echo 'AVISDONNE';}else{echo 'nope';}
-    
+    $co=  connexionBdd();
+    $textPrixTrajet=" SELECT * FROM trajet WHERE idTrajet='9' ";
+    $tab=lectureTableauPhpResultatRequete(mysqli_query($co, $textPrixTrajet));
+    $prix=$tab['prix'][0];
+    donnerArgent(1, $prix);
     
     
     ?>

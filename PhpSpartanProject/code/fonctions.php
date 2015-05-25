@@ -544,7 +544,7 @@ function donnerArgent($idUser, $montant){
     $reqText=" SELECT * FROM user WHERE idUser='".$idUser."' ";
     $tab=  lectureTableauPhpResultatRequete(mysqli_query($co, $reqText));
     $soldeAvant=$tab['solde'][0];
-    $soldeActuel=$soldeAvant+$montant;
+    $soldeActuel=$soldeAvant + $montant;
     $updateText="UPDATE user SET solde='".$soldeActuel."' WHERE idUser='".$idUser."' ";
     mysqli_query($co, $updateText);
 }

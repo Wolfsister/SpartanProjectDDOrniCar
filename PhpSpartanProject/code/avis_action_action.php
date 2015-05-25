@@ -7,6 +7,7 @@ if (!isset($_SESSION)) {
 }
 include 'fonctions.php';
 
+//Insertion des avis dans la BDD
 $idUser= $_SESSION['id'];
 $idTrajet=$_POST['idTrajet'];
 $nbAvis=$_POST['nbPassager'];
@@ -16,7 +17,16 @@ for ($i = 1; $i <= $nbAvis ; $i++) {
     $note=$_POST[$i];
     insertIntoAvis($idUser, $idReceveur, $idTrajet, $note);    
 }
+//Créditation du compte du donneur d'avis (si conducteur)
+if(isDriver($idUser, $idTrajet)){
+    $co=  connexionBdd();
+    $textPrixTrajet=" SELECT * FROM trajet WHERE idTrajet='".$idTrajet."' ";
+    $tab=lectureTableauPhpResultatRequete(mysqli_query($co, $textPrixTrajet));
+    $prix=$tab['prix'][0];
+    donnerArgent($idUser, $prix);
+}
 
-redirection('./compte.php');
+
+//redirection('./compte.php');
 
 ?>
