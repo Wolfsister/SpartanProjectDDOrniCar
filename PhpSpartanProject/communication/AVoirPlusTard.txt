@@ -4,8 +4,7 @@ Priorité : 1 important, 2 moins important..etc
 ------------------------------------------------------------------------
 
 
-
-1- Faire un "beau" recherche trajet, un peu comme lorsqu'on laisse un avis. 
+1- Dans action d'inscription trajet, penser à vérifier que l'utilisateur ne l'a pas déjà reservé (fonction participeAuTrajet)
 
 1- Comment mettre à jour la note (avec calcul de la moyenne) ? A chaque connexion ? A chaque requete sur la note ? 
 

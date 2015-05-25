@@ -563,7 +563,7 @@ function affichageTrajetPourReservation($villeDepart, $villeArrivee, $date) {
 //Debut FORM
 
     echo "<table class='tableauAffichageBDD'><tr><th>Ville de Départ</th><th>Ville d'Arrivée</th><th>Pseudo du Conducteur</th><th>Prix</th><th>Heure</th><th>Minutes</th><th>Nombre Places Restantes</th><th></th><tr>"; //Ajouter voiture ?
-    $requeteText = "SELECT * FROM trajet WHERE villeDepart='" . $villeDepart . "' AND villeArrivee='" . $villeArrivee . "' AND anneeMoisJour='" . $date . "'  ";
+    $requeteText = "SELECT * FROM trajet WHERE villeDepart='" . $villeDepart . "' AND villeArrivee='" . $villeArrivee . "' AND anneeMoisJour='" . $date . "' AND nombrePlaces>0  ";
     $reqSql = mysqli_query($co, $requeteText);
     $nbTrajets = mysqli_num_rows($reqSql);
     $tab = lectureTableauPhpResultatRequete($reqSql);
@@ -583,6 +583,8 @@ function affichageTrajetPourReservation($villeDepart, $villeArrivee, $date) {
 
             echo '<tr><td>' . $villeDepart . '</td><td>' . $villeArrivee . '</td><td>' . $pseudoConducteur . '</td><td>' . $prix . '</td><td>' . $heure . '</td><td>' . $minute . '</td><td>' . $nbPlaces . '</td><td>' . $btSubmit . '</td>';
             echo '<input type="hidden" name="idTrajet" value=' . $idTrajet . ' />';
+                        echo '<input type="hidden" name="prix" value=' . $prix . ' />';
+
             echo '</form>';
         }
         echo '</div>';
@@ -593,6 +595,33 @@ function affichageTrajetPourReservation($villeDepart, $villeArrivee, $date) {
 
 
 //Fin de form
+}
+
+function participeAuTrajet($idUser, $idTrajet){
+    $participe=false;
+    $co=  connexionBdd();
+    $requeteTextP= "SELECT * FROM passager WHERE idPassager='".$idUser."' AND idTrajet='".$idTrajet."' ";
+    $numLignesP=  mysqli_num_rows(mysqli_query($co, $requeteTextP));
+    if($numLignesP==0){
+        $requeteTextC= "SELECT * FROM trajet WHERE idConducteur='".$idUser."' AND idTrajet='".$idTrajet."' ";
+        $numLignesC=  mysqli_num_rows(mysqli_query($co, $requeteTextC));
+        if($numLignesC>0){
+            $participe=true;
+        }
+    }else{
+        $participe=true;
+    }
+    return $participe;
+}
+
+function enleverUnePlaceTrajet($idTrajet){
+    $co = connexionBdd();
+    $reqText = " SELECT * FROM trajet WHERE idTrajet='" . $idTrajet . "' ";
+    $tab = lectureTableauPhpResultatRequete(mysqli_query($co, $reqText));
+    $placesAvant = $tab['nombrePlaces'][0];
+    $placesApres= $placesAvant-1;
+    $updateText = "UPDATE trajet SET nombrePlaces='" . $placesApres . "' WHERE idTrajet='" . $idTrajet . "' ";
+    mysqli_query($co, $updateText);
 }
 
 ?>
