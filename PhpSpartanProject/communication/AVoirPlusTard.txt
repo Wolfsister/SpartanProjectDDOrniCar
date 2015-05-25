@@ -14,8 +14,6 @@ Priorité : 1 important, 2 moins important..etc
 
 2- Tester si en changeant format date du datepicker cela enregistre bien dans la BDD
 
-1- Appliquer Datepicker dans tous les champs concernés
-
 1- addVoiture que si le monsieur souhaite ajouter une voiture !!!! (js onClick)
 
 3- (Recuperer ce qu'il y a dans avis)Faire un bien meilleur affichage de la recherche de trajet
