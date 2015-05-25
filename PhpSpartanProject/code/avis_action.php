@@ -8,8 +8,6 @@ include '../pagetype/hautPage.php';
  
     
 <?php 
-$idTrajet=$_POST['idTrajet'];
-echo $idTrajet;
 $idUser=$_SESSION['id'];
 affichagePersonnesPourAvis($idTrajet, $idUser);
 ?>

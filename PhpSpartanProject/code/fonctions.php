@@ -141,9 +141,9 @@ function getUserById($idUser) {
     return $tabQuery;
 }
 
-function getPseudoById($idUser){
-    $tab=  getUserById($idUser);
-    $pseudo=$tab['pseudo'];
+function getPseudoById($idUser) {
+    $tab = getUserById($idUser);
+    $pseudo = $tab['pseudo'];
     return $pseudo;
 }
 
@@ -434,7 +434,7 @@ function affichagePersonnesPourAvis($idTrajet, $idUser) {
 //Debut FORM
     echo "<form method='post' action='avis_action_action.php'>";
 
-    echo "<table><tr><th>Photo</th><th>Pseudo</th><th>Prénom</th><th>NoteMoyenneActuelle</th><th>Votre Avis (/5)</th><tr>"; //Mettre select note à la fin
+    echo "<table class='tableauAffichageBDD'><tr><th>Photo</th><th>Pseudo</th><th>Prénom</th><th>Nom</th><th>NoteMoyenneActuelle</th><th>Votre Avis (/5)</th><tr>"; //Mettre select note à la fin
     if ($conducteur == true) {
         $requeteC = "SELECT * FROM passager WHERE idTrajet='" . $idTrajet . "' ";
         $reqSql = mysqli_query($co, $requeteC);
@@ -455,7 +455,7 @@ function affichagePersonnesPourAvis($idTrajet, $idUser) {
                     $select = "<select name='" . $nbLignes . "'><option value=1>1<option value=2>2<option value=3>3<option value=4>4<option value=5>5 </select>";
 
 
-                    echo '<tr><td>' . $photo . '</td><td>' . $pseudo . '</td><td>' . $nom . '</td><td>' . $prenom . '</td><td>' . $note . '</td><td>' . $select . '</td>';
+                    echo '<tr><td>' . $photo . '</td><td>' . $pseudo . '</td><td>' . $prenom . '</td><td>' . $nom . '</td><td>' . $note . '</td><td>' . $select . '</td>';
                     echo '<input type="hidden" name="id' . $nbLignes . '" value=' . $value . ' />'; //Value donne l'ID de la perosnne notée
                 }
             }
@@ -561,36 +561,37 @@ function affichageTrajetPourReservation($villeDepart, $villeArrivee, $date) {
 
     $co = connexionBdd();
 //Debut FORM
-    echo "<form method='post' action='rechercheTrajet_action.php'>";
 
-    echo "<table><tr><th>Ville de Départ</th><th>Ville d'Arrivée</th><th>Pseudo du Conducteur</th><th>Prix</th><th>Heure</th><th>Nombre Places Restantes</th><tr>";
+    echo "<table class='tableauAffichageBDD'><tr><th>Ville de Départ</th><th>Ville d'Arrivée</th><th>Pseudo du Conducteur</th><th>Prix</th><th>Heure</th><th>Minutes</th><th>Nombre Places Restantes</th><th></th><tr>"; //Ajouter voiture ?
     $requeteText = "SELECT * FROM trajet WHERE villeDepart='" . $villeDepart . "' AND villeArrivee='" . $villeArrivee . "' AND anneeMoisJour='" . $date . "'  ";
     $reqSql = mysqli_query($co, $requeteText);
     $nbTrajets = mysqli_num_rows($reqSql);
     $tab = lectureTableauPhpResultatRequete($reqSql);
 
-    for ($i = 0; $i <nbTrajets; $i++) {
-        $idConducteur=$tab['idConducteur'][$i];
-        $pseudoConducteur=getPseudoById($idConducteur);
+    if ($nbTrajets > 0) {
+        echo '<div class="container">';
+        for ($i = 0; $i < $nbTrajets; $i++) {
+            echo "<form method='post' action='rechercheTrajet_action_action.php'>";
+            $idTrajet = $tab['idTrajet'][$i];
+            $idConducteur = $tab['idConducteur'][$i];
+            $pseudoConducteur = getPseudoById($idConducteur);
+            $prix = $tab['prix'][$i];
+            $heure = $tab['heure'][$i];
+            $minute = $tab['minute'][$i];
+            $nbPlaces = $tab['nombrePlaces'][$i];
+            $btSubmit = '<div class="col-md-12 col-xs-12 col-sm-12"><button type="submit" class="btn btn-default btn-lg btn-block" name="register">Réserver ce Trajet</button> ';
+
+            echo '<tr><td>' . $villeDepart . '</td><td>' . $villeArrivee . '</td><td>' . $pseudoConducteur . '</td><td>' . $prix . '</td><td>' . $heure . '</td><td>' . $minute . '</td><td>' . $nbPlaces . '</td><td>' . $btSubmit . '</td>';
+            echo '<input type="hidden" name="idTrajet" value=' . $idTrajet . ' />';
+            echo '</form>';
+        }
+        echo '</div>';
+// $photo = '<img src="../ressources/imagesProfiles/' . $value . '.jpg" width="20px" heigth="20px" />';
     }
 
-    $nom = $tabUser['nom'];
-    $prenom = $tabUser['prenom'];
-    $pseudo = $tabUser['pseudo'];
-    $note = $tabUser['note'];
-   
-// $photo = '<img src="../ressources/imagesProfiles/' . $value . '.jpg" width="20px" heigth="20px" />';
-
-    echo '<tr><td>' . $photo . '</td><td>' . $pseudo . '</td><td>' . $nom . '</td><td>' . $prenom . '</td><td>' . $note . '</td><td>' . $select . '</td>';
-    echo '<input type="hidden" name="id' . $nbLignes . '" value=' . $value . ' />'; //Value donne l'ID de la perosnne notée
-
-
-    echo '<input type="hidden" name="nbPassager" value="' . $nbLignes . '" >';
-    echo '<input type="hidden" name="idTrajet" value="' . $idTrajet . '" >';
     echo '</table>';
 
-    echo '<div class="col-md-12 col-xs-12 col-sm-12"><button type="submit" class="btn btn-default btn-lg btn-block" name="register">Valider tous les Avis</button> ';
-    echo '</form>';
+
 //Fin de form
 }
 

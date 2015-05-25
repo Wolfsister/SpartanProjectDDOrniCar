@@ -42,7 +42,7 @@ if (isset($_POST)) {
             echo 'Il n\'existe pas de trajet, désolé ! Proposez en un <a href="../code/proposerTrajet.php">ici</a> si vous le souhaitez !';
         }else{
             // affichage de tous les trajets
-            lectureTableauHtmlResultatRequete($resultat);
+            affichageTrajetPourReservation($villeDepart, $villeArrivee, $date);
             
         }
     }

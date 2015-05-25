@@ -30,11 +30,7 @@ include '../pagetype/hautPage.php';
 
     //affichagePersonnesPourAvis(9, 1);
     
-    //if(aDonnéAvis(1,4,8)){echo 'AVISDONNE';}else{echo 'nope';}
-    $co=  connexionBdd();
-    
-    echo getPseudoById(1);
-    
+    //if(aDonnéAvis(1,4,8)){echo 'AVISDONNE';}else{echo 'nope';}  
     
     ?>
 </div>

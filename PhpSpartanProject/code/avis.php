@@ -9,7 +9,7 @@ include '../pagetype/hautPage.php';
     <?php
     $tabIdTrajet = recupererIdTrajetsEnTab($_SESSION['id']);
 
-    echo '<table><tr><th>Ville de Départ</th><th>Ville d\'Arrivée</th><th>Date</th><th>Prix</th><th></th></tr>';
+    echo '<table class="tableauAffichageBDD"><tr><th>Ville de Départ</th><th>Ville d\'Arrivée</th><th>Date</th><th>Prix</th><th></th></tr>';
     foreach ($tabIdTrajet as $key => $value) {
         affichageTrajetPourAvis($value);
     }
