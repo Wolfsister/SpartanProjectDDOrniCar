@@ -271,9 +271,14 @@ function calculNoteMoyenne($idUser) { //Permet de calculer la note moyenne d'un 
     $co = connexionBdd();
     $requete = "SELECT avg(note) FROM avis WHERE idReceveur='" . $idUser . "' ";
     $r = mysqli_query($co, $requete);
-    return mysqli_fetch_array($r)['avg(note)'];
+    $noteMoyenne=round(mysqli_fetch_array($r)['avg(note)'],1);
+    return $noteMoyenne;
+}
 
-// Marche, mais diminuer la précision de la note, une note au dixième suffit
+function updateNote($note,$idUser){
+    $co=connexionBdd();
+    $updateText = "UPDATE user SET note='" . $note . "' WHERE idUser='" . $idUser . "' ";
+    mysqli_query($co, $updateText);
 }
 
 function chercherVille($villeArrivee) {

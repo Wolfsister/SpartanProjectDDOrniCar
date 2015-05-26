@@ -31,7 +31,10 @@ include '../pagetype/hautPage.php';
     //affichagePersonnesPourAvis(9, 1);
     
     //if(aDonnéAvis(1,4,8)){echo 'AVISDONNE';}else{echo 'nope';}  
-    enleverUnePlaceTrajet(14);
+    //enleverUnePlaceTrajet(14);
+    
+    echo calculNoteMoyenne(1);
+    echo round(1.34, 1);
     
     ?>
 </div>

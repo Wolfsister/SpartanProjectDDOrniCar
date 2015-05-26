@@ -9,6 +9,7 @@ include '../pagetype/hautPage.php';
     
 <?php 
 $idUser=$_SESSION['id'];
+$idTrajet=$_POST['idTrajet'];
 affichagePersonnesPourAvis($idTrajet, $idUser);
 ?>
 
