@@ -3,10 +3,7 @@ Priorité : 1 important, 2 moins important..etc
 
 ------------------------------------------------------------------------
 
-
-1- Dans action d'inscription trajet, penser à vérifier que l'utilisateur ne l'a pas déjà reservé (fonction participeAuTrajet)
-
-1- Comment mettre à jour la note (avec calcul de la moyenne) ? A chaque connexion ? A chaque requete sur la note ? 
+BONUS : CREER UNE FONCTION POUR CREER PLEIN DE TRAJETS AFIN DE TESTER LA BDD
 
 1- Faire l'inscription a un trajet !!! Penser à retirer l'argent à l'utilisateur
 

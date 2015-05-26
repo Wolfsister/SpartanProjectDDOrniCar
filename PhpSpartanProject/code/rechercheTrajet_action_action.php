@@ -9,7 +9,7 @@ include '../pagetype/hautPage.php';
     <?php
     var_dump($_POST);
     $idTrajet=$_POST['idTrajet'];
-    $idUser=$_SESSION['idUser'];
+    $idUser=$_SESSION['id'];
     $prix=$_POST['prix'];
     if(participeAuTrajet($idUser, $idTrajet)==false){
         retirerArgent($idUser, $prix);

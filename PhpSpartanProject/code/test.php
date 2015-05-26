@@ -33,8 +33,9 @@ include '../pagetype/hautPage.php';
     //if(aDonnéAvis(1,4,8)){echo 'AVISDONNE';}else{echo 'nope';}  
     //enleverUnePlaceTrajet(14);
     
-    echo calculNoteMoyenne(1);
-    echo round(1.34, 1);
+//    echo calculNoteMoyenne(1);
+//    echo round(1.34, 1);
+    var_dump($_SESSION);
     
     ?>
 </div>
