@@ -5,15 +5,9 @@ Priorité : 1 important, 2 moins important..etc
 
 BONUS : CREER UNE FONCTION POUR CREER PLEIN DE TRAJETS AFIN DE TESTER LA BDD
 
-1- Faire l'inscription a un trajet !!! Penser à retirer l'argent à l'utilisateur
+4- Tester si en changeant format date du datepicker cela enregistre bien dans la BDD
 
-1- Mettre à jour le nombre de places restantes dans un trajet
-
-2- Tester si en changeant format date du datepicker cela enregistre bien dans la BDD
-
-1- addVoiture que si le monsieur souhaite ajouter une voiture !!!! (js onClick)
-
-3- (Recuperer ce qu'il y a dans avis)Faire un bien meilleur affichage de la recherche de trajet
+2- addVoiture que si le monsieur souhaite ajouter une voiture !!!! (js onClick)
 
 5- Dans avis action, mettre etoile plutôt qu'un select avec des notes
 
@@ -23,10 +17,6 @@ BONUS : CREER UNE FONCTION POUR CREER PLEIN DE TRAJETS AFIN DE TESTER LA BDD
 
 2- Redimensionner images (poids) lors de l'enregistrement pour gagner de la place
 
-2- A la reservation, enlever montant du solde à l'utilisateur
-
-
-6- (MAJ DENIS : En fait pas trop grave parce que si on fait une recherche, le probleme se "compense" ) Regler probleme encodage de la BDD. (Orléans devient OrlÃ©ans )
 
 5- DORIAN : Dans les champs des formulaires, une partie de la saisie (le bas) est tronquée, regarde si t'y arrives à corriger, tu connais mieux cette partie de code que moi
 
