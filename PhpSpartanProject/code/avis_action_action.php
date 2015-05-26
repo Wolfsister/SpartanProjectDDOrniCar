@@ -30,6 +30,7 @@ for ($i = 1; $i <= $nbAvis; $i++) {
     }
 }
 
-
 //redirection('./compte.php');
+//Rajouter un message pour dire que les avis ont bien été laissés avant de faire la redirection.  OU bien ne pas faire redirection et juste afficher message ?
+
 ?>
