@@ -221,6 +221,14 @@ function insertIntoVoiture($idUser, $marque, $modele, $couleur, $annee, $image) 
     mysqli_query($co, $requeteUpdate);
 }
 
+function insertIntoMessage($idReceveur, $contenu){
+    $co = connexionBdd();
+    $idEnvoyeur=$_SESSION['id'];
+    $date=date("Y-m-d");
+    $requeteInsert = "INSERT INTO message VALUES (NULL, '".$idEnvoyeur."', '".$idReceveur."', '".$contenu."', '0', '".$date."' )";
+    mysqli_query($co, $requeteInsert);   
+}
+
 function insertIntoTrajet($idConducteur, $villeDepart, $villeArrivee, $prix, $anneeMoisJour, $heure, $minute, $nbPlaces) { //$anneMoisJour : YYYY-MM-DD
     $co = connexionBdd();
     $requete = "INSERT INTO trajet VALUES (NULL, '" . $idConducteur . "', '" . $villeDepart . "', '" . $villeArrivee . "', '" . $prix . "', '" . $anneeMoisJour . "', '" . $heure . "', '" . $minute . "', '" . $nbPlaces . "' )";
@@ -588,7 +596,7 @@ function affichageTrajetPourReservation($villeDepart, $villeArrivee, $date) {
 
             echo '<tr><td>' . $villeDepart . '</td><td>' . $villeArrivee . '</td><td>' . $pseudoConducteur . '</td><td>' . $prix . '</td><td>' . $heure . '</td><td>' . $minute . '</td><td>' . $nbPlaces . '</td><td>' . $btSubmit . '</td>';
             echo '<input type="hidden" name="idTrajet" value=' . $idTrajet . ' />';
-                        echo '<input type="hidden" name="prix" value=' . $prix . ' />';
+            echo '<input type="hidden" name="prix" value=' . $prix . ' />';
 
             echo '</form>';
         }

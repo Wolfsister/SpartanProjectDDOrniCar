@@ -9,7 +9,7 @@ include '../pagetype/hautPage.php';
     //var_dump($_SESSION);
 
     $date1 = date("d-m-Y");
-    //echo $date;
+    echo $date1;
     $heure = date("H-i");
     //echo $heure;
     //$year=  date("Y");
@@ -37,11 +37,11 @@ include '../pagetype/hautPage.php';
 //    echo round(1.34, 1);
     //var_dump($_SESSION);
     
-    
+    insertIntoMessage(1, 'Hello World !');
     
     ?>
 <!--    <button type="submit" class="btn btn-default btn-lg btn-block" name="register" onclick="changeCouleur(this,'red')">Réserver ce Trajet</button>-->
-<button type="submit" class="btn btn-default btn-lg btn-block" name="register" onclick="monAlert()">Réserver ce Trajet</button>
+<button type="submit" class="btn btn-default btn-lg btn-block" name="register" onclick="popitup('add_voiture_popup.php')">Réserver ce Trajet</button>
 
 
 
@@ -54,6 +54,14 @@ function changeCouleur(element, clr){
 
 function monAlert(){
     alert ("test");
+//    alert ("<input type="text" name="prix" />");
+
+}
+
+function popitup(url) {
+newwindow=window.open(url,'name','height=600,width=500');
+if (window.focus) {newwindow.focus()}
+return false;
 }
 </script>
     <?php
