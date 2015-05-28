@@ -8,9 +8,9 @@ include '../pagetype/hautPage.php';
     <?php
     //var_dump($_SESSION);
 
-    $date1 = date("d-m-Y");
-    echo $date1;
-    $heure = date("H-i");
+//    $date1 = date("d-m-Y");
+//    echo $date1;
+//    $heure = date("H-i");
     //echo $heure;
     //$year=  date("Y");
     //echo $year;
@@ -37,7 +37,7 @@ include '../pagetype/hautPage.php';
 //    echo round(1.34, 1);
     //var_dump($_SESSION);
     
-    insertIntoMessage(1, 'Hello World !');
+    affichageFormulaireEnvoiMessage();
     
     ?>
 <!--    <button type="submit" class="btn btn-default btn-lg btn-block" name="register" onclick="changeCouleur(this,'red')">Réserver ce Trajet</button>-->

@@ -221,12 +221,14 @@ function insertIntoVoiture($idUser, $marque, $modele, $couleur, $annee, $image) 
     mysqli_query($co, $requeteUpdate);
 }
 
-function insertIntoMessage($idReceveur, $contenu){
+function insertIntoMessage($pseudoReceveur, $contenu) {
     $co = connexionBdd();
-    $idEnvoyeur=$_SESSION['id'];
-    $date=date("Y-m-d");
-    $requeteInsert = "INSERT INTO message VALUES (NULL, '".$idEnvoyeur."', '".$idReceveur."', '".$contenu."', '0', '".$date."' )";
-    mysqli_query($co, $requeteInsert);   
+    $idEnvoyeur = $_SESSION['id'];
+    $date = date("Y-m-d");
+    $idReceveur=  getIdUserByPseudo($pseudoReceveur);
+    $requeteInsert = "INSERT INTO message VALUES (NULL, '" . $idEnvoyeur . "', '" . $idReceveur . "', '" . $contenu . "', '0', '" . $date . "' )";
+    mysqli_query($co, $requeteInsert);
+    echo $requeteInsert;
 }
 
 function insertIntoTrajet($idConducteur, $villeDepart, $villeArrivee, $prix, $anneeMoisJour, $heure, $minute, $nbPlaces) { //$anneMoisJour : YYYY-MM-DD
@@ -279,12 +281,12 @@ function calculNoteMoyenne($idUser) { //Permet de calculer la note moyenne d'un 
     $co = connexionBdd();
     $requete = "SELECT avg(note) FROM avis WHERE idReceveur='" . $idUser . "' ";
     $r = mysqli_query($co, $requete);
-    $noteMoyenne=round(mysqli_fetch_array($r)['avg(note)'],1);
+    $noteMoyenne = round(mysqli_fetch_array($r)['avg(note)'], 1);
     return $noteMoyenne;
 }
 
-function updateNote($note,$idUser){
-    $co=connexionBdd();
+function updateNote($note, $idUser) {
+    $co = connexionBdd();
     $updateText = "UPDATE user SET note='" . $note . "' WHERE idUser='" . $idUser . "' ";
     mysqli_query($co, $updateText);
 }
@@ -610,31 +612,46 @@ function affichageTrajetPourReservation($villeDepart, $villeArrivee, $date) {
 //Fin de form
 }
 
-function participeAuTrajet($idUser, $idTrajet){
-    $participe=false;
-    $co=  connexionBdd();
-    $requeteTextP= "SELECT * FROM passager WHERE idPassager='".$idUser."' AND idTrajet='".$idTrajet."' ";
-    $numLignesP=  mysqli_num_rows(mysqli_query($co, $requeteTextP));
-    if($numLignesP==0){
-        $requeteTextC= "SELECT * FROM trajet WHERE idConducteur='".$idUser."' AND idTrajet='".$idTrajet."' ";
-        $numLignesC=  mysqli_num_rows(mysqli_query($co, $requeteTextC));
-        if($numLignesC>0){
-            $participe=true;
+function participeAuTrajet($idUser, $idTrajet) {
+    $participe = false;
+    $co = connexionBdd();
+    $requeteTextP = "SELECT * FROM passager WHERE idPassager='" . $idUser . "' AND idTrajet='" . $idTrajet . "' ";
+    $numLignesP = mysqli_num_rows(mysqli_query($co, $requeteTextP));
+    if ($numLignesP == 0) {
+        $requeteTextC = "SELECT * FROM trajet WHERE idConducteur='" . $idUser . "' AND idTrajet='" . $idTrajet . "' ";
+        $numLignesC = mysqli_num_rows(mysqli_query($co, $requeteTextC));
+        if ($numLignesC > 0) {
+            $participe = true;
         }
-    }else{
-        $participe=true;
+    } else {
+        $participe = true;
     }
     return $participe;
 }
 
-function enleverUnePlaceTrajet($idTrajet){
+function enleverUnePlaceTrajet($idTrajet) {
     $co = connexionBdd();
     $reqText = " SELECT * FROM trajet WHERE idTrajet='" . $idTrajet . "' ";
     $tab = lectureTableauPhpResultatRequete(mysqli_query($co, $reqText));
     $placesAvant = $tab['nombrePlaces'][0];
-    $placesApres= $placesAvant-1;
+    $placesApres = $placesAvant - 1;
     $updateText = "UPDATE trajet SET nombrePlaces='" . $placesApres . "' WHERE idTrajet='" . $idTrajet . "' ";
     mysqli_query($co, $updateText);
+}
+
+function affichageFormulaireEnvoiMessage() {
+    echo '<form method="post" action="message_action.php" ><label> Destinataire :</label><select name="idReceveur" id="idReceveur">';
+    $co = connexionBdd();
+    $sql1 = " SELECT DISTINCT pseudo, idUser FROM user WHERE idUser<>'".$_SESSION['id']."' ORDER BY pseudo ";
+    $result1 = mysqli_query($co, $sql1) or die("Requete pas comprise");
+    while ($row1 = mysqli_fetch_array($result1)) {
+        echo "<option name=" . $row1['idUser'] . ">" . $row1['pseudo'] . " </option> ";
+    }
+    echo '</select><br />';
+    echo '<textarea name="contenu" id="contenu" placeholder="Contenu du message"></textarea>';
+    echo '<button type="submit" class="btn btn-default btn-lg btn-block" name="sendMessage" onclick="alert(\'Le message a bien été envoyé. \')">Envoyer le Message</button>';
+
+    //Poubelle   onclick="alert(\'Le message a bien été envoyé. \')"
 }
 
 ?>
