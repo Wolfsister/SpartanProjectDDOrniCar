@@ -640,7 +640,7 @@ function enleverUnePlaceTrajet($idTrajet) {
 }
 
 function affichageFormulaireEnvoiMessage() {
-    echo '<form method="post" action="message_action.php" ><label> Destinataire :</label><select name="idReceveur" id="idReceveur">';
+    echo '<form method="post" action="envoiMessage_action.php" ><label> Destinataire :</label><select name="idReceveur" id="idReceveur">';
     $co = connexionBdd();
     $sql1 = " SELECT DISTINCT pseudo, idUser FROM user WHERE idUser<>'".$_SESSION['id']."' ORDER BY pseudo ";
     $result1 = mysqli_query($co, $sql1) or die("Requete pas comprise");
@@ -652,6 +652,12 @@ function affichageFormulaireEnvoiMessage() {
     echo '<button type="submit" class="btn btn-default btn-lg btn-block" name="sendMessage" onclick="alert(\'Le message a bien été envoyé. \')">Envoyer le Message</button>';
 
     //Poubelle   onclick="alert(\'Le message a bien été envoyé. \')"
+}
+
+function marquerMesssageLu($idMessage){
+    $co=  connexionBdd();
+    $requeteTxt="UPDATE message SET lu=1 WHERE idMessage='".$idMessage."' ";
+    mysqli_query($co, $requeteTxt);
 }
 
 ?>

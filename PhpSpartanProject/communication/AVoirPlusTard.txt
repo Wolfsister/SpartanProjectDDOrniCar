@@ -11,6 +11,8 @@ BONUS : CREER UNE FONCTION POUR CREER PLEIN DE TRAJETS AFIN DE TESTER LA BDD
 
 5- Dans avis action, mettre etoile plutôt qu'un select avec des notes
 
+3- Griser ligne de message non lu
+
 4- Ajouter options de modifier informations de notre profil
 
 3- Si l'utilisateur n'a pas d'image dans le répertoire, mettre l'image par défaut => Faire fonction : si id.jpg retourne quelque chose, ok , sinon retourner photo par défaut

@@ -37,7 +37,16 @@ include '../pagetype/hautPage.php';
 //    echo round(1.34, 1);
     //var_dump($_SESSION);
     
-    affichageFormulaireEnvoiMessage();
+   // affichageFormulaireEnvoiMessage();
+    
+ 
+    
+    $co = connexionBdd();
+//MESSAGES RECUS
+//$requeteTextRecus = " SELECT * FROM message WHERE idReceveur='" . $_SESSION['id'] . "' ORDER BY date DESC ";
+//$reqRecus = mysqli_query($co, $requeteTextRecus);
+//$tabRecus = lectureTableauPhpResultatRequete($reqRecus);
+//print_r($tabRecus);
     
     ?>
 <!--    <button type="submit" class="btn btn-default btn-lg btn-block" name="register" onclick="changeCouleur(this,'red')">Réserver ce Trajet</button>-->
