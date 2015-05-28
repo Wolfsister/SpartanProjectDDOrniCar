@@ -1,8 +1,3 @@
-<?php
-$path='';
-$title='';
-include '../pagetype/hautPage.php';
-?>
 
 <div class="container">
 
@@ -28,12 +23,13 @@ for ($index = 0; $index < $nbLignes; $index++) {
     $pseudo=  getPseudoById($tabRecus['idEnvoyeur'][$index]);
     $date= $tabRecus['date'][$index];
     $idMessage=$tabRecus['idMessage'][$index];
-    $photo = '<img src="../ressources/imagesProfiles/' . $tabRecus["idEnvoyeur"][$index] . '.jpg" width="20px" heigth="20px" />';
+    $photo = '<img src="../ressources/imagesProfiles/' . $tabRecus["idEnvoyeur"][$index] . '.jpg" width="40px" heigth="40px" />';
     $btSubmit = '<div class="col-md-12 col-xs-12 col-sm-12"><button type="submit" class="btn btn-default btn-lg btn-block" name="register">Lire Message</button> ';
 
     echo '<tr><td>' . $photo . '</td><td>' . $pseudo . '</td><td>' . $date . '</td><td>'.$btSubmit.'</td></tr>';
     echo '<input type="hidden" name="contenu" value=' . $tabRecus['contenu'][$index] . ' />';
-    echo '<input type="hidden" name="idMessage" value=' . $idMessage . ' /></form>'; //Value donne l'ID de la perosnne notée
+    echo '<input type="hidden" name="idMessage" value=' . $idMessage . ' />';
+    echo '<input type="hidden" name="date" value=' . $date . ' /></form>'; //Value donne l'ID de la perosnne notée
 }
 
 echo "</table>";
@@ -44,52 +40,9 @@ echo "</table>";
 </div>
 
 
-<?php
-include '../pagetype/basPage.php';
-?>
-    
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//MESSAGES ENVOYES
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ENVOI MESSGE
 
 
 
