@@ -35,10 +35,27 @@ include '../pagetype/hautPage.php';
     
 //    echo calculNoteMoyenne(1);
 //    echo round(1.34, 1);
-    var_dump($_SESSION);
+    //var_dump($_SESSION);
+    
+    
     
     ?>
+<!--    <button type="submit" class="btn btn-default btn-lg btn-block" name="register" onclick="changeCouleur(this,'red')">Réserver ce Trajet</button>-->
+<button type="submit" class="btn btn-default btn-lg btn-block" name="register" onclick="monAlert()">Réserver ce Trajet</button>
+
+
+
 </div>
+
+<script>
+function changeCouleur(element, clr){
+    element.style.color=clr;
+}
+
+function monAlert(){
+    alert ("test");
+}
+</script>
     <?php
     include '../pagetype/basPage.php';
     ?>

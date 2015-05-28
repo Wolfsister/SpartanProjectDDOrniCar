@@ -25,10 +25,12 @@ include '../code/fonctions.php';
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <!-- Custom CSS -->
+
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="../code/css/owl.carousel.css">
-    <link rel="stylesheet" href="../code/style.css">
     <link rel="stylesheet" href="../code/css/responsive.css">
+    <link rel="stylesheet" href="../code/style.css">
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

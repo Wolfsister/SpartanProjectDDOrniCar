@@ -29,8 +29,9 @@ BONUS : CREER UNE FONCTION POUR CREER PLEIN DE TRAJETS AFIN DE TESTER LA BDD
 
 0 - Proposer identification par email ou Pseudo (pas compliqué normalement)
 
+3- Afficher trajets meme si dates non remplies
 
-2-Système de messagerie interne
+2- Système de messagerie interne
 
 3- Gérer le "se souvenir de moi" au login
 
@@ -41,5 +42,4 @@ BONUS : CREER UNE FONCTION POUR CREER PLEIN DE TRAJETS AFIN DE TESTER LA BDD
              -trouver une MEILLEURE icone pour mettre sur l'onglet à cote du nom
              -changer image dans le formulaire pour l'année de naissance
              -Ouvrir les formulaires dans des popups
-             -Changer distances css en %
              -Réduire taille des photos à l'enregistrement (je crois qu'il y a une fonction php existante pour ca)

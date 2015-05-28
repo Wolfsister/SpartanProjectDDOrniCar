@@ -1,5 +1,13 @@
 //Ajout par Denis
 
+//Champs Formulaire
+body{
+    
+}
+.form-control{
+    height: 80%;   
+}
+
 .essaiDenis{
     margin-left: 20px;
     margin-right: 20px;
