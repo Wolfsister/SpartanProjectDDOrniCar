@@ -231,6 +231,24 @@ function insertIntoMessage($pseudoReceveur, $contenu) {
     echo $requeteInsert;
 }
 
+//A tester 
+
+function messageAnnulationAutomatique($idAnnulé, $idTrajet){
+    $co = connexionBdd();
+    $date = date("Y-m-d");
+    $pseudoAnnulé=  getPseudoById($idAnnulé);
+    $infosTrajet=  getTrajetByIdTrajet($idTrajet);
+    $pseudoConducteur=  getPseudoById($infosTrajet['idConducteur'][0]);
+    $villeDépart=$infosTrajet['villeDepart'][0];
+    $villeArrivée=$infosTrajet['villeArrivee'][0];
+    $dateTrajet=$infosTrajet['anneeMoisJour'][0];
+    $prix=$infosTrajet['prix'][0];
+    
+    $contenu= "Désolé ".$pseudoAnnulé.", ".$pseudoConducteur." a annulé le trajet entre ".$villeDépart." et ".$villeArrivée." du ".$dateTrajet.". Votre compte est donc désormais recrédité de ".$prix." € correspondant au montant de votre trajet ainsi que 10 € supplémentaires de dédommagement.";
+    $requeteInsert = "INSERT INTO message VALUES (NULL, '1', '" . $idAnnulé . "', '" . $contenu . "', '0', '" . $date . "' )";
+    mysqli_query($co, $requeteInsert);
+}
+
 function insertIntoTrajet($idConducteur, $villeDepart, $villeArrivee, $prix, $anneeMoisJour, $heure, $minute, $nbPlaces) { //$anneMoisJour : YYYY-MM-DD
     $co = connexionBdd();
     $requete = "INSERT INTO trajet VALUES (NULL, '" . $idConducteur . "', '" . $villeDepart . "', '" . $villeArrivee . "', '" . $prix . "', '" . $anneeMoisJour . "', '" . $heure . "', '" . $minute . "', '" . $nbPlaces . "' )";
@@ -674,16 +692,63 @@ function getPassagersByIdTrajet($idTrajet){
     $co=  connexionBdd();
     $requeteText=" SELECT * FROM passager WHERE idTrajet='".$idTrajet."' ";
     $tabPassagers=  mysqli_query($co, $requeteText);
-    return $tabTrajet;
+    return $tabPassagers;
 }
 
-function messageAnnulationTrajet($idTrajet, $idAnnuleur, $idAnnulé){
-    
-    
+function getPrixByIdTrajet($idTrajet){
+    $tab=  getTrajetByIdTrajet($idTrajet);
+    $prix=$tab['prix'][0];
+    return $prix;
+}
+
+function messageAnnulationTrajetPourTousEtRemboursement($idTrajet){
+    $tabPassagers=  getPassagersByIdTrajet($idTrajet);
+    $prix=  getPrixByIdTrajet($idTrajet);
+    foreach ($tabPassagers['idPassager'] as $value) {
+        messageAnnulationAutomatique($value, $idTrajet);
+        $remboursement=$prix+10;
+        donnerArgent($value, $remboursement);
+    }
     
 }
 
-function supprimerTrajet($idTrajet){
+function supprimerTrajetBDD($idTrajet){
+    $co=  connexionBdd();
+    $reqTextTrajet=" DELETE FROM trajet WHERE idTrajet='".$idTrajet."' ";
+    mysqli_query($co, $reqTextTrajet);
+    $reqTextPassager=" DELETE FROM passager WHERE idTrajet='".$idTrajet."' ";
+    mysqli_query($co, $reqTextPassager);
+    
+}
+
+function supprimerTrajetEnConducteur($idTrajet){
+    $tabTrajet=  getTrajetByIdTrajet($idTrajet);
+    $idConducteur=$tabTrajet['conducteur'][0];
+    $montant=$tabTrajet['prix'][0];
+    $tabPassagers=  getPassagersByIdTrajet($idTrajet);
+    $nbPassagers=count($tabPassagers['idPassager']);
+    //Signaler annulation trajet aux utilisateurs et leur rendre argent
+    
+    messageAnnulationTrajetPourTousEtRemboursement($idTrajet);
+    
+    // Supprimer trajet de la BDD
+    supprimerTrajetBDD($idTrajet);
+    
+    
+    //Envoyer un messsage à l'annuleur
+    $co = connexionBdd();
+    $date = date("Y-m-d");
+    
+    $villeDépart=$tabTrajet['villeDepart'][0];
+    $villeArrivée=$tabTrajet['villeArrivee'][0];
+    $dateTrajet=$tabTrajet['anneeMoisJour'][0];
+    
+    $contenu= "Votre trajet entre ".$villeDépart." et ".$villeArrivée." du ".$dateTrajet." a bien été annulé. Vous payez donc à chaque passager un pénalité de 10€.";
+    $requeteInsert = "INSERT INTO message VALUES (NULL, '1', '" . $idConducteur . "', '" . $contenu . "', '0', '" . $date . "' )";
+    mysqli_query($co, $requeteInsert);
+    //Enlever 10€ X nombre de passagers
+    $penalite=10*$nbPassagers;
+    retirerArgent($idConducteur, $penalite);
     
     
     
