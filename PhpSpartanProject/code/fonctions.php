@@ -660,4 +660,33 @@ function marquerMesssageLu($idMessage){
     mysqli_query($co, $requeteTxt);
 }
 
+//NouvellesFonctionsATester
+
+
+function getTrajetByIdTrajet($idTrajet){
+    $co=  connexionBdd();
+    $requeteText=" SELECT * FROM trajet WHERE idTrajet='".$idTrajet."' ";
+    $tabTrajet=  mysqli_query($co, $requeteText);
+    return $tabTrajet;
+}
+
+function getPassagersByIdTrajet($idTrajet){
+    $co=  connexionBdd();
+    $requeteText=" SELECT * FROM passager WHERE idTrajet='".$idTrajet."' ";
+    $tabPassagers=  mysqli_query($co, $requeteText);
+    return $tabTrajet;
+}
+
+function messageAnnulationTrajet($idTrajet, $idAnnuleur, $idAnnulé){
+    
+    
+    
+}
+
+function supprimerTrajet($idTrajet){
+    
+    
+    
+}
+
 ?>

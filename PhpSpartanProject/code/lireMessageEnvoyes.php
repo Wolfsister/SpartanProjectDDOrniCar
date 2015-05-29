@@ -28,6 +28,7 @@
         echo '<tr><td>' . $photo . '</td><td>' . $pseudo . '</td><td>' . $date . '</td><td>' . $btSubmit . '</td></tr>';
         echo '<input type="hidden" name="contenu" value=' . $tabRecus['contenu'][$index] . ' />';
         echo '<input type="hidden" name="idMessage" value=' . $idMessage . ' />';
+        echo '<input type="hidden" name="recu" value="non" />';
         echo '<input type="hidden" name="date" value=' . $date . ' /></form>'; //Value donne l'ID de la perosnne notée
     }
 
