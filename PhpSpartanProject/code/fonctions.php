@@ -484,7 +484,7 @@ function affichagePersonnesPourAvis($idTrajet, $idUser) {
                     $note = $tabUser['note'];
                     //Jusque là pas de soucis
                     $photo = '<img src="../ressources/imagesProfiles/' . $value . '.jpg" width="20px" heigth="20px" />';
-                    $select = "<select name='" . $nbLignes . "'><option value=1>1<option value=2>2<option value=3>3<option value=4>4<option value=5>5 </select>";
+                    $select = "<select name='" . $nbLignes . "'><option value=1>A Eviter<option value=2>Décevant<option value=3>Bien<option value=4>Excellent<option value=5>Extraordinaire </select>";
 
 
                     echo '<tr><td>' . $photo . '</td><td>' . $pseudo . '</td><td>' . $prenom . '</td><td>' . $nom . '</td><td>' . $note . '</td><td>' . $select . '</td>';
@@ -508,7 +508,7 @@ function affichagePersonnesPourAvis($idTrajet, $idUser) {
         $note = $tabUser['note'];
 
         $photo = '<img src="../ressources/imagesProfiles/' . $idConducteur . '.jpg" width="20px" heigth="20px" />';
-        $select = "<select name='" . $nbLignes . "'><option value=1>1<option value=2>2<option value=3>3<option value=4>4<option value=5>5 </select>";
+        $select = "<select name='" . $nbLignes . "'><option value=1>A Eviter<option value=2>Décevant<option value=3>Bien<option value=4>Excellent<option value=5>Extraordinaire</select>";
 
 
         echo '<tr><td>' . $photo . '</td><td>' . $pseudo . '</td><td>' . $nom . '</td><td>' . $prenom . '</td><td>' . $note . '</td><td>' . $select . '</td>';
