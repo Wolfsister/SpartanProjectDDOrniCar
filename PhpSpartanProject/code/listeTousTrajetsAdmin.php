@@ -13,7 +13,8 @@ include '../pagetype/hautPage.php';
     $co = connexionBdd();
     $sql = " SELECT * FROM trajet ";
     $result = mysqli_query($co, $sql) or die("Requete pas comprise");
-    lectureTableauHtmlResultatRequete($result);
+    //lectureTableauHtmlResultatRequete($result);
+    lectureTableauHtmlMesTrajets($result);
     ?>
 </p>
 </div>

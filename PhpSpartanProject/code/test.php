@@ -52,6 +52,11 @@ include '../pagetype/hautPage.php';
 <!--    <button type="submit" class="btn btn-default btn-lg btn-block" name="register" onclick="changeCouleur(this,'red')">Réserver ce Trajet</button>-->
 <button type="submit" class="btn btn-default btn-lg btn-block" name="register" onclick="popitup('add_voiture_popup.php')">Réserver ce Trajet</button>
 
+<form method="post" action="index.php">
+    <input src="img/product-4.jpg" type="image" value="submit">
+    
+    
+</form>
 
 
 </div>

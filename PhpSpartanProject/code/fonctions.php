@@ -225,26 +225,26 @@ function insertIntoMessage($pseudoReceveur, $contenu) {
     $co = connexionBdd();
     $idEnvoyeur = $_SESSION['id'];
     $date = date("Y-m-d");
-    $idReceveur=  getIdUserByPseudo($pseudoReceveur);
+    $idReceveur = getIdUserByPseudo($pseudoReceveur);
     $requeteInsert = "INSERT INTO message VALUES (NULL, '" . $idEnvoyeur . "', '" . $idReceveur . "', '" . $contenu . "', '0', '" . $date . "' )";
     mysqli_query($co, $requeteInsert);
     echo $requeteInsert;
 }
 
-function messageAnnulationAutomatique($idAnnulé, $idTrajet){
+function messageAnnulationAutomatique($idAnnulé, $idTrajet) {
     $co = connexionBdd();
     $date = date("Y-m-d");
-    $pseudoAnnulé=  getPseudoById($idAnnulé);
-    $infosTrajet= getTrajetByIdTrajet($idTrajet);
-	
-    $pseudoConducteur=  getPseudoById($infosTrajet['idConducteur'][0]);
-    $villeDépart=$infosTrajet['villeDepart'][0];
-    $villeArrivée=$infosTrajet['villeArrivee'][0];
-    $dateTrajet=$infosTrajet['anneeMoisJour'][0];
-    $prix=$infosTrajet['prix'][0];
-    
-    $contenu= "Désolé ".$pseudoAnnulé.", ".$pseudoConducteur." a annulé le trajet entre ".$villeDépart." et ".$villeArrivée." du ".$dateTrajet.". Votre compte est donc désormais recrédité de ".$prix." € correspondant au montant de votre trajet ainsi que 10 € supplémentaires de dédommagement.";
-	$requeteInsert = "INSERT INTO message VALUES (NULL, '1', '" . $idAnnulé . "', '" . $contenu . "', '0', '" . $date . "' )";
+    $pseudoAnnulé = getPseudoById($idAnnulé);
+    $infosTrajet = getTrajetByIdTrajet($idTrajet);
+
+    $pseudoConducteur = getPseudoById($infosTrajet['idConducteur'][0]);
+    $villeDépart = $infosTrajet['villeDepart'][0];
+    $villeArrivée = $infosTrajet['villeArrivee'][0];
+    $dateTrajet = $infosTrajet['anneeMoisJour'][0];
+    $prix = $infosTrajet['prix'][0];
+
+    $contenu = "Désolé " . $pseudoAnnulé . ", " . $pseudoConducteur . " a annulé le trajet entre " . $villeDépart . " et " . $villeArrivée . " du " . $dateTrajet . ". Votre compte est donc désormais recrédité de " . $prix . " € correspondant au montant de votre trajet ainsi que 10 € supplémentaires de dédommagement.";
+    $requeteInsert = "INSERT INTO message VALUES (NULL, '1', '" . $idAnnulé . "', '" . $contenu . "', '0', '" . $date . "' )";
     mysqli_query($co, $requeteInsert);
 }
 
@@ -659,7 +659,7 @@ function enleverUnePlaceTrajet($idTrajet) {
 function affichageFormulaireEnvoiMessage() {
     echo '<form method="post" action="envoiMessage_action.php" ><label> Destinataire :</label><select name="idReceveur" id="idReceveur">';
     $co = connexionBdd();
-    $sql1 = " SELECT DISTINCT pseudo, idUser FROM user WHERE idUser<>'".$_SESSION['id']."' ORDER BY pseudo ";
+    $sql1 = " SELECT DISTINCT pseudo, idUser FROM user WHERE idUser<>'" . $_SESSION['id'] . "' ORDER BY pseudo ";
     $result1 = mysqli_query($co, $sql1) or die("Requete pas comprise");
     while ($row1 = mysqli_fetch_array($result1)) {
         echo "<option name=" . $row1['idUser'] . ">" . $row1['pseudo'] . " </option> ";
@@ -671,110 +671,141 @@ function affichageFormulaireEnvoiMessage() {
     //Poubelle   onclick="alert(\'Le message a bien été envoyé. \')"
 }
 
-function marquerMesssageLu($idMessage){
-    $co=  connexionBdd();
-    $requeteTxt="UPDATE message SET lu='1' WHERE idMessage='".$idMessage."' ";
+function marquerMesssageLu($idMessage) {
+    $co = connexionBdd();
+    $requeteTxt = "UPDATE message SET lu='1' WHERE idMessage='" . $idMessage . "' ";
     mysqli_query($co, $requeteTxt);
 }
 
-//NouvellesFonctionsATester
-
-
-function getTrajetByIdTrajet($idTrajet){
-    $co=  connexionBdd();
-    $requeteText=" SELECT * FROM trajet WHERE idTrajet='".$idTrajet."' ";
-    $tabTrajet=  lectureTableauPhpResultatRequete(mysqli_query($co, $requeteText));
+function getTrajetByIdTrajet($idTrajet) {
+    $co = connexionBdd();
+    $requeteText = " SELECT * FROM trajet WHERE idTrajet='" . $idTrajet . "' ";
+    $tabTrajet = lectureTableauPhpResultatRequete(mysqli_query($co, $requeteText));
     return $tabTrajet;
 }
 
-function getMessageByidMessage($idMessage){
-    $co=  connexionBdd();
-    $requeteText=" SELECT * FROM message WHERE idMessage='".$idMessage."' ";
-    $tabMessage=  lectureTableauPhpResultatRequete(mysqli_query($co, $requeteText));
+function getMessageByidMessage($idMessage) {
+    $co = connexionBdd();
+    $requeteText = " SELECT * FROM message WHERE idMessage='" . $idMessage . "' ";
+    $tabMessage = lectureTableauPhpResultatRequete(mysqli_query($co, $requeteText));
     return $tabMessage;
 }
 
+function getContenuByidMessage($idMessage) {
+    $tab = getMessageByidMessage($idMessage);
+    $contenu = $tab['contenu'][0];
+    return $contenu;
+}
 
-function getContenuByidMessage($idMessage){
-	$tab=getMessageByidMessage($idMessage);
-	$contenu=$tab['contenu'][0];
-	return $contenu;
-	
-}	
-
-function getPassagersByIdTrajet($idTrajet){
-    $co=  connexionBdd();
-    $requeteText=" SELECT * FROM passager WHERE idTrajet='".$idTrajet."' ";
-    $tabPassagers=  lectureTableauPhpResultatRequete(mysqli_query($co, $requeteText));
+function getPassagersByIdTrajet($idTrajet) {
+    $co = connexionBdd();
+    $requeteText = " SELECT * FROM passager WHERE idTrajet='" . $idTrajet . "' ";
+    $tabPassagers = lectureTableauPhpResultatRequete(mysqli_query($co, $requeteText));
     return $tabPassagers;
 }
 
-function getPrixByIdTrajet($idTrajet){
-    $tab=  getTrajetByIdTrajet($idTrajet);
-    $prix=$tab['prix'][0];
+function getPrixByIdTrajet($idTrajet) {
+    $tab = getTrajetByIdTrajet($idTrajet);
+    $prix = $tab['prix'][0];
     return $prix;
 }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function messageAnnulationTrajetPourTousEtRemboursement($idTrajet){
-    $tabPassagers=  getPassagersByIdTrajet($idTrajet);	
-    $prix=  getPrixByIdTrajet($idTrajet);
-	if(!empty($tabPassagers)){
-		foreach ($tabPassagers['idPassager'] as $value) {
-			echo $value;
-			messageAnnulationAutomatique($value, $idTrajet);
-			$remboursement=$prix+10;
-			donnerArgent($value, $remboursement);
-		}
-	}
-    
+function messageAnnulationTrajetPourTousEtRemboursement($idTrajet) {
+    $tabPassagers = getPassagersByIdTrajet($idTrajet);
+    $prix = getPrixByIdTrajet($idTrajet);
+    if (!empty($tabPassagers)) {
+        foreach ($tabPassagers['idPassager'] as $value) {
+            echo $value;
+            messageAnnulationAutomatique($value, $idTrajet);
+            $remboursement = $prix + 10;
+            donnerArgent($value, $remboursement);
+        }
+    }
 }
 
-function supprimerTrajetBDD($idTrajet){
-    $co=  connexionBdd();
-    $reqTextTrajet=" DELETE FROM trajet WHERE idTrajet='".$idTrajet."' ";
+function supprimerTrajetBDD($idTrajet) {
+    $co = connexionBdd();
+    $reqTextTrajet = " DELETE FROM trajet WHERE idTrajet='" . $idTrajet . "' ";
     mysqli_query($co, $reqTextTrajet);
-    $reqTextPassager=" DELETE FROM passager WHERE idTrajet='".$idTrajet."' ";
+    $reqTextPassager = " DELETE FROM passager WHERE idTrajet='" . $idTrajet . "' ";
     mysqli_query($co, $reqTextPassager);
-    
 }
 
-function supprimerTrajetEnConducteur($idTrajet){
-    $tabTrajet=  getTrajetByIdTrajet($idTrajet);
-    $idConducteur=$tabTrajet['idConducteur'][0];
-    $montant=$tabTrajet['prix'][0];
-    $tabPassagers=  getPassagersByIdTrajet($idTrajet);
-    $nbPassagers=count($tabPassagers['idPassager']);
+function supprimerTrajetEnConducteur($idTrajet) {
+    $tabTrajet = getTrajetByIdTrajet($idTrajet);
+    $idConducteur = $tabTrajet['idConducteur'][0];
+    $montant = $tabTrajet['prix'][0];
+    $tabPassagers = getPassagersByIdTrajet($idTrajet);
+    $nbPassagers = count($tabPassagers['idPassager']);
     //Signaler annulation trajet aux utilisateurs et leur rendre argent
-    
+
     messageAnnulationTrajetPourTousEtRemboursement($idTrajet);
-    
+
     // Supprimer trajet de la BDD
     supprimerTrajetBDD($idTrajet);
-    
-    
+
+
     //Envoyer un messsage à l'annuleur
     $co = connexionBdd();
     $date = date("Y-m-d");
-    
-    $villeDépart=$tabTrajet['villeDepart'][0];
-    $villeArrivée=$tabTrajet['villeArrivee'][0];
-    $dateTrajet=$tabTrajet['anneeMoisJour'][0];
-    
-	if($nbPassagers==0){
-	    $contenu= "Votre trajet entre ".$villeDépart." et ".$villeArrivée." du ".$dateTrajet." a bien été annulé.";
 
-	}else{
-		//Enlever 10€ X nombre de passagers
-    $penalite=10*$nbPassagers;
-    retirerArgent($idConducteur, $penalite);
-    $contenu= "Votre trajet entre ".$villeDépart." et ".$villeArrivée." du ".$dateTrajet." a bien été annulé. Vous payez donc à chaque passager un pénalité de 10€.";
+    $villeDépart = $tabTrajet['villeDepart'][0];
+    $villeArrivée = $tabTrajet['villeArrivee'][0];
+    $dateTrajet = $tabTrajet['anneeMoisJour'][0];
+
+    if ($nbPassagers == 0) {
+        $contenu = "Votre trajet entre " . $villeDépart . " et " . $villeArrivée . " du " . $dateTrajet . " a bien été annulé.";
+    } else {
+        //Enlever 10€ X nombre de passagers
+        $penalite = 10 * $nbPassagers;
+        retirerArgent($idConducteur, $penalite);
+        $contenu = "Votre trajet entre " . $villeDépart . " et " . $villeArrivée . " du " . $dateTrajet . " a bien été annulé. Vous payez donc à chaque passager un pénalité de 10€.";
     }
-	$requeteInsert = "INSERT INTO message VALUES (NULL, '1', '" . $idConducteur . "', '" . $contenu . "', '0', '" . $date . "' )";
+    $requeteInsert = "INSERT INTO message VALUES (NULL, '1', '" . $idConducteur . "', '" . $contenu . "', '0', '" . $date . "' )";
     mysqli_query($co, $requeteInsert);
-    
-    
-    
-    
+}
+
+//A tester
+
+function lectureTableauHtmlMesTrajets($objetMysqliquery) { // simple ebauche
+    if (mysqli_num_rows($objetMysqliquery) > 0) {
+        echo '<table class="tableauAffichageBDD"><tr>';
+
+        $premieresValeurs = array();
+        foreach ($tab1 = mysqli_fetch_array($objetMysqliquery) as $key => $value) { //Récupère les noms des colonnes ainsi que le premier tuple
+            if (!is_int($key)) {
+                echo '<th>' . $key . '</th>';
+                $premieresValeurs[] = $value;
+            }
+        }
+        echo '<th>Plus d\'infos </th>';
+        echo '</tr>';
+        echo "<form method='post' action=''>";
+        echo '<tr>';
+        foreach ($premieresValeurs as $key => $value) { //Met le premier tuple dans le tableau
+            echo '<td>' . $value . '</td>';
+        }
+        echo "<td><input src='img/plus.jpg' type=image width='30px' height='30px' value=submit></td>";
+
+        echo '</tr>';
+        while ($tab = mysqli_fetch_array($objetMysqliquery)) { //Ajoute tous les tuples suivants dans le tableau
+            echo "<form method='post' action=''>";
+            echo '<tr>';
+            foreach ($tab as $key => $value) {
+
+                if (!is_int($key)) {
+                    echo '<td>' . $value . '</td>';
+                }
+                $idTrajet = $tab['idTrajet'];
+            }
+            echo "<input type='hidden' name='idTrajet' value=" . $idTrajet . ">";
+            echo "<td><input src='img/plus.jpg' type=image width='30px' height='30px' value=submit></td>";
+            echo "</form>";
+            echo '</tr>';
+        }
+        echo '</table>';
+    }
 }
 
 ?>

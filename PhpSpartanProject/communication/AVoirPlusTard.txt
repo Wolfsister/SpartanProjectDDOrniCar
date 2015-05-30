@@ -5,6 +5,8 @@ Priorité : 1 important, 2 moins important..etc
 
 BONUS : CREER UNE FONCTION POUR CREER PLEIN DE TRAJETS AFIN DE TESTER LA BDD
 
+1- Faire action de la derniere fonction créée
+
 3- Dans recherche trajet, afficher villes des trajets dont le départ n'a pas été fait
 
 4- Tester si en changeant format date du datepicker cela enregistre bien dans la BDD
