@@ -666,7 +666,7 @@ function affichageFormulaireEnvoiMessage() {
     }
     echo '</select><br />';
     echo '<textarea name="contenu" id="contenu" placeholder="Contenu du message"></textarea>';
-    echo '<button type="submit" class="btn btn-default btn-lg btn-block" name="sendMessage" onclick="alert(\'Le message a bien été envoyé. \')">Envoyer le Message</button>';
+    echo '<button type="submit" id="boutonMessage" class="btn btn-default btn-lg btn-block" name="sendMessage" onclick="alert(\'Le message a bien été envoyé. \')">Envoyer le Message</button>';
 
     //Poubelle   onclick="alert(\'Le message a bien été envoyé. \')"
 }

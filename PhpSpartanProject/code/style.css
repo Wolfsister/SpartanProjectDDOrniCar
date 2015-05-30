@@ -144,6 +144,38 @@ body{
     z-index: 3;
 }
 
+.messageRecus{
+    float:left;
+    margin-left:0px;
+    width: 47%;
+    margin-left: 3%;
+    border: 1px solid blue;
+}
+
+.messageEnvoyes{
+/*    float: left;
+    border: 1px solid blue;*/
+}
+
+.envoyerMessage{
+    float:right;
+    width:47%;
+    border: 1px solid blue;
+}
+
+#boutonMessage{
+    width:auto;
+    
+}
+
+.messageRecus table{
+    width:auto;
+}
+
+.main{
+    display:block;
+    width:auto;
+}
 
 
 // Fin des ajouts par Denis

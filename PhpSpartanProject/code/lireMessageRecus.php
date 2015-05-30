@@ -11,7 +11,7 @@ $nbLignes = mysqli_num_rows($reqRecus);
 $tabRecus = lectureTableauPhpResultatRequete($reqRecus);
 
 
-echo "<table class='tableauAffichageBDD'><tr><th>Photo</th><th>Pseudo</th><th>Date</th><tr>"; //Mettre select note à la fin
+echo "<table id='tableMessagesRecus' class='tableauAffichageBDD'><tr><th>Photo</th><th>Pseudo</th><th>Date</th><tr>"; //Mettre select note à la fin
 
 
 
@@ -24,7 +24,7 @@ for ($index = 0; $index < $nbLignes; $index++) {
     $date= $tabRecus['date'][$index];
     $idMessage=$tabRecus['idMessage'][$index];
     $photo = '<img src="../ressources/imagesProfiles/' . $tabRecus["idEnvoyeur"][$index] . '.jpg" width="40px" heigth="40px" />';
-    $btSubmit = '<div class="col-md-12 col-xs-12 col-sm-12"><button type="submit" class="btn btn-default btn-lg btn-block" name="register">Lire Message</button> ';
+    $btSubmit = '<div id="boutonMessage" class="col-md-12 col-xs-12 col-sm-12"><button type="submit" class="btn btn-default btn-lg btn-block" name="register">Lire Message</button> ';
 
     echo '<tr><td>' . $photo . '</td><td>' . $pseudo . '</td><td>' . $date . '</td><td>'.$btSubmit.'</td></tr>';
     echo '<input type="hidden" name="contenu" value=' . $tabRecus['contenu'][$index] . ' />';

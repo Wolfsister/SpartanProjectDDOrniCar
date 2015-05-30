@@ -23,7 +23,7 @@
         $date = $tabRecus['date'][$index];
         $idMessage = $tabRecus['idMessage'][$index];
         $photo = '<img src="../ressources/imagesProfiles/' . $tabRecus["idReceveur"][$index] . '.jpg" width="40px" heigth="40px" />';
-        $btSubmit = '<div class="col-md-12 col-xs-12 col-sm-12"><button type="submit" class="btn btn-default btn-lg btn-block" name="register">Lire Message</button> ';
+        $btSubmit = '<div id="boutonMessage" class="col-md-12 col-xs-12 col-sm-12"><button type="submit" class="btn btn-default btn-lg btn-block" name="register">Lire Message</button> ';
 
         echo '<tr><td>' . $photo . '</td><td>' . $pseudo . '</td><td>' . $date . '</td><td>' . $btSubmit . '</td></tr>';
         echo '<input type="hidden" name="idMessage" value=' . $idMessage . ' />';
