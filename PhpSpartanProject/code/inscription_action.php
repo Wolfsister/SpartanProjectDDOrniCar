@@ -75,7 +75,7 @@ if (!empty($_POST)) {
        
 
         // Ajout dans BDD
-        $conn = new mysqli('localhost', 'root', '', 'testornicar');
+        $conn = connexionBdd();
         $insertion = "INSERT INTO user (idUser, nom, prenom, pseudo, motdepasse, email, idVoiture, photo, note, solde, anneenaissance, admin) VALUES (NULL, '" . $_POST['nom'] . "', '" . $_POST['prenom'] . "', '" . $_POST['pseudo'] . "', '" . $_POST['mdp'] . "', '" . $_POST['email'] . "', NULL, '', NULL,'0','" . $_POST['anneenaissance'] . "','0')";
         mysqli_query($conn, $insertion);
         $req="SELECT * FROM user WHERE pseudo= '".$_POST['pseudo']."' ";
