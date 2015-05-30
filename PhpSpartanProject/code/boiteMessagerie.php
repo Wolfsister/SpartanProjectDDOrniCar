@@ -18,10 +18,6 @@ include '../pagetype/hautPage.php';
     <?php include "envoiMessage.php"; ?>
 </div>
 
-<!--<div class="messageEnvoyes">
-    <h1>Messages Envoyés:</h1>
-    <?php //include "lireMessageEnvoyes.php"; ?>
-</div>-->
 
 </div>
 
