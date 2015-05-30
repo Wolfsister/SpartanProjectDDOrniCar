@@ -44,7 +44,6 @@ if (isset($_POST)) {
             echo 'Il n\'existe pas d\'adresse mail à cette adresse, merci de vérifier votre saisie, ou cliquez <a href="./inscription.php">ici</a> pour créer un compte.';
         }else{
             $emailExiste=true;
-            echo 'Email existant <br />';
         }
     }
 
@@ -55,7 +54,7 @@ if (isset($_POST)) {
         $mdpReel=$tabResultat['motdepasse'];
         $mdpPropose=$_POST['passe'];
         if($mdpReel==$mdpPropose){
-            echo 'Bonne combinaison email/mot de passe, vous êtes désormais loggé !';
+           // echo 'Bonne combinaison email/mot de passe, vous êtes désormais loggé !';
 //            $_SESSION['connected']=1;
 //            $_SESSION['pseudo']=$tabResultat['pseudo'];
 //            var_dump($_SESSION);
