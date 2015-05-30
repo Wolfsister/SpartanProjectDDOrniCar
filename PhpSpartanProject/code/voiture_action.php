@@ -5,7 +5,7 @@ if (!isset($_SESSION)) {
         $_SESSION['connected']=0;
     }
 }
-include '../code/fonctions.php';
+//include '../code/fonctions.php';
 
 if (!empty($_POST)) {
     $erreur = false;

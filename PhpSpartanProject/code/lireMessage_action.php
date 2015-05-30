@@ -1,4 +1,4 @@
-
+<?php include 'fonctions.php';?>
 
 <div class="container">
 
@@ -8,7 +8,8 @@
     }
 //echo 'Date Envoi: '.$_POST['date'].'<br />';
     echo 'Date Envoi: ' . date('d-m-Y', strtotime($_POST['date'])) . '<br />';
-    echo $_POST['contenu'];
+    $idMessage=$_POST['idMessage'];
+	echo getContenuByidMessage($idMessage);
     ?>
 
 </div>
