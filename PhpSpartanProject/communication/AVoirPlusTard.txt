@@ -5,29 +5,24 @@ Priorité : 1 important, 2 moins important..etc
 
 BONUS : CREER UNE FONCTION POUR CREER PLEIN DE TRAJETS AFIN DE TESTER LA BDD
 
+1- UTILISER onSubmit sur le FORM !!!!!!!!!
+
+
+2-Faire beau cadre pour la lecture des messges
+
 2- Que faire une fois trajet validé ? Le supprimer de la BDD ?
 
 3- Dans recherche trajet, afficher villes des trajets dont le départ n'a pas été fait
 
-4- Tester si en changeant format date du datepicker cela enregistre bien dans la BDD
-
 2- addVoiture que si le monsieur souhaite ajouter une voiture !!!! (js onClick, en faisant une popup ?)
-
-5- Dans avis action, mettre etoile plutôt qu'un select avec des notes
-
-3- Message: Faire encart messages recus, encart messages envoyés, et envoyer message
 
 3- Griser ligne de message non lu
 
-4- Ajouter options de modifier informations de notre profil
+7- Ajouter options de modifier informations de notre profil
 
 3- Si l'utilisateur n'a pas d'image dans le répertoire, mettre l'image par défaut => Faire fonction : si id.jpg retourne quelque chose, ok , sinon retourner photo par défaut
 
 2- Redimensionner images (poids) lors de l'enregistrement pour gagner de la place
-
-
-5- DORIAN : Dans les champs des formulaires, une partie de la saisie (le bas) est tronquée, regarde si t'y arrives à corriger, tu connais mieux cette partie de code que moi
-
 
 0 - Est-ce qu'on met une taille limite pour la photo de profil ? Si non, supprimer le texte montrant une limitation à 15ko
 
@@ -37,9 +32,8 @@ BONUS : CREER UNE FONCTION POUR CREER PLEIN DE TRAJETS AFIN DE TESTER LA BDD
 
 0 - Proposer identification par email ou Pseudo (pas compliqué normalement)
 
-3- Afficher trajets meme si dates non remplies
+3- Afficher trajets meme si dates non remplies dans recherche
 
-2- Système de messagerie interne
 
 3- Gérer le "se souvenir de moi" au login
 

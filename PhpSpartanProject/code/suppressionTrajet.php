@@ -13,7 +13,16 @@ $dateActuelle = date("Y-m-d");
 
 <div class="container">
 
+<?php
 
+if($date<$dateActuelle){
+    echo "Le trajet est déjà terminé, pourquoi le supprimer ?";
+}else{
+    echo "Votre trajet a été supprimé.";
+    supprimerTrajetEnConducteur($idTrajet);
+}
+
+?>
 
 </div>
 

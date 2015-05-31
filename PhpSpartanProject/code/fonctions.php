@@ -251,7 +251,7 @@ function messageAnnulationAutomatique($idAnnulé, $idTrajet) {
 function insertIntoTrajet($idConducteur, $villeDepart, $villeArrivee, $prix, $anneeMoisJour, $heure, $minute, $nbPlaces) { //$anneMoisJour : YYYY-MM-DD
     $co = connexionBdd();
     $requete = "INSERT INTO trajet VALUES (NULL, '" . $idConducteur . "', '" . $villeDepart . "', '" . $villeArrivee . "', '" . $prix . "', '" . $anneeMoisJour . "', '" . $heure . "', '" . $minute . "', '" . $nbPlaces . "', '0' )";
-    $doQuery = mysqli_query($co, $requete);
+    mysqli_query($co, $requete);
     if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
@@ -260,7 +260,7 @@ function insertIntoTrajet($idConducteur, $villeDepart, $villeArrivee, $prix, $an
 function insertIntoAvis($idDonneur, $idReceveur, $idTrajet, $note) {
     $co = connexionBdd();
     $requete = "INSERT INTO avis VALUES ('" . $idDonneur . "', '" . $idReceveur . "', '" . $idTrajet . "', '" . $note . "' )";
-    $doQuery = mysqli_query($co, $requete);
+    mysqli_query($co, $requete);
     if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
@@ -269,7 +269,7 @@ function insertIntoAvis($idDonneur, $idReceveur, $idTrajet, $note) {
 function insertIntoPassager($idPassager, $idTrajet) {
     $co = connexionBdd();
     $requete = "INSERT INTO passager VALUES ('" . $idPassager . "','" . $idTrajet . "' )";
-    $doQuery = mysqli_query($co, $requete);
+    mysqli_query($co, $requete);
     if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
@@ -279,7 +279,7 @@ function aDonnéAvis($idDonneur, $idReceveur, $idTrajet) {
     $avisDonné = false;
     $co = connexionBdd();
     $requete = "SELECT * FROM avis WHERE idDonneur='" . $idDonneur . "' AND idReceveur='" . $idReceveur . "' AND idTrajet='" . $idTrajet . "' ";
-    $doQuery = mysqli_query($co, $requete);
+    $doQuery=mysqli_query($co, $requete);
     if (mysqli_num_rows($doQuery) > 0) {
         $avisDonné = true;
     }
@@ -829,7 +829,7 @@ function lectureTableauHtmlMesTrajetsConducteurResultatRequete($objetMysqliquery
         echo '<th>Validation</th>';
         echo '<th>Suppression</th>';
         echo '</tr>';
-        echo "<form method='post' action=''>";
+        echo "<form method='post' action='infosPassager.php'>";
         echo '<tr>';
         foreach ($premieresValeurs as $key => $value) { //Met le premier tuple dans le tableau
             echo '<td>' . $value . '</td>';
@@ -840,13 +840,14 @@ function lectureTableauHtmlMesTrajetsConducteurResultatRequete($objetMysqliquery
         echo "<form method='post' action='validationTrajet.php'>";
         echo '<td><button type="submit" id="boutonValidation" class="btn btn-default btn-lg btn-block" name="validation")">Valider</button></td>';
         echo "<input type='hidden' name='idTrajet' value=" . $idTrajet . ">";
+        echo '</form>';
         echo "<form method='post' action='suppressionTrajet.php'>";
         echo "<td><input src='img/suppr.jpg' type=image width='30px' height='30px' value=submit></td>";
         echo "<input type='hidden' name='idTrajet' value=" . $idTrajet . ">";
         echo "</tr></form>";
 
         while ($tab = mysqli_fetch_array($objetMysqliquery)) { //Ajoute tous les tuples suivants dans le tableau
-            echo "<form method='post' action=''>";
+            echo "<form method='post' action='infosPassager.php'>";
             echo '<tr>';
             foreach ($tab as $key => $value) {
 
@@ -860,6 +861,7 @@ function lectureTableauHtmlMesTrajetsConducteurResultatRequete($objetMysqliquery
             echo "<form method='post' action='validationTrajet.php'>";
             echo '<td><button type="submit" id="boutonValidation" class="btn btn-default btn-lg btn-block" name="validation")">Valider</button></td>';
             echo "<input type='hidden' name='idTrajet' value=" . $idTrajet . ">";
+            echo '</form>';
             echo "<form method='post' action='suppressionTrajet.php'>";
             echo "<td><input src='img/suppr.jpg' type=image width='30px' height='30px' value=submit></td>";
             echo "<input type='hidden' name='idTrajet' value=" . $idTrajet . ">";
@@ -869,18 +871,18 @@ function lectureTableauHtmlMesTrajetsConducteurResultatRequete($objetMysqliquery
     }
 }
 
-function isAlreadyValide($idTrajet){
-    $valide=true;
-    $tabTrajet=  getTrajetByIdTrajet($idTrajet);
-    if($tabTrajet['valide'][0]==0){
-        $valide=false;
+function isAlreadyValide($idTrajet) {
+    $valide = true;
+    $tabTrajet = getTrajetByIdTrajet($idTrajet);
+    if ($tabTrajet['valide'][0] == 0) {
+        $valide = false;
     }
     return $valide;
 }
 
-function validerTrajet($idTrajet){
-    $co=  connexionBdd();
-    $updaText="UPDATE trajet SET valide='1' WHERE idTrajet='".$idTrajet."'";
+function validerTrajet($idTrajet) {
+    $co = connexionBdd();
+    $updaText = "UPDATE trajet SET valide='1' WHERE idTrajet='" . $idTrajet . "'";
     mysqli_query($co, $updaText);
 }
 
