@@ -827,6 +827,7 @@ function lectureTableauHtmlMesTrajetsConducteurResultatRequete($objetMysqliquery
         }
         echo '<th>Contacter </th>';
         echo '<th>Validation</th>';
+        echo '<th>Suppression</th>';
         echo '</tr>';
         echo "<form method='post' action=''>";
         echo '<tr>';
@@ -838,6 +839,9 @@ function lectureTableauHtmlMesTrajetsConducteurResultatRequete($objetMysqliquery
         echo '</form>';
         echo "<form method='post' action='validationTrajet.php'>";
         echo '<td><button type="submit" id="boutonValidation" class="btn btn-default btn-lg btn-block" name="validation")">Valider</button></td>';
+        echo "<input type='hidden' name='idTrajet' value=" . $idTrajet . ">";
+        echo "<form method='post' action='suppressionTrajet.php'>";
+        echo "<td><input src='img/suppr.jpg' type=image width='30px' height='30px' value=submit></td>";
         echo "<input type='hidden' name='idTrajet' value=" . $idTrajet . ">";
         echo "</tr></form>";
 
@@ -855,6 +859,9 @@ function lectureTableauHtmlMesTrajetsConducteurResultatRequete($objetMysqliquery
             echo "<td><input src='img/plus.jpg' type=image width='30px' height='30px' value=submit></td>";
             echo "<form method='post' action='validationTrajet.php'>";
             echo '<td><button type="submit" id="boutonValidation" class="btn btn-default btn-lg btn-block" name="validation")">Valider</button></td>';
+            echo "<input type='hidden' name='idTrajet' value=" . $idTrajet . ">";
+            echo "<form method='post' action='suppressionTrajet.php'>";
+            echo "<td><input src='img/suppr.jpg' type=image width='30px' height='30px' value=submit></td>";
             echo "<input type='hidden' name='idTrajet' value=" . $idTrajet . ">";
             echo "</tr></form>";
         }
