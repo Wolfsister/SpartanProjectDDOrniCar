@@ -15,11 +15,16 @@ $dateActuelle = date("Y-m-d");
 
     <?php
     if ($date <= $dateActuelle) {
-       $prix=  getPrixByIdTrajet($idTrajet);
-       $nbPassagers=count(getPassagersByIdTrajet($idTrajet));
-       $montant=$nbPassagers*$prix;
-       donnerArgent($_SESSION['id'], $montant);
-       echo "Votre trajet a été validé, et votre compte crédité.";
+        if (isAlreadyValide($idTrajet)) {
+            echo "Vous avez déjà validé ce trajet !";
+        } else {
+            $prix = getPrixByIdTrajet($idTrajet);
+            $nbPassagers = count(getPassagersByIdTrajet($idTrajet));
+            $montant = $nbPassagers * $prix;
+            donnerArgent($_SESSION['id'], $montant);
+            echo "Votre trajet a été validé, et votre compte crédité.";
+            validerTrajet($idTrajet);
+        }
     } else {
         echo "Vous ne pourrez valider ce trajet uniquement quand celui-ci sera effectué !";
     }

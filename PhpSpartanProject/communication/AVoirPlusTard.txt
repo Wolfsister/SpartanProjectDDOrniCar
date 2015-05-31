@@ -5,7 +5,7 @@ Priorité : 1 important, 2 moins important..etc
 
 BONUS : CREER UNE FONCTION POUR CREER PLEIN DE TRAJETS AFIN DE TESTER LA BDD
 
-1- Faire action de la derniere fonction créée
+2- Que faire une fois trajet validé ? Le supprimer de la BDD ?
 
 3- Dans recherche trajet, afficher villes des trajets dont le départ n'a pas été fait
 

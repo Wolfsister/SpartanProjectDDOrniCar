@@ -250,7 +250,7 @@ function messageAnnulationAutomatique($idAnnulé, $idTrajet) {
 
 function insertIntoTrajet($idConducteur, $villeDepart, $villeArrivee, $prix, $anneeMoisJour, $heure, $minute, $nbPlaces) { //$anneMoisJour : YYYY-MM-DD
     $co = connexionBdd();
-    $requete = "INSERT INTO trajet VALUES (NULL, '" . $idConducteur . "', '" . $villeDepart . "', '" . $villeArrivee . "', '" . $prix . "', '" . $anneeMoisJour . "', '" . $heure . "', '" . $minute . "', '" . $nbPlaces . "' )";
+    $requete = "INSERT INTO trajet VALUES (NULL, '" . $idConducteur . "', '" . $villeDepart . "', '" . $villeArrivee . "', '" . $prix . "', '" . $anneeMoisJour . "', '" . $heure . "', '" . $minute . "', '" . $nbPlaces . "', '0' )";
     $doQuery = mysqli_query($co, $requete);
     if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -867,6 +867,21 @@ function lectureTableauHtmlMesTrajetsConducteurResultatRequete($objetMysqliquery
         }
         echo '</table>';
     }
+}
+
+function isAlreadyValide($idTrajet){
+    $valide=true;
+    $tabTrajet=  getTrajetByIdTrajet($idTrajet);
+    if($tabTrajet['valide'][0]==0){
+        $valide=false;
+    }
+    return $valide;
+}
+
+function validerTrajet($idTrajet){
+    $co=  connexionBdd();
+    $updaText="UPDATE trajet SET valide='1' WHERE idTrajet='".$idTrajet."'";
+    mysqli_query($co, $updaText);
 }
 
 ?>
