@@ -17,7 +17,7 @@ include '../pagetype/hautPage.php';
     if($nbLignes1==0){
         echo "Vous ne prenez part à aucun trajet en tant que conducteur.";
     }else{
-        lectureTableauHtmlResultatRequete($reqConducteur);
+        lectureTableauHtmlMesTrajetsConducteurResultatRequete($reqConducteur);
     }
     
     

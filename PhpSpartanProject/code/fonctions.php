@@ -775,8 +775,8 @@ function lectureTableauHtmlTousTrajets($objetMysqliquery) { // simple ebauche
         $premieresValeurs = array();
         foreach ($tab1 = mysqli_fetch_array($objetMysqliquery) as $key => $value) { //Récupère les noms des colonnes ainsi que le premier tuple
             if (!is_int($key)) {
-                if($key=='idTrajet'){
-                    $idTrajet=$tab1[$key];
+                if ($key == 'idTrajet') {
+                    $idTrajet = $tab1[$key];
                 }
                 echo '<th>' . $key . '</th>';
                 $premieresValeurs[] = $value;
@@ -806,6 +806,57 @@ function lectureTableauHtmlTousTrajets($objetMysqliquery) { // simple ebauche
             echo "<td><input src='img/plus.jpg' type=image width='30px' height='30px' value=submit></td>";
             echo "</form>";
             echo '</tr>';
+        }
+        echo '</table>';
+    }
+}
+
+function lectureTableauHtmlMesTrajetsConducteurResultatRequete($objetMysqliquery) { // changerAction
+    if (mysqli_num_rows($objetMysqliquery) > 0) {
+        echo '<table class="tableauAffichageBDD"><tr>';
+
+        $premieresValeurs = array();
+        foreach ($tab1 = mysqli_fetch_array($objetMysqliquery) as $key => $value) { //Récupère les noms des colonnes ainsi que le premier tuple
+            if (!is_int($key)) {
+                if ($key == 'idTrajet') {
+                    $idTrajet = $tab1[$key];
+                }
+                echo '<th>' . $key . '</th>';
+                $premieresValeurs[] = $value;
+            }
+        }
+        echo '<th>Contacter </th>';
+        echo '<th>Validation</th>';
+        echo '</tr>';
+        echo "<form method='post' action=''>";
+        echo '<tr>';
+        foreach ($premieresValeurs as $key => $value) { //Met le premier tuple dans le tableau
+            echo '<td>' . $value . '</td>';
+        }
+        echo "<td><input src='img/plus.jpg' type=image width='30px' height='30px' value=submit></td>";
+        echo "<input type='hidden' name='idTrajet' value=" . $idTrajet . ">";
+        echo '</form>';
+        echo "<form method='post' action='validationTrajet.php'>";
+        echo '<td><button type="submit" id="boutonValidation" class="btn btn-default btn-lg btn-block" name="validation")">Valider</button></td>';
+        echo "<input type='hidden' name='idTrajet' value=" . $idTrajet . ">";
+        echo "</tr></form>";
+
+        while ($tab = mysqli_fetch_array($objetMysqliquery)) { //Ajoute tous les tuples suivants dans le tableau
+            echo "<form method='post' action=''>";
+            echo '<tr>';
+            foreach ($tab as $key => $value) {
+
+                if (!is_int($key)) {
+                    echo '<td>' . $value . '</td>';
+                }
+                $idTrajet = $tab['idTrajet'];
+            }
+            echo "<input type='hidden' name='idTrajet' value=" . $idTrajet . ">";
+            echo "<td><input src='img/plus.jpg' type=image width='30px' height='30px' value=submit></td>";
+            echo "<form method='post' action='validationTrajet.php'>";
+            echo '<td><button type="submit" id="boutonValidation" class="btn btn-default btn-lg btn-block" name="validation")">Valider</button></td>';
+            echo "<input type='hidden' name='idTrajet' value=" . $idTrajet . ">";
+            echo "</tr></form>";
         }
         echo '</table>';
     }
