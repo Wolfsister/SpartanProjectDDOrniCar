@@ -85,6 +85,8 @@ if (!empty($_POST)) {
         
         //Faire update avec adresse photo si courage
 
+        $reqUpdate=" UPDATE user SET photo='".$emplacementDeplacement."' WHERE id='".$id."' ";
+        mysqli_query($co, $reqUpdate);
         //Finalisation Inscription
 
         //echo 'Félicitations pour votre inscription '.$_POST['prenom'].' '.$_POST['nom'].', ou '.$_POST['pseudo'].' devrais-je dire ! :)';
