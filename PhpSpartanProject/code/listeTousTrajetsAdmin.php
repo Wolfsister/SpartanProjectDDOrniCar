@@ -14,7 +14,7 @@ include '../pagetype/hautPage.php';
     $sql = " SELECT * FROM trajet ";
     $result = mysqli_query($co, $sql) or die("Requete pas comprise");
     //lectureTableauHtmlResultatRequete($result);
-    lectureTableauHtmlMesTrajets($result);
+    lectureTableauHtmlTousTrajets($result);
     ?>
 </p>
 </div>

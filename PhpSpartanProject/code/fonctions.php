@@ -768,29 +768,32 @@ function supprimerTrajetEnConducteur($idTrajet) {
 
 //A tester
 
-function lectureTableauHtmlMesTrajets($objetMysqliquery) { // simple ebauche
+function lectureTableauHtmlTousTrajets($objetMysqliquery) { // simple ebauche
     if (mysqli_num_rows($objetMysqliquery) > 0) {
         echo '<table class="tableauAffichageBDD"><tr>';
 
         $premieresValeurs = array();
         foreach ($tab1 = mysqli_fetch_array($objetMysqliquery) as $key => $value) { //Récupère les noms des colonnes ainsi que le premier tuple
             if (!is_int($key)) {
+                if($key=='idTrajet'){
+                    $idTrajet=$tab1[$key];
+                }
                 echo '<th>' . $key . '</th>';
                 $premieresValeurs[] = $value;
             }
         }
         echo '<th>Plus d\'infos </th>';
         echo '</tr>';
-        echo "<form method='post' action=''>";
+        echo "<form method='post' action='listeTousTrajets_action.php'>";
         echo '<tr>';
         foreach ($premieresValeurs as $key => $value) { //Met le premier tuple dans le tableau
             echo '<td>' . $value . '</td>';
         }
         echo "<td><input src='img/plus.jpg' type=image width='30px' height='30px' value=submit></td>";
-
-        echo '</tr>';
+        echo "<input type='hidden' name='idTrajet' value=" . $idTrajet . ">";
+        echo '</tr></form>';
         while ($tab = mysqli_fetch_array($objetMysqliquery)) { //Ajoute tous les tuples suivants dans le tableau
-            echo "<form method='post' action=''>";
+            echo "<form method='post' action='listeTousTrajets_action.php'>";
             echo '<tr>';
             foreach ($tab as $key => $value) {
 
