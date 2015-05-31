@@ -20,14 +20,14 @@ for ($i = 1; $i <= $nbAvis; $i++) {
     insertIntoAvis($idUser, $idReceveur, $idTrajet, $note);
     updateNote(calculNoteMoyenne($idReceveur), $idReceveur); //Met à jour la note moyenne du receveur
 //Créditation du compte du donneur d'avis (si conducteur)
-    if (isDriver($idUser, $idTrajet)) {
-        $co = connexionBdd();
-        $textPrixTrajet = " SELECT * FROM trajet WHERE idTrajet='" . $idTrajet . "' ";
-        $tab = lectureTableauPhpResultatRequete(mysqli_query($co, $textPrixTrajet));
-        $prix = $tab['prix'][0];
-
-        donnerArgent($idUser, $prix);
-    }
+//    if (isDriver($idUser, $idTrajet)) {
+//        $co = connexionBdd();
+//        $textPrixTrajet = " SELECT * FROM trajet WHERE idTrajet='" . $idTrajet . "' ";
+//        $tab = lectureTableauPhpResultatRequete(mysqli_query($co, $textPrixTrajet));
+//        $prix = $tab['prix'][0];
+//
+//        donnerArgent($idUser, $prix);
+//    }
 }
 
 //redirection('./compte.php');
