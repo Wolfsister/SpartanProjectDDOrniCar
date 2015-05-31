@@ -1,4 +1,9 @@
-<?php include 'fonctions.php';?>
+<?php
+$path = '';
+$title = '';
+include '../pagetype/hautPage.php';
+?>
+
 
 <div class="container">
 
@@ -8,9 +13,14 @@
     }
 //echo 'Date Envoi: '.$_POST['date'].'<br />';
     echo 'Date Envoi: ' . date('d-m-Y', strtotime($_POST['date'])) . '<br />';
-    $idMessage=$_POST['idMessage'];
-	echo getContenuByidMessage($idMessage);
+    $idMessage = $_POST['idMessage'];
+    echo getContenuByidMessage($idMessage);
     ?>
 
 </div>
 
+
+
+<?php
+include '../pagetype/basPage.php';
+?>
