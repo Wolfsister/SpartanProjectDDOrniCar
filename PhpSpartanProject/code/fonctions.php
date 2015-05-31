@@ -1,4 +1,11 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+    if(empty($_SESSION['connected'])){
+        $_SESSION['connected']=0;
+    }
+}
+
 
 function connexionBdd() {
     $conn = new mysqli('localhost', 'root', '', 'testornicar');

@@ -16,15 +16,15 @@ if(count($tabPassagers['idPassager'])==0){
     for ($index = 0; $index < count($tabPassagers['idPassager']); $index++) {
         $tabInfos=  getUserById($tabPassagers["idPassager"][$index]);
         $pseudo=$tabInfos['pseudo'];
-        echo $pseudo;
         $prenom=$tabInfos['prenom'];
         $nom=$tabInfos['nom'];
         $dateNaissance=$tabInfos['anneenaissance'];
         $anneeActuelle=date('Y');
         $age=$anneeActuelle-$dateNaissance;
-        echo "<form method='post' action='envoiMessagePassager'>";
+        echo "<form method='post' action='envoiMessagePassager.php'>";
         //faire form onSubmit
         echo "<tr><td>".$pseudo."</td><td>".$prenom."</td><td>".$nom."</td><td>".$age."</td><td><input src='img/mail.jpg' type=image width='30px' height='30px' value=submit></td></tr>";
+        echo "<input type='hidden' name='pseudo' value=".$pseudo.">";
         echo "</form>";
     }
     echo "</table>";
