@@ -17,11 +17,22 @@
 
 <!-- CUSTOM -->
 <script>
-    $(function() {
-        if( $(".datepicker").length ) {
-            var dateActuelle=new Date();
+    $(function () {
+        if ($(".datepicker").length) {
+            var dateActuelle = new Date();
             $(".datepicker").datepicker({dateFormat: 'yy-mm-dd', minDate: dateActuelle});
         }
     });
-        
+
+    function bascule(elem)
+    {
+// Quel est l'état actuel ?
+        etat = document.getElementById(elem).style.visibility;
+        if (etat == "hidden") {
+            document.getElementById(elem).style.visibility = "visible";
+        }
+        else {
+            document.getElementById(elem).style.visibility = "hidden";
+        }
+    }
 </script>

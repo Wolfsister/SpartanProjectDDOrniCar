@@ -177,6 +177,12 @@ body{
     width:auto;
 }
 
+#boutonAjoutVoiture{
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
 
 // Fin des ajouts par Denis
 //------------------------------------------------------------------------------------------

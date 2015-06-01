@@ -6,10 +6,12 @@
     </div>
 </div>
 <div class="row" id="anim2">
-    <h2 class="titreAjoutVoiture">Ajouter une voiture :</h2>
-
+    <button id="boutonAjoutVoiture" class="btn btn-default btn-lg btn-block" onClick="bascule('formulaireAjoutVoiture');" name="Ajouter une Voiture">Ajouter votre voiture</button>
+    
+    <div name="formulaireAjoutVoiture" id="formulaireAjoutVoiture" style="visibility: hidden">
+    
     <form enctype="multipart/form-data" method='post' class="form-horizontal" role="form" action='./voiture_action.php'>
-
+        <br /><br />
         <div class="form-group">
             <div class="col-md-12 col-xs-12 col-sm-12">
                 <div class="input-group">
@@ -58,7 +60,7 @@
 
         <div class="form-group">
             <div class="boutonDenisDorianAjouterVoitureZoheir col-md-12 col-xs-12 col-sm-12">
-                <button type="submit" class="btn btn-default btn-lg btn-block" name="register">Ajouter votre voiture</button>
+                <button type="submit" class="btn btn-default btn-lg btn-block" name="register">Enregistrer votre voiture</button>
             </div>
         </div>
         </br>
@@ -66,7 +68,10 @@
         </br>
         </br>
     </form>
+    </div>    
 
     <div class="col-md-4 col-sm-3">
     </div>
 </div>
+
+

@@ -50,14 +50,28 @@ include '../pagetype/hautPage.php';
     
     ?>
 
+<input type="button" onClick="bascule('boite');" value="Poster un commentaire">
+<div name="boite" id="boite" style="visibility: hidden">
+<form>
+<label style="vertical-align: top;">Votre commentaire : </label>
+<textarea rows="4" cols="50"></textarea>
+</form>
+</div>
 
-
-<?php     updateNote(calculNoteMoyenne(32), 32); //Met à jour la note moyenne du receveur
- ?>
+    
 
 </div>
 
 <script>
+    
+    function bascule(elem)
+{
+// Quel est l'état actuel ?
+etat=document.getElementById(elem).style.visibility;
+if(etat=="hidden"){document.getElementById(elem).style.visibility="visible";}
+else{document.getElementById(elem).style.visibility="hidden";}
+} 
+    
 function changeCouleur(element, clr){
     element.style.color=clr;
 }

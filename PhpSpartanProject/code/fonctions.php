@@ -8,8 +8,8 @@ if (!isset($_SESSION)) {
 
 
 function connexionBdd() {
-    //$conn = new mysqli('localhost', 'root', '', 'testornicar');
-    $conn = new mysqli('mysql.hostinger.fr', 'u885690161_admin', 'doriandenis', 'u885690161_orni');
+    $conn = new mysqli('localhost', 'root', '', 'testornicar');
+    //$conn = new mysqli('mysql.hostinger.fr', 'u885690161_admin', 'doriandenis', 'u885690161_orni');
     return $conn;
 }
 
