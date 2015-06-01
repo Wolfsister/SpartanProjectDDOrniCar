@@ -149,7 +149,7 @@ body{
     margin-left:0px;
     width: 47%;
     margin-left: 3%;
-    border: 1px solid blue;
+/*    border: 1px solid blue;*/
 }
 
 .messageEnvoyes{
@@ -160,7 +160,7 @@ body{
 .envoyerMessage{
     float:right;
     width:47%;
-    border: 1px solid blue;
+/*    border: 1px solid blue;*/
 }
 
 #boutonMessage{

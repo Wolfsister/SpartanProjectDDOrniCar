@@ -1,5 +1,5 @@
 <?php
-$path='';
+$path='/code/avis.php/';
 $title='';
 include '../pagetype/hautPage.php';
 ?>

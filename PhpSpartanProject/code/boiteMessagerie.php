@@ -1,5 +1,5 @@
 <?php
-$path = '';
+$path = "/code/boiteMessagerie.php/";
 $title = '';
 include '../pagetype/hautPage.php';
 ?>

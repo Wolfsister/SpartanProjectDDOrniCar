@@ -10,7 +10,7 @@ include '../pagetype/hautPage.php';
     
     echo '<h2>En tant que conducteur : </h2>';
     $co=  connexionBdd();
-    $reqSqlC= "SELECT * FROM trajet WHERE idConducteur='".$_SESSION['id']."' ORDER BY anneeMoisJour";
+    $reqSqlC= "SELECT * FROM trajet WHERE idConducteur='".$_SESSION['id']."' AND valide='0' ORDER BY anneeMoisJour";
     $reqConducteur=  mysqli_query($co, $reqSqlC);
     
     $nbLignes1=  mysqli_num_rows($reqConducteur);

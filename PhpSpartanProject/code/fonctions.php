@@ -8,8 +8,8 @@ if (!isset($_SESSION)) {
 
 
 function connexionBdd() {
-    $conn = new mysqli('localhost', 'root', '', 'testornicar');
-//$conn = new mysqli('mysql.hostinger.fr', 'u885690161_admin', 'doriandenis', 'u885690161_orni');
+    //$conn = new mysqli('localhost', 'root', '', 'testornicar');
+    $conn = new mysqli('mysql.hostinger.fr', 'u885690161_admin', 'doriandenis', 'u885690161_orni');
     return $conn;
 }
 
@@ -672,7 +672,7 @@ function affichageFormulaireEnvoiMessage() {
         echo "<option name=" . $row1['idUser'] . ">" . $row1['pseudo'] . " </option> ";
     }
     echo '</select><br />';
-    echo '<textarea name="contenu" id="contenu" placeholder="Contenu du message"></textarea>';
+    echo '<textarea name="contenu" id="contenu" placeholder="Contenu du message" style="width: 394px; height: 124px;"></textarea>';
     echo '<button type="submit" id="boutonMessage" class="btn btn-default btn-lg btn-block" name="sendMessage" onclick="alert(\'Le message a bien été envoyé. \')">Envoyer le Message</button>';
 
     //Poubelle   onclick="alert(\'Le message a bien été envoyé. \')"
@@ -723,7 +723,6 @@ function messageAnnulationTrajetPourTousEtRemboursement($idTrajet) {
     $prix = getPrixByIdTrajet($idTrajet);
     if (!empty($tabPassagers)) {
         foreach ($tabPassagers['idPassager'] as $value) {
-            echo $value;
             messageAnnulationAutomatique($value, $idTrajet);
             $remboursement = $prix + 10;
             donnerArgent($value, $remboursement);
@@ -865,6 +864,7 @@ function lectureTableauHtmlMesTrajetsConducteurResultatRequete($objetMysqliquery
             }
             echo "<input type='hidden' name='idTrajet' value=" . $idTrajet . ">";
             echo "<td><input src='img/plus.jpg' type=image width='30px' height='30px' value=submit></td>";
+            echo "</form>";
             echo "<form method='post' action='validationTrajet.php'>";
             echo '<td><button type="submit" id="boutonValidation" class="btn btn-default btn-lg btn-block" name="validation")">Valider</button></td>';
             echo "<input type='hidden' name='idTrajet' value=" . $idTrajet . ">";
