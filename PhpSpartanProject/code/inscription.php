@@ -86,7 +86,7 @@ include '../pagetype/hautPage.php';
                             <div class="form-group">
                                 <div class="col-md-12 col-xs-12 col-sm-12">
                                     <div class="input-group">
-                                        <label for="icone">Image de profil (JPG, PNG ou GIF | max. 15 Ko) :</label><br />
+                                        <label for="icone">Image de profil:</label><br />
                                         <input type="file" name="icone" accept="image/*" id="icone" /><br />
                                     </div>
                                 </div>

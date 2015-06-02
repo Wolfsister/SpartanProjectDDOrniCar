@@ -36,7 +36,7 @@ include '../pagetype/hautPage.php';
                     </div>
                 </div>
 
-                <div class="form-group">
+<!--                <div class="form-group">
                     <div class="col-md-12 col-xs-12 col-sm-12">
                         <div class="checkbox">
                             <label>
@@ -44,7 +44,7 @@ include '../pagetype/hautPage.php';
                             </label>
                         </div>
                     </div>
-                </div>
+                </div>-->
 
                 <div class="form-group">
                     <div class="col-md-12 col-xs-12 col-sm-12">
