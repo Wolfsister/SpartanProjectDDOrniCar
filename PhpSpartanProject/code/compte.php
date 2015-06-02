@@ -20,7 +20,7 @@ include '../pagetype/hautPage.php';
             if (aUneVoiture($_SESSION['id']) == true) {
                 include ('../code/maVoiture.php');
             } else {
-                include ('../code/add_Voiture.php');
+                include ('../code/add_voiture.php');
             }
             ?>
 
