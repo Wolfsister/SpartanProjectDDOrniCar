@@ -5,6 +5,7 @@ include '../pagetype/hautPage.php';
 
 
 <div class="row">
+    <?php if($_SESSION['connected']==1){ ?>
     <div class='monCompte'>
 
 
@@ -26,6 +27,12 @@ include '../pagetype/hautPage.php';
         </section>
     </div>    
 
+    <?php }else{ ?>
+    <div class="container">
+    <p>Veuillez d'abord vous connecter.</p>
+    </div>
+    <?php } ?>
+        
 </div>
 
 
