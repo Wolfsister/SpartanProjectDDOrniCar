@@ -29,7 +29,7 @@ if (!empty($_POST)) {
     }
 
     if ($_FILES['imvoiture']['error'] == 4) { // Erreur concernant la non-transmission de fichier
-        echo("Veuillez choisir une photo de profil. <br/>");
+        echo("Veuillez choisir une photo de voiture. <br/>");
         $erreur = true;
     }
 

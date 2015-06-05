@@ -96,7 +96,7 @@ include '../pagetype/hautPage.php';
                                 <div class="col-md-12 col-xs-12 col-sm-12">
                                     <div class="checkbox">
                                         <label>
-                                            <input class="check" name="accept" type="checkbox"> Accepter les <a href="conditions.html" onclick="window.open(this.href, 'exemple', 'height=757, width=400, toolbar=no, menubar=yes, location=no, resizable=yes, scrollbars=no, status=no');
+                                            <input class="check" name="accept" type="checkbox"> Accepter les <a href="conditionsUtilisation.html" onclick="window.open(this.href, 'exemple', 'height=757, width=400, toolbar=no, menubar=yes, location=no, resizable=yes, scrollbars=no, status=no');
                                                                     return false;">CGU</a>
                                         </label>
                                     </div>

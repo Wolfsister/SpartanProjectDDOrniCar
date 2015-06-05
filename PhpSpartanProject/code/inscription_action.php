@@ -90,9 +90,8 @@ if (!empty($_POST)) {
         //Finalisation Inscription
 
         //echo 'Félicitations pour votre inscription '.$_POST['prenom'].' '.$_POST['nom'].', ou '.$_POST['pseudo'].' devrais-je dire ! :)';
-
         
-        //echo '<script type = "text/javascript">alert("Inscription Réussie !")</script> ';
+     
         logRightAfterRegister($_POST['pseudo']);
         
         

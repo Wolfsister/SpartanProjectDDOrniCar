@@ -11,7 +11,7 @@ include '../pagetype/hautPage.php';
 
     <?php
     $co = connexionBdd();
-    $sql = " SELECT * FROM trajet ";
+    $sql = " SELECT * FROM trajet ORDER BY anneeMoisJour ";
     $result = mysqli_query($co, $sql) or die("Requete pas comprise");
     //lectureTableauHtmlResultatRequete($result);
     lectureTableauHtmlTousTrajets($result);
