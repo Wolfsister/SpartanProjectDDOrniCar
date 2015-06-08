@@ -14,6 +14,7 @@ include '../pagetype/hautPage.php';
         retirerArgent($idUser, $prix);
         insertIntoPassager($idUser, $idTrajet);
         enleverUnePlaceTrajet($idTrajet);
+        header ("Location: mesTrajets.php");
     } else {
         ?>
         <div class="row pplan" id="anim1">
