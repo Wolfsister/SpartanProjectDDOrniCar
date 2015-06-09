@@ -62,6 +62,7 @@ if ($_SESSION['connected'] == 0) {
                                             $co = connexionBdd();
                                             $sql2 = " SELECT DISTINCT villeArrivee FROM trajet ORDER BY villeArrivee";
                                             $result2 = mysqli_query($co, $sql2) or die("Requete pas comprise");
+                                            echo "<option name=0 value=0>Ville d'Arrivée</option>";
                                             while ($row2 = mysqli_fetch_array($result2)) {
                                                 echo "<option name=" . $row2[villeArrivee] . ">" . $row2[villeArrivee] . " </option> ";
                                             }

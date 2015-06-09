@@ -10,27 +10,30 @@ include '../pagetype/hautPage.php';
     $idTrajet = $_POST['idTrajet'];
     $idUser = $_SESSION['id'];
     $prix = $_POST['prix'];
-    if (participeAuTrajet($idUser, $idTrajet) == false) {
-        retirerArgent($idUser, $prix);
-        insertIntoPassager($idUser, $idTrajet);
-        enleverUnePlaceTrajet($idTrajet);
-        header ("Location: mesTrajets.php");
-    } else {
-        ?>
-        <div class="row pplan" id="anim1">
-            <div class="col-md-12 col-xs-12 col-sm-12  pplan">
-                </br>
-                </br>
-                </br>
-                <p>Vous participez déjà à ce trajet !</p>
-                </br>
-                </br>
-            </div>
-        </div>
-        <?php
-    }
+    $nbPlacesRestantes = nombrePlacesRestantes($idTrajet);
     ?>
-
+    <div class="row pplan" id="anim1">
+        <div class="col-md-12 col-xs-12 col-sm-12  pplan">
+            </br>
+            </br>
+            </br>
+            <p>Combien de places voulez-vous réserver sur ce trajet ?</p>
+            <form method="post" action="reservation.php">
+                <select name="nbPlaces">
+                    <?php
+                    for ($index = 1; $index <= $nbPlacesRestantes; $index++) {
+                        echo "<option value=".$index.">$index</option>";
+                    }
+                    ?>    
+                </select> 
+                <input type="hidden" name="idTrajet" value="<?php echo $idTrajet;?>">    
+                <input type="hidden" name="prix" value="<?php echo $prix;?>">  
+                <div class="col-md-12 col-xs-12 col-sm-12"><button type="submit" class="btn btn-default btn-lg btn-block" name="register">Réserver ce Trajet</button></div> 
+            </form>
+            </br>
+            </br>
+        </div>
+    </div>
 
 </div>
 

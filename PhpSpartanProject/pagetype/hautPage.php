@@ -14,7 +14,7 @@ if (!isset($_SESSION)) {
     }
 
     include '../pagetype/head.php';
-    echo '<body>';
+    ?><body><?php
     
 // si mec connecté dans variable de session, afficher header de connecté, sinon afficher header de déconnecté
     if ($_SESSION['connected'] == 1) {

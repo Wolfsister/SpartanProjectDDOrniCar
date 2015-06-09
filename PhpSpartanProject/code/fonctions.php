@@ -275,7 +275,7 @@ function insertIntoAvis($idDonneur, $idReceveur, $idTrajet, $note) {
 
 function insertIntoPassager($idPassager, $idTrajet) {
     $co = connexionBdd();
-    $requete = "INSERT INTO passager VALUES ('" . $idPassager . "','" . $idTrajet . "' )";
+    $requete = "INSERT INTO passager VALUES ('" . $idPassager . "','" . $idTrajet . "','' )";
     mysqli_query($co, $requete);
     if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -371,19 +371,26 @@ function lectureTableauPhpResultatRequete($objetMySql) {
 }
 
 function nombrePlacesRestantes($idTrajet) {
-    $co = connexionBdd();
-//Savoir combien de places étaient disponibles au départ pour le trajet
-    $requeteNbPlaces = "SELECT * FROM trajet WHERE idTrajet='" . $idTrajet . "'  ";
-    $sqlireq = mysqli_query($co, $requeteNbPlaces);
-    $tabNbPlaces = lectureTableauPhpResultatRequete($sqlireq);
-    $nbPlacesOriginales = $tabNbPlaces['nombrePlaces'][0];
-//Savoir combien de passagers ont deja réservé ce voyage
-    $requeteNbPassagers = "SELECT * FROM passager WHERE idTrajet='" . $idTrajet . "'  ";
-    $sqlireqNbPassagers = mysqli_query($co, $requeteNbPassagers);
-    $nbPlacesPrises = mysqli_num_rows($sqlireqNbPassagers);
-
-    $nbPlacesRestantes = ($nbPlacesOriginales) - ($nbPlacesPrises);
-    return $nbPlacesRestantes;
+//    $co = connexionBdd();
+////Savoir combien de places étaient disponibles au départ pour le trajet
+//    $requeteNbPlaces = "SELECT * FROM trajet WHERE idTrajet='" . $idTrajet . "'  ";
+//    $sqlireq = mysqli_query($co, $requeteNbPlaces);
+//    $tabNbPlaces = lectureTableauPhpResultatRequete($sqlireq);
+//    $nbPlacesOriginales = $tabNbPlaces['nombrePlaces'][0];
+////Savoir combien de passagers ont deja réservé ce voyage
+//    $requeteNbPassagers = "SELECT * FROM passager WHERE idTrajet='" . $idTrajet . "'  ";
+//    $sqlireqNbPassagers = mysqli_query($co, $requeteNbPassagers);
+//    $nbPlacesPrises = mysqli_num_rows($sqlireqNbPassagers);
+//
+//    $nbPlacesRestantes = ($nbPlacesOriginales) - ($nbPlacesPrises);
+//    return $nbPlacesRestantes;
+    
+    $co=connexionBdd();
+    $requeteNbPlaces="SELECT * FROM trajet WHERE idTrajet='".$idTrajet."' ";
+    $sqliRq=  mysqli_query($co, $requeteNbPlaces);
+    $tab=  lectureTableauPhpResultatRequete($sqliRq);
+    $nbPlaces=$tab["nombrePlaces"][0];
+    return $nbPlaces;
 }
 
 function isDriver($idUser, $idTrajet) {
@@ -404,10 +411,12 @@ function recupererIdTrajetsEnTab($id) {
 
     $co = connexionBdd();
     $tabTousTrajets = array();
-    $currentTime = date("Y-m-d");
+    //$currentTime = date("Y-m-d");
 //Faire aussi test sur l'heure
 //En conducteur
-    $reqTrajetsConducteur = "SELECT idTrajet FROM trajet as t WHERE anneeMoisJour<='" . $currentTime . "' AND t.idConducteur='" . $id . "' ";
+//    $reqTrajetsConducteur = "SELECT idTrajet FROM trajet as t WHERE anneeMoisJour<='" . $currentTime . "' AND t.idConducteur='" . $id . "' ";
+    $reqTrajetsConducteur = "SELECT idTrajet FROM trajet as t WHERE valide='1' AND t.idConducteur='" . $id . "' ";
+
     $sqliCon = mysqli_query($co, $reqTrajetsConducteur);
     while ($resultCon = mysqli_fetch_array($sqliCon)) {
         foreach ($resultCon as $key => $value) {
@@ -419,7 +428,7 @@ function recupererIdTrajetsEnTab($id) {
 
 
 //En passager
-    $reqTrajetsPassager = "SELECT p.idTrajet FROM passager as p, trajet as t WHERE anneeMoisJour<='" . $currentTime . "' AND p.idPassager='" . $id . "' AND p.idTrajet=t.idTrajet ";
+    $reqTrajetsPassager = "SELECT p.idTrajet FROM passager as p, trajet as t WHERE t.valide='1' AND p.idPassager='" . $id . "' AND p.idTrajet=t.idTrajet ";
     $sqliPas = mysqli_query($co, $reqTrajetsPassager);
     while ($resultPas = mysqli_fetch_array($sqliPas)) {
         foreach ($resultPas as $key => $value) {
@@ -475,7 +484,7 @@ function affichagePersonnesPourAvis($idTrajet, $idUser) {
 
     echo "<table class='tableauAffichageBDD'><tr><th>Photo</th><th>Pseudo</th><th>Prénom</th><th>Nom</th><th>NoteMoyenneActuelle</th><th>Votre Avis (/5)</th><tr>"; //Mettre select note à la fin
     if ($conducteur == true) {
-        $requeteC = "SELECT * FROM passager WHERE idTrajet='" . $idTrajet . "' ";
+        $requeteC = "SELECT DISTINCT idPassager, idTrajet FROM passager WHERE idTrajet='" . $idTrajet . "' ";
         $reqSql = mysqli_query($co, $requeteC);
         $tabC = lectureTableauPhpResultatRequete($reqSql);
 
@@ -522,7 +531,7 @@ function affichagePersonnesPourAvis($idTrajet, $idUser) {
         echo '<input type="hidden" name="id' . $nbLignes . '" value=' . $idConducteur . ' />';
 
 
-        $requetePassager = "SELECT * FROM passager WHERE idTrajet ='" . $idTrajet . "' ";
+        $requetePassager = "SELECT DISTINCT idPassager, idTrajet FROM passager WHERE idTrajet ='" . $idTrajet . "' ";
         $sqlPassager = mysqli_query($co, $requetePassager);
         $tabPassager = lectureTableauPhpResultatRequete($sqlPassager);
         foreach ($tabPassager as $key => $valueinit) {
@@ -537,7 +546,7 @@ function affichagePersonnesPourAvis($idTrajet, $idUser) {
                         $note = $tabUser['note'];
                         //Jusque là pas de soucis
                         $photo = '<img src="../ressources/imagesProfiles/' . $value . '.jpg" width="20px" heigth="20px" />';
-                        $select = "<select name='" . $nbLignes . "'><option value=1>1<option value=2>2<option value=3>3<option value=4>4<option value=5>5 </select>";
+                        $select = "<select name='" . $nbLignes . "'><option value=1>A Eviter<option value=2>Décevant<option value=3>Bien<option value=4>Excellent<option value=5>Extraordinaire </select>";
 
 
                         echo '<tr><td>' . $photo . '</td><td>' . $pseudo . '</td><td>' . $nom . '</td><td>' . $prenom . '</td><td>' . $note . '</td><td>' . $select . '</td>';
@@ -597,11 +606,10 @@ function affichageTrajetPourReservation($villeDepart, $villeArrivee, $date) {
 
 
     //A ADAPTER POUR RECHERCHE TRAJET
-
     $co = connexionBdd();
 //Debut FORM
 
-    echo "<table class='tableauAffichageBDD'><tr><th>Ville de Départ</th><th>Ville d'Arrivée</th><th>Pseudo du Conducteur</th><th>Prix</th><th>Heure</th><th>Minutes</th><th>Nombre Places Restantes</th><th></th><tr>"; //Ajouter voiture ?
+    echo "<table class='tableauAffichageBDD'><tr><th>Ville de Départ</th><th>Ville d'Arrivée</th><th>Date</th><th>Pseudo du Conducteur</th><th>Prix</th><th>Heure</th><th>Minutes</th><th>Nombre Places Restantes</th><th></th><tr>"; //Ajouter voiture ?
     $requeteText = "SELECT * FROM trajet WHERE villeDepart='" . $villeDepart . "' AND villeArrivee='" . $villeArrivee . "' AND anneeMoisJour='" . $date . "' AND nombrePlaces>0  ";
     $reqSql = mysqli_query($co, $requeteText);
     $nbTrajets = mysqli_num_rows($reqSql);
@@ -620,7 +628,7 @@ function affichageTrajetPourReservation($villeDepart, $villeArrivee, $date) {
             $nbPlaces = $tab['nombrePlaces'][$i];
             $btSubmit = '<div class="col-md-12 col-xs-12 col-sm-12"><button type="submit" class="btn btn-default btn-lg btn-block" name="register">Réserver ce Trajet</button> ';
 
-            echo '<tr><td>' . $villeDepart . '</td><td>' . $villeArrivee . '</td><td>' . $pseudoConducteur . '</td><td>' . $prix . '</td><td>' . $heure . '</td><td>' . $minute . '</td><td>' . $nbPlaces . '</td><td>' . $btSubmit . '</td>';
+            echo '<tr><td>' . $villeDepart . '</td><td>' . $villeArrivee . '</td><td>'.$date.'</td><td>' . $pseudoConducteur . '</td><td>' . $prix . '</td><td>' . $heure . '</td><td>' . $minute . '</td><td>' . $nbPlaces . '</td><td>' . $btSubmit . '</td>';
             echo '<input type="hidden" name="idTrajet" value=' . $idTrajet . ' />';
             echo '<input type="hidden" name="prix" value=' . $prix . ' />';
 
@@ -628,7 +636,7 @@ function affichageTrajetPourReservation($villeDepart, $villeArrivee, $date) {
         }
         echo '</div>';
 // $photo = '<img src="../ressources/imagesProfiles/' . $value . '.jpg" width="20px" heigth="20px" />';
-    }
+    }else{ echo "Il n'existe pas de trajets avec vos paramètres.";}
 
     echo '</table>';
 
@@ -636,6 +644,94 @@ function affichageTrajetPourReservation($villeDepart, $villeArrivee, $date) {
 //Fin de form
 }
 
+function affichageTrajetPourReservationVilleDepart($villeDepart) {
+
+
+    //A ADAPTER POUR RECHERCHE TRAJET
+    $dateActuelle=date("Y-m-d");
+    $co = connexionBdd();
+//Debut FORM
+
+    echo "<table class='tableauAffichageBDD'><tr><th>Ville de Départ</th><th>Ville d'Arrivée</th><th>Date</th><th>Pseudo du Conducteur</th><th>Prix</th><th>Heure</th><th>Minutes</th><th>Nombre Places Restantes</th><th></th><tr>"; //Ajouter voiture ?
+    $requeteText = "SELECT * FROM trajet WHERE villeDepart='" . $villeDepart . "' AND nombrePlaces>0 AND anneeMoisJour>'".$dateActuelle."' ";
+    $reqSql = mysqli_query($co, $requeteText);
+    $nbTrajets = mysqli_num_rows($reqSql);
+    $tab = lectureTableauPhpResultatRequete($reqSql);
+
+    if ($nbTrajets > 0) {
+        echo '<div class="container">';
+        for ($i = 0; $i < $nbTrajets; $i++) {
+            echo "<form method='post' action='rechercheTrajet_action_action.php'>";
+            $idTrajet = $tab['idTrajet'][$i];
+            $idConducteur = $tab['idConducteur'][$i];
+            $pseudoConducteur = getPseudoById($idConducteur);
+            $prix = $tab['prix'][$i];
+            $date = $tab['anneeMoisJour'][$i];
+            $heure = $tab['heure'][$i];
+            $minute = $tab['minute'][$i];
+            $villeArrivee= $tab['villeArrivee'][$i];
+            $nbPlaces = $tab['nombrePlaces'][$i];
+            $btSubmit = '<div class="col-md-12 col-xs-12 col-sm-12"><button type="submit" class="btn btn-default btn-lg btn-block" name="register">Réserver ce Trajet</button> ';
+
+            echo '<tr><td>' . $villeDepart . '</td><td>' . $villeArrivee . '</td><td>'.$date.'</td><td>' . $pseudoConducteur . '</td><td>' . $prix . '</td><td>' . $heure . '</td><td>' . $minute . '</td><td>' . $nbPlaces . '</td><td>' . $btSubmit . '</td>';
+            echo '<input type="hidden" name="idTrajet" value=' . $idTrajet . ' />';
+            echo '<input type="hidden" name="prix" value=' . $prix . ' />';
+
+            echo '</form>';
+        }
+        echo '</div>';
+// $photo = '<img src="../ressources/imagesProfiles/' . $value . '.jpg" width="20px" heigth="20px" />';
+    }else{ echo "Il n'existe pas de trajets avec vos paramètres.";}
+
+    echo '</table>';
+
+
+//Fin de form
+}
+
+function affichageTrajetPourReservationVilleDepartArrivee($villeDepart, $villeArrivee) {
+
+
+    //A ADAPTER POUR RECHERCHE TRAJET
+    $dateActuelle=date("Y-m-d");
+    $co = connexionBdd();
+//Debut FORM
+
+    echo "<table class='tableauAffichageBDD'><tr><th>Ville de Départ</th><th>Ville d'Arrivée</th><th>Date</th><th>Pseudo du Conducteur</th><th>Prix</th><th>Heure</th><th>Minutes</th><th>Nombre Places Restantes</th><th></th><tr>"; //Ajouter voiture ?
+    $requeteText = "SELECT * FROM trajet WHERE villeDepart='" . $villeDepart . "' AND villeArrivee='" . $villeArrivee . "' AND nombrePlaces>0 AND anneeMoisJour>'".$dateActuelle." ";
+    $reqSql = mysqli_query($co, $requeteText);
+    $nbTrajets = mysqli_num_rows($reqSql);
+    $tab = lectureTableauPhpResultatRequete($reqSql);
+
+    if ($nbTrajets > 0) {
+        echo '<div class="container">';
+        for ($i = 0; $i < $nbTrajets; $i++) {
+            echo "<form method='post' action='rechercheTrajet_action_action.php'>";
+            $idTrajet = $tab['idTrajet'][$i];
+            $idConducteur = $tab['idConducteur'][$i];
+            $pseudoConducteur = getPseudoById($idConducteur);
+            $prix = $tab['prix'][$i];
+            $heure = $tab['heure'][$i];
+            $date = $tab['anneeMoisJour'][$i];
+            $minute = $tab['minute'][$i];
+            $nbPlaces = $tab['nombrePlaces'][$i];
+            $btSubmit = '<div class="col-md-12 col-xs-12 col-sm-12"><button type="submit" class="btn btn-default btn-lg btn-block" name="register">Réserver ce Trajet</button> ';
+
+            echo '<tr><td>' . $villeDepart . '</td><td>' . $villeArrivee . '</td><td>'.$date.'</td><td>' . $pseudoConducteur . '</td><td>' . $prix . '</td><td>' . $heure . '</td><td>' . $minute . '</td><td>' . $nbPlaces . '</td><td>' . $btSubmit . '</td>';
+            echo '<input type="hidden" name="idTrajet" value=' . $idTrajet . ' />';
+            echo '<input type="hidden" name="prix" value=' . $prix . ' />';
+
+            echo '</form>';
+        }
+        echo '</div>';
+// $photo = '<img src="../ressources/imagesProfiles/' . $value . '.jpg" width="20px" heigth="20px" />';
+    }else{ echo "Il n'existe pas de trajets avec vos paramètres.";}
+
+    echo '</table>';
+
+
+//Fin de form
+}
 function participeAuTrajet($idUser, $idTrajet) {
     $participe = false;
     $co = connexionBdd();
@@ -831,7 +927,7 @@ function lectureTableauHtmlMesTrajetsConducteurResultatRequete($objetMysqliquery
                 $premieresValeurs[] = $value;
             }
         }
-        echo '<th>Contacter </th>';
+        echo '<th>Passagers </th>';
         echo '<th>Validation</th>';
         echo '<th>Suppression</th>';
         echo '</tr>';

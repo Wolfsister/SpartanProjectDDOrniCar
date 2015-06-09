@@ -31,10 +31,9 @@ include '../pagetype/hautPage.php';
                                 <div class="row">
                                     <div class="col-md-6 col-md-offset-6">
                                         <div class="slide-content">
-                                            <h2>We are licorne</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, dolorem, excepturi. Dolore aliquam quibusdam ut quae iure vero exercitationem ratione!</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi ab molestiae minus reiciendis! Pariatur ab rerum, sapiente ex nostrum laudantium.</p>
-                                            <a href="" class="readmore">Learn more</a>
+                                            <h2>We are Paradise City</h2>
+                                            <p>Bienvenue sur Ornicar ! </p>
+                                            <p>Cette communauté de plus de 20 utilisateurs vous attend avec impatience ! </p>                                            <a href="" class="readmore">Learn more</a>
                                         </div>
                                     </div>
                                 </div>

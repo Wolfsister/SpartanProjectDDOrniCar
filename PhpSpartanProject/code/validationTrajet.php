@@ -14,7 +14,7 @@ $dateActuelle = date("Y-m-d");
 <div class="container">
 
     <?php
-    if ($date <= $dateActuelle) {
+//    if ($date <= $dateActuelle) {
         if (isAlreadyValide($idTrajet)) {
             echo "Vous avez déjà validé ce trajet !";
         } else {
@@ -25,9 +25,9 @@ $dateActuelle = date("Y-m-d");
             echo "Votre trajet a été validé, et votre compte crédité.";
             validerTrajet($idTrajet);
         }
-    } else {
-        echo "Vous ne pourrez valider ce trajet uniquement quand celui-ci sera effectué !";
-    }
+//    } else {
+//        echo "Vous ne pourrez valider ce trajet uniquement quand celui-ci sera effectué !";
+//    }
     ?>    
 
 

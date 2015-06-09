@@ -21,7 +21,7 @@ $pageEnCours=basename($path, ".php"); // nous permet de récupérer la page sur 
                         <li <?php if($pageEnCours=='proposerTrajet'){echo 'class="active"';} ?>><a href="../code/proposerTrajet.php">Proposer un trajet</a></li>
                         <li <?php if($pageEnCours=='avis'){echo 'class="active"';} ?>><a href="../code/avis.php">Avis</a></li>
                         <li <?php if($pageEnCours=='boiteMessagerie'){echo 'class="active"';} ?> ><a href="../code/boiteMessagerie.php">Messagerie</a></li>
-                        <li><a href="../code/test.php">Test</a></li>
+<!--                        <li><a href="../code/test.php">Test</a></li>-->
 
                     </ul>
                 </div>  

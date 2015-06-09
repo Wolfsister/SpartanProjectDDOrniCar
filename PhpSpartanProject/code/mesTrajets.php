@@ -28,7 +28,7 @@ include '../pagetype/hautPage.php';
         $reqSqlP = "SELECT * FROM trajet as t, passager as p WHERE p.idPassager='" . $_SESSION['id'] . "' AND t.idTrajet=p.idTrajet ORDER BY anneeMoisJour";
         $reqPassager = mysqli_query($co, $reqSqlP);
 
-        $nbLignes2 = mysqli_num_rows($reqConducteur);
+        $nbLignes2 = mysqli_num_rows($reqPassager);
         if ($nbLignes2 == 0) {
             echo "Vous ne prenez part à aucun trajet en tant que passager.";
         } else {
