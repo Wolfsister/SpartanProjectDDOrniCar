@@ -21,8 +21,8 @@ include '../pagetype/hautPage.php';
                 <div class="form-group">
                     <div class="col-md-12 col-xs-12 col-sm-12  splan">
                         <div class="input-group">
-                            <input type="email" name="email" class="form-control" id="email" placeholder="Email">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                            <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Pseudo">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
                         </div>
                     </div>
                 </div>

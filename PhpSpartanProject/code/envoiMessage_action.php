@@ -1,23 +1,23 @@
 <?php
 
 $title = '';
-include '../pagetype/hautPage.php';
+
 ?>
 
 <?php
 
 if (!empty($_POST)) {
 
-    echo $_POST['contenu'];
     if (empty($_POST["contenu"])) {
+        include '../pagetype/hautPage.php';
         echo "Votre message est vide.<br/>";
-        echo "<a href='inscription.php'> Retour à l'inscription </a>";
+        echo "<a href='boiteMessagerie.php'> Retour à la messagerie. </a>";
     } else {
-        echo "JE usis la";
+        include "fonctions.php";
         $idReceveur=$_POST['idReceveur'];
         $contenu=$_POST['contenu'];
         insertIntoMessage($idReceveur, $contenu);
-
+        header("Location: boiteMessagerie.php");
         
     }
 }

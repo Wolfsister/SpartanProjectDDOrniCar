@@ -19,10 +19,10 @@ $dateActuelle = date("Y-m-d");
             echo "Vous avez déjà validé ce trajet !";
         } else {
             $prix = getPrixByIdTrajet($idTrajet);
-            $nbPassagers = count(getPassagersByIdTrajet($idTrajet));
+            $nbPassagers = nombrePassagersTrajet($idTrajet);
             $montant = $nbPassagers * $prix;
             donnerArgent($_SESSION['id'], $montant);
-            echo "Votre trajet a été validé, et votre compte crédité.";
+            echo "Votre trajet a été validé, et votre compte crédité de ".$montant." €.";
             validerTrajet($idTrajet);
         }
 //    } else {

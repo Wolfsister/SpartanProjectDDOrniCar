@@ -78,12 +78,12 @@ function logRightAfterRegister($pseudo) {
 //    echo '<script type="text/javascript"> document.location.href="../code/compte.php"    </script>';
 }
 
-function logClassic($email) {
+function logClassic($pseudo) {
 
     $co = connexionBdd();
-    $rechercheMail = "SELECT * FROM user WHERE email='" . $email . "' ";
+    $rechercheMail = "SELECT * FROM user WHERE pseudo='" . $pseudo . "' ";
     $tabResultat = mysqli_fetch_array(mysqli_query($co, $rechercheMail));
-    $id = getIdUserByEmail($email);
+    $id = getIdUserByPseudo($pseudo);
 
     $_SESSION['connected'] = 1;
     $_SESSION['pseudo'] = $tabResultat['pseudo'];
@@ -235,7 +235,6 @@ function insertIntoMessage($pseudoReceveur, $contenu) {
     $idReceveur = getIdUserByPseudo($pseudoReceveur);
     $requeteInsert = "INSERT INTO message VALUES (NULL, '" . $idEnvoyeur . "', '" . $idReceveur . "', '" . $contenu . "', '0', '" . $date . "' )";
     mysqli_query($co, $requeteInsert);
-    echo $requeteInsert;
 }
 
 function messageAnnulationAutomatique($idAnnulé, $idTrajet) {
@@ -500,7 +499,7 @@ function affichagePersonnesPourAvis($idTrajet, $idUser) {
                     $note = $tabUser['note'];
                     //Jusque là pas de soucis
                     $photo = '<img src="../ressources/imagesProfiles/' . $value . '.jpg" width="20px" heigth="20px" />';
-                    $select = "<select name='" . $nbLignes . "'><option value=1>A Eviter<option value=2>Décevant<option value=3>Bien<option value=4>Excellent<option value=5>Extraordinaire </select>";
+                    $select = "<select name='" . $nbLignes . "'><option value=0>Pas d'Avis<option value=1>A Eviter<option value=2>Décevant<option value=3>Bien<option value=4>Excellent<option value=5>Extraordinaire </select>";
 
 
                     echo '<tr><td>' . $photo . '</td><td>' . $pseudo . '</td><td>' . $prenom . '</td><td>' . $nom . '</td><td>' . $note . '</td><td>' . $select . '</td>';
@@ -524,7 +523,7 @@ function affichagePersonnesPourAvis($idTrajet, $idUser) {
         $note = $tabUser['note'];
 
         $photo = '<img src="../ressources/imagesProfiles/' . $idConducteur . '.jpg" width="20px" heigth="20px" />';
-        $select = "<select name='" . $nbLignes . "'><option value=1>A Eviter<option value=2>Décevant<option value=3>Bien<option value=4>Excellent<option value=5>Extraordinaire</select>";
+        $select = "<select name='" . $nbLignes . "'><option value=0>Pas d'Avis<option value=1>A Eviter<option value=2>Décevant<option value=3>Bien<option value=4>Excellent<option value=5>Extraordinaire</select>";
 
 
         echo '<tr><td>' . $photo . '</td><td>' . $pseudo . '</td><td>' . $nom . '</td><td>' . $prenom . '</td><td>' . $note . '</td><td>' . $select . '</td>';
@@ -817,11 +816,15 @@ function getPrixByIdTrajet($idTrajet) {
 function messageAnnulationTrajetPourTousEtRemboursement($idTrajet) {
     $tabPassagers = getPassagersByIdTrajet($idTrajet);
     $prix = getPrixByIdTrajet($idTrajet);
+    $idsRembourses=array();
     if (!empty($tabPassagers)) {
         foreach ($tabPassagers['idPassager'] as $value) {
+            if(!in_array($value, $idsRembourses)){
             messageAnnulationAutomatique($value, $idTrajet);
+            }
             $remboursement = $prix + 10;
             donnerArgent($value, $remboursement);
+            $idsRembourses[]=$value;
         }
     }
 }
@@ -987,6 +990,12 @@ function validerTrajet($idTrajet) {
     $co = connexionBdd();
     $updaText = "UPDATE trajet SET valide='1' WHERE idTrajet='" . $idTrajet . "'";
     mysqli_query($co, $updaText);
+}
+
+function nombrePassagersTrajet($idTrajet){
+    $co=  connexionBdd();
+    $reqTxt="SELECT * FROM passager WHERE idTrajet='".$idTrajet."' ";
+    return mysqli_num_rows(mysqli_query($co, $reqTxt));
 }
 
 ?>

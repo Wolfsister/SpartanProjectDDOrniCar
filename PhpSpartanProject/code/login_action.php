@@ -9,8 +9,8 @@ include '../pagetype/hautPage.php';
 if (isset($_POST)) {
     $erreurSaisie = false;
     $erreurEmail = false;
-    if (empty($_POST["email"])) {
-        echo("Le champ email est vide.<br/>");
+    if (empty($_POST["pseudo"])) {
+        echo("Le champ pseudo est vide.<br/>");
         $erreurSaisie = true;
     }
 
@@ -27,10 +27,10 @@ if (isset($_POST)) {
     $emailExiste=false;
 
     if ($erreurSaisie == false) {   
-        $email = $_POST["email"];
+        $pseudo = $_POST["pseudo"];
         // echo 'email='.$_POST["email"];
         $co = connexionBdd();
-        $rechercheMail = "SELECT * FROM user WHERE email='" . $email . "' ";
+        $rechercheMail = "SELECT * FROM user WHERE pseudo='" . $pseudo . "' ";
         $resultat = mysqli_query($co, $rechercheMail);
         if (!$resultat) {
             printf("Error: %s\n", mysqli_error($co));
@@ -61,7 +61,7 @@ if (isset($_POST)) {
 //            echo 'connected ='.$_SESSION['connected'];
 //            header('Location: ../code/compte.php');         
             
-            logClassic($_POST['email']);
+            logClassic($_POST['pseudo']);
         }else{
             echo 'Le mot de passe saisi n\'est pas le bon, veuillez réessayer en cliquant <a href="./inscription.php">ici</a>.';
         }
