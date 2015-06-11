@@ -2,6 +2,10 @@
 $path = "/code/boiteMessagerie.php/";
 $title = '';
 include '../pagetype/hautPage.php';
+
+if($_SESSION['connected']==0){
+    echo "Veuillez d'abord vous connecter.";
+}else{
 ?>
 
 <div class="container">
@@ -22,5 +26,6 @@ include '../pagetype/hautPage.php';
 </div>
 
 <?php
+}
 include '../pagetype/basPage.php';
 ?>

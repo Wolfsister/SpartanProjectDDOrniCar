@@ -31,9 +31,9 @@ include '../pagetype/hautPage.php';
                                 <div class="row">
                                     <div class="col-md-6 col-md-offset-6">
                                         <div class="slide-content">
-                                            <h2>We are Paradise City</h2>
+                                            <h2>We are You</h2>
                                             <p>Bienvenue sur Ornicar ! </p>
-                                            <p>Cette communauté de plus de 20 utilisateurs vous attend avec impatience ! </p>                                            <a href="" class="readmore">Learn more</a>
+                                            <p>Cette communauté de plus de 20 utilisateurs vous attend avec impatience ! </p>      
                                         </div>
                                     </div>
                                 </div>
@@ -51,9 +51,9 @@ include '../pagetype/hautPage.php';
                                 <div class="row">
                                     <div class="col-md-6 col-md-offset-6">
                                         <div class="slide-content">
-                                            <h2>We are fabulous</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe aspernatur, dolorum harum molestias tempora deserunt voluptas possimus quos eveniet, vitae voluptatem accusantium atque deleniti inventore. Enim quam placeat expedita! Quibusdam!</p>
-                                            <a href="" class="readmore">Learn more</a>
+                                            <h2>We are the World</h2>
+                                            <p>Bientôt une version en anglais, en allemand et en klingon !</p>
+                                        
                                         </div>
                                     </div>
                                 </div>
@@ -71,10 +71,8 @@ include '../pagetype/hautPage.php';
                                 <div class="row">
                                     <div class="col-md-6 col-md-offset-6">
                                         <div class="slide-content">
-                                            <h2>Look at my horse</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, eius?</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti voluptates necessitatibus dicta recusandae quae amet nobis sapiente explicabo voluptatibus rerum nihil quas saepe, tempore error odio quam obcaecati suscipit sequi.</p>
-                                            <a href="" class="readmore">Learn more</a>
+                                            <h2>We are the Children</h2>
+                                            <p>Jean-Luc Lahaye, merci de quitter ce site.</p>
                                         </div>
                                     </div>
                                 </div>
